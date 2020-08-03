@@ -1,0 +1,25 @@
+<% provide :title, t("sign_up") %>
+<% provide :id_page, "home" %>
+<div class="banner">
+  <div class="container">
+    <div class="wrapper">
+      <div id="formContent">
+        <div class="first">
+          <%= image_tag("login.png", id: "icon", alt: "User Icon") %>
+        </div>
+        <%= form_for @user, url: business_signup_path do |f| %>
+          <%= render "business/shared/error_messages"%>
+          <%= f.text_field :name, class: "form-feild", placeholder: t(".name") %>
+          <%= f.email_field :email, class: "form-feild", placeholder: "Email" %>
+          <%= f.password_field :password, class: "form-feild", placeholder: t(".password") %>
+          <%= f.password_field :password_confirmation, class: "form-feild", placeholder: t(".password_confirmation") %>
+          <%= f.label t(".role") %>
+          <%= f.select :role_id, options_for_select(@role), class: "form-feild" %>
+          <%= f.label t(".group") %>
+          <%= f.select :group_id, options_for_select(@group), class:"form-feild" %>
+          <%= f.submit t(".create_new_account"), class: "fourth" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

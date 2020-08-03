@@ -11,28 +11,29 @@ vi:
     history_book_room: Lịch sử đặt phòng
     update_profile: Cập nhật thông tin
     logout: Đăng xuất
-  static_pages:
-    home:
-      read_more: Xem thêm
-      list_room: Danh sách phòng
-      history_book_room: Lịch sử đặt phòng
-    about:
-      about: Giới thiệu
-      content_heading_about: Công ty của chúng tôi
-  sessions:
-    new:
-      forgot_password: Quên mật khẩu
-      you_haven't_account: Bạn chưa có tài khoản
-      email: Email
-      password: Mật khẩu
-  users:
-    new:
-      name: Họ và tên
-      password: Mật khẩu
-      password_confirmation: Xác nhận mật khẩu
-      role: Chức vụ
-      group: Nhóm
-      create_new_account: Tạo mới tài khoản
+  business:
+    static_pages:
+      home:
+        read_more: Xem thêm
+        list_room: Danh sách phòng
+        history_book_room: Lịch sử đặt phòng
+      about:
+        about: Giới thiệu
+        content_heading_about: Công ty của chúng tôi
+    sessions:
+      new:
+        forgot_password: Quên mật khẩu
+        you_haven't_account: Bạn chưa có tài khoản
+        email: Email
+        password: Mật khẩu
+    users:
+      new:
+        name: Họ và tên
+        password: Mật khẩu
+        password_confirmation: Xác nhận mật khẩu
+        role: Chức vụ
+        group: Nhóm
+        create_new_account: Tạo mới tài khoản
   controller:
     application:
       logged_in: Hãy đăng nhập để sử dụng tính năng

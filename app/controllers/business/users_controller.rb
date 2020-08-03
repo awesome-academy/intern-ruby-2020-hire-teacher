@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Business::UsersController < BusinessController
   before_action :load_user, :logged_in_user, except: %i(new create)
 
   def show; end
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = t "controller.users.success_signup"
       log_in @user
-      redirect_to home_path
+      redirect_to business_home_path
     else
       flash[:danger] = t "controller.users.error_signup"
       render :new
@@ -32,6 +32,6 @@ class UsersController < ApplicationController
     return if @user
 
     flash[:danger] = t "controller.users.load_user_error"
-    redirect_to home_path
+    redirect_to business_home_path
   end
 end
