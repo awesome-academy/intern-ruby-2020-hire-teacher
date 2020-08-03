@@ -468,19 +468,20 @@ Math.easeInOutQuad = function (t, b, c, d) {
 		var self = this;
 
 		httpRequest = new XMLHttpRequest();
-		httpRequest.onreadystatechange = function () {
+		httpRequest.onreadystatechange = function() {
 			if (httpRequest.readyState === XMLHttpRequest.DONE) {
-				if (httpRequest.status === 200) {
-					self.modal.getElementsByClassName('cd-schedule-modal__event-info')[0].innerHTML = self.getEventContent(httpRequest.responseText);
-					Util.addClass(self.modal, 'cd-schedule-modal--content-loaded');
-				}
-			}
+	      if (httpRequest.status === 200) {
+	      	self.modal.getElementsByClassName('cd-schedule-modal__event-info')[0].innerHTML = self.getEventContent(httpRequest.responseText);
+	      	Util.addClass(self.modal, 'cd-schedule-modal--content-loaded');
+	      }
+	    }
 		};
-		httpRequest.open('GET', content + '.html');
+		httpRequest.open('GET', 'http://localhost:3000/vi/business/events/' + content);
 		httpRequest.send();
+		console.log(httpRequest);
 	};
 
-	ScheduleTemplate.prototype.getEventContent = function (string) {
+	ScheduleTemplate.prototype.getEventContent = function(string) {
 		// reset the loaded event content so that it can be inserted in the modal
 		var div = document.createElement('div');
 		div.innerHTML = string.trim();

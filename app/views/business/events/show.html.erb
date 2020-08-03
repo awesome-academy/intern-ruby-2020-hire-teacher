@@ -1,0 +1,9 @@
+<div class="cd-schedule-modal__event-info">
+	<div>
+    <h3><%= t "orderer" %> : <%= @event.user.name %></h3>
+    <br>
+    <h4><%= t "description"%> : <%= @event.description %></h4>
+    <h4><%= t "room" %> : <%= @event.room.name %></h4>
+    <h4><%= t "time" %>: <%= @event.start_time.to_s(:time) %> - <%= @event.end_time.to_s(:time) %></h4>
+  </div>
+</div>

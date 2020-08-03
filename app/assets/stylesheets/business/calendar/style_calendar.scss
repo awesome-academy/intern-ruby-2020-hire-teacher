@@ -8,6 +8,7 @@
   @include defineColorHSL(--cd-color-event-2, 271, 23%, 26%);   // Martinique
   @include defineColorHSL(--cd-color-event-3, 162, 14%, 68%);   // Edward
   @include defineColorHSL(--cd-color-event-4, 31, 89%, 68%);    // Rajah
+  @include defineColorHSL(--cd-color-event-5, 0, 100%, 27%);    // Red
   @include defineColorHSL(--cd-color-text, 0, 0%, 13%);         // Black
   @include defineColorHSL(--cd-color-border, 0, 0%, 92%);       // Grey
 
@@ -136,7 +137,7 @@ a {
     @include breakpoint(md) {
       flex-basis: 0;
       flex-grow: 1;
-      border: 1px solid var(--cd-color-border);
+      border: 1px solid rgb(71, 68, 68);
       margin-bottom: 0; // reset style
 
       &:not(:first-of-type) {
@@ -265,7 +266,7 @@ a {
 .cd-schedule-modal__name, // event name in the modal element
 .cd-schedule-modal__date { // event date in the modal element
 	display: block;
-	color: var(--color-white);
+	color: white;
 	font-weight: bold;
 	@include fontSmooth;
 }
@@ -281,7 +282,7 @@ a {
 
 .cd-schedule-modal__date, // not included in the the HTML but added using JavScript
 .cd-schedule__event a::before {
-	opacity: .7;
+	opacity: .9;
 	margin-bottom: var(--space-xxxs);
 
   @include breakpoint(md) {
@@ -309,6 +310,11 @@ a {
 .cd-schedule__event [data-event="event-4"],
 .cd-schedule-modal[data-event="event-4"] .cd-schedule-modal__header-bg {
 	background: var(--cd-color-event-4);
+}
+
+.cd-schedule__event [data-event="event-5"],
+.cd-schedule-modal[data-event="event-5"] .cd-schedule-modal__header-bg {
+	background: var(--cd-color-event-5);
 }
 
 .cd-schedule-modal {
@@ -501,7 +507,10 @@ a {
 	visibility: visible;
 
 	.cd-schedule-modal__event-info > div { // smooth scroll on iOS touch deviceS
-		-webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch;
+    background-color: white;
+    border: solid 2px grey;
+    border-radius: 0px 20px 20px 0px;
 	}
 }
 
@@ -558,4 +567,115 @@ a {
   padding-bottom: 10px;
   margin-bottom: 30px;
   box-sizing: border-box;
+}
+
+.form-group{
+  display: block;
+}
+
+.label_end{
+  margin-top: -86px;
+  margin-left: 250px;
+}
+
+.time_end{
+  margin-left: 250px;
+}
+
+.btn_close{
+  background-color: rgb(109, 109, 109);
+  border: none;
+  color: $whitefff;
+  padding: 15px 80px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 13px;
+  -webkit-box-shadow: 0 10px 30px 0 $blue95186233;
+  box-shadow: 0 10px 30px 0 blue95186233;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  margin: 5px 20px 40px 20px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn_close:hover{
+  background-color: #000000;
+  color: $whitefff;
+  cursor: pointer;
+}
+
+.btn_modal{
+  background-color: rgb(0, 108, 158);
+  border: none;
+  color: $whitefff;
+  font-weight: 700;
+  padding: 15px 80px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 13px;
+  -webkit-box-shadow: 0 10px 30px 0 $blue95186233;
+  box-shadow: 0 10px 30px 0 blue95186233;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  margin: 5px 20px 40px 20px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn_modal:hover{
+  background-color: rgb(48, 139, 182);
+  color: $whitefff;
+  cursor: pointer;
+}
+
+.btn_modal:focus{
+  outline: none;
+}
+
+.button_week{
+  position: absolute;
+  top: 81%;
+  left: 18%;
+  display: inline;
+}
+
+.btn_week{
+  background-color: rgb(0, 108, 158);
+  border: none;
+  font-weight: 700;
+  color: $whitefff;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 13px;
+  -webkit-box-shadow: 0 10px 30px 0 $blue95186233;
+  box-shadow: 0 10px 30px 0 blue95186233;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  margin: 5px 5px 5px 5px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn_week:hover{
+  background-color: #000000;
+  color: $whitefff;
+  cursor: pointer;
 }

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
       resources :users, except: %i(new create)
       resources :rooms, only: %i(index show)
-      resources :events
+      resources :events, except: :new
     end
 
     namespace :managers do
