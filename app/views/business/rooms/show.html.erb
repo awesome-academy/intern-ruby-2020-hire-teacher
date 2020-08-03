@@ -1,6 +1,55 @@
 <% provide :title, t("header.room") %>
-
-<h2><%= @room.name %></h2>
-<h2><%= @room.location.country_name %></h2>
-<h2><%= @room.location_name %></h2>
-<h2><%= @room.address %></h2>
+<% provide :id_page, "room" %>
+<div class="page-heading about-heading header-text" style="background-image: url(assets/images/heading-6-1920x500.jpg);">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="text-content">
+          <!-- dòng này chỉ mang tính giao diện  -->
+          <h4>Security / Protective Services Jobs</h4>
+          <h2>Security Officer - Luxury Retail</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="products">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 col-sm-8">
+        <p class="lead">
+          <i class="fa fa-map-marker"></i> <%= [@room.location.country_name,@room.location.name,@room.address].join(" - ") %> &nbsp;&nbsp;
+        </p>
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class=calender_content">
+  </div>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="section-heading">
+          <h2><%= t "report_room" %></h2>
+        </div>
+        <p class="lead">
+          <i class="fa fa-map-marker"></i> <%= @room.name %>
+        </p>
+        <br>
+        <% if @reports.present? %>
+          <%= render @reports , report: @reports%>
+        <% end %>
+        <%= paginate @reports, theme: "twitter-bootstrap-3" %>
+        <div class="col-md-3">
+          <div class="section-heading">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

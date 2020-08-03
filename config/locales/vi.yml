@@ -5,6 +5,8 @@ vi:
   log_in: Đăng nhập
   profile: Thông tin cá nhân
   base_title: Chào mừng bạn đến với web đặt phòng
+  report_room: Phản hồi
+  ago: ngày trước
   image:
     length: "Kích thước ảnh nên dưới 1 MB"
   date:
@@ -200,3 +202,7 @@ vi:
         name_length: "Hãy nhập tối đa 30 ký tự"
         address_required: "Hãy điền địa chỉ cụ thể của phòng"
         address_length: "Nhập tối đa 50 ký tự"
+  image:
+    length: "Kích thước ảnh phải nhỏ hơn 1MB"
+    room:
+      error_load_room: Không tìm thấy phòng!
