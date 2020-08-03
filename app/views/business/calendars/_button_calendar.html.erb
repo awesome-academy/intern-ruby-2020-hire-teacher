@@ -1,0 +1,9 @@
+<%= link_to business_prev_path(@room_id, @monday), class: "btn_week", remote: "true" do %>
+  <i class="fas fa-angle-double-left"></i> <%= t ".prev" %>
+<% end %>
+<button type="button" class="btn_modal" data-toggle="modal" data-target="#exampleModal">
+  <%= t ".add_event" %>
+</button>
+<%= link_to business_next_path(@room_id, @monday), class: "btn_week", remote: "true" do %>
+  <%= t ".next" %> <i class="fas fa-angle-double-right"></i>
+<% end %>

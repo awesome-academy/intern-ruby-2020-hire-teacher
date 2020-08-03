@@ -1,0 +1,21 @@
+<%= form_for :event_new, url: business_events_path do |f| %>
+  <%= f.label t(".title"), class: "form-group" %>
+  <%= f.text_field :title, class: "form-group", required: :required %>
+  <%= f.label t(".date_event"), class: "form-group" %>
+  <%= f.text_field :date_event, type: "date", class: "form-group", required: :required %>
+  <%= f.label t(".start"), class: "form-group" %>
+  <%= f.time_field :start_time, class: "form-group", required: :required %>
+  <%= f.label t(".end"), class: "form-group label_end" %>
+  <%= f.time_field :end_time, class: "form-group time_end", required: :required %>
+  <%= f.label t(".description"), class: "form-group" %>
+  <%= f.text_area :description, class: "form-group", required: :required %>
+  <%= f.label t(".color"), class: "form-group" %>
+  <%= f.select :color, options_for_select([["Smalt Blue", 1], ["Martinique", 2], ["Edward", 3], ["Rajah", 4]]), class: "form-feild", required: :required %>
+  <%= f.hidden_field :user_id, value: session[:user_id] %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <%= f.hidden_field :day, value: @monday %>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn_week btn_close" data-dismiss="modal"><%= t ".close" %></button>
+  <%= f.submit t(".add_event"), id: "add_event", class:"btn_week create_event" %>
+<% end %>

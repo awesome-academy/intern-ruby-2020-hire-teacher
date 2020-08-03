@@ -9,9 +9,12 @@ Rails.application.routes.draw do
       get "/login", to: "sessions#new"
       post "/login", to: "sessions#create"
       delete "/logout", to: "sessions#destroy"
+      get "next/:id/:day", to: "calendars#next", as: "next"
+      get "prev/:id/:day", to: "calendars#prev", as: "prev"
 
       resources :users, except: %i(new create)
-      resources :rooms, only: %i(index show)
+      resources :rooms
+      resources :events, except: :new
     end
 
     namespace :managers do
