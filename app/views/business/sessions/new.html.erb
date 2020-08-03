@@ -9,7 +9,7 @@
         <%= form_for :session, url: business_login_path do |f| %>
           <%= f.email_field :email, class: "form-feild", placeholder: t(".email") %>
           <%= f.password_field :password, class: "form-feild", placeholder: t(".password") %>
-          <%= f.submit t("log_in"), class: "fourth" %>
+          <%= f.submit t("log_in"), class: "btn_week destroy_event" %>
         <% end %>
         <%= link_to t(".forgot_password"), "#" %>
         <div id="formFooter">

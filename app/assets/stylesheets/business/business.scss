@@ -18,9 +18,7 @@
 @import './color';
 @import './layouts/header';
 @import './signup/signup';
-@import './vendor/style';
-@import './vendor/users';
-@import './rooms';
+
 
 $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import '@fortawesome/fontawesome-free/scss/fontawesome';
@@ -28,3 +26,7 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import '@fortawesome/fontawesome-free/scss/regular';
 @import '@fortawesome/fontawesome-free/scss/brands';
 @import '@fortawesome/fontawesome-free/scss/v4-shims';
+
+@import './calendar/style_calendar';
+@import './vendor/style';
+@import './rooms';

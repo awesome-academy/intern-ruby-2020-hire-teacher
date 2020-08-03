@@ -5,6 +5,5 @@ require('channels')
 require('jquery')
 require('./vendor/bootstrap.bundle')
 require('./custom')
-require('./owl')
-
+require('./calendar/main')
 import "@fortawesome/fontawesome-free/js/all";

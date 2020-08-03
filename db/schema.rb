@@ -19,18 +19,17 @@ ActiveRecord::Schema.define(version: 2020_08_17_100832) do
   end
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.boolean "status", default: true
-    t.string "message"
+    t.text "title"
+    t.bigint "room_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "description"
+    t.string "message"
     t.bigint "user_id", null: false
-    t.bigint "room_id", null: false
     t.integer "color"
     t.datetime "date_event"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.index ["room_id"], name: "index_events_on_room_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
@@ -43,10 +42,10 @@ ActiveRecord::Schema.define(version: 2020_08_17_100832) do
 
   create_table "guests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "book_room_id", null: false
+    t.bigint "event_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["book_room_id"], name: "index_guests_on_book_room_id"
+    t.index ["event_id"], name: "index_guests_on_event_id"
     t.index ["user_id"], name: "index_guests_on_user_id"
   end
 
@@ -104,7 +103,7 @@ ActiveRecord::Schema.define(version: 2020_08_17_100832) do
 
   add_foreign_key "events", "rooms"
   add_foreign_key "events", "users"
-  add_foreign_key "guests", "events", column: "book_room_id"
+  add_foreign_key "guests", "events"
   add_foreign_key "guests", "users"
   add_foreign_key "images", "rooms"
   add_foreign_key "locations", "countries"

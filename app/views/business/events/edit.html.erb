@@ -1,0 +1,33 @@
+<div class="cd-schedule-modal__event-info">
+  <div>
+    <h3 class="infomartion_event">Information Event</h3>
+    <br>
+    <%= form_for :event_new, url: business_event_path, method: :patch  do |f| %>
+      <%= f.label t(".title"), class: "form-group" %>
+      <%= f.text_field :title, class: "form-group", value: @event.title %>
+      <%= f.label t(".date_event"), class: "form-group" %>
+      <%= f.text_field :date_event, type: "date",
+        class: "form-group", value: @event.date_event.strftime("%Y-%m-%d") %>
+      <%= f.label t(".start"), class: "form-group" %>
+      <%= f.time_field :start_time, class: "form-group",
+        value: @event.start_time.strftime("%H:%M") %>
+      <%= f.label t(".end"), class: "form-group label_end" %>
+      <%= f.time_field :end_time, class: "form-group time_end",
+        value: @event.end_time.strftime("%H:%M") %>
+      <%= f.label t(".description"), class: "form-group" %>
+      <%= f.text_area :description, class: "form-group",
+        value: @event.description %>
+      <%= f.label t(".color"), class: "form-group" %>
+      <%= f.select :color, options_for_select([["Smalt Blue", 1],
+        ["Martinique", 2], ["Edward", 3],
+        ["Rajah", 4]], @event.color), class: "form-feild" %>
+      <%= f.hidden_field :user_id, value: @event.user_id %>
+      <%= f.hidden_field :room_id, value: @event.room_id %>
+      <% if @event.date_event >= Date.today %>
+        <%= f.submit "Update", class: "btn_week update_event"%>
+      <% end %>
+      <%= link_to "Destroy", business_event_path(@event.id), method: :delete,
+          class: "btn_week destroy_event", data: {confirm: t("you_sure")} %>
+    <% end %>
+  </div>
+</div>

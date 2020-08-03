@@ -5,13 +5,17 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link href="<%= Settings.link_font_awesome %>" rel="stylesheet">
+    <script data-turbolinks-eval=false >document.getElementsByTagName("html")[0].className += " js";</script>
     <%= stylesheet_link_tag "business/business", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_pack_tag "business/business", "data-turbolinks-track": "reload" %>
   </head>
   <body>
     <%= render "business/layouts/header"%>
     <%= render "shared/flash_message" %>
+    <div class="banner">
+    </div>
     <%= yield %>
     <%= render "business/layouts/footer"%>
-    <%= javascript_pack_tag "business/business", "data-turbolinks-track": "reload" %>
+    <%= javascript_pack_tag "business/calendar/main", "data-turbolinks-track": "reload" %>
   </body>
 </html>

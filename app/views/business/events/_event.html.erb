@@ -1,0 +1,28 @@
+<ul>
+  <% (0..5).each do |i| %>
+    <li class="cd-schedule__group">
+      <div class="cd-schedule__top-info"><span><%= (create_week + i).strftime("%d-%m-%Y") %></span></div>
+      <ul>
+        <% if @event_load.any? %>
+          <% @event_load.each do |event_load| %>
+            <% if event_load.date_event.strftime("%d-%m-%Y") == (create_week + i).strftime("%d-%m-%Y") %>
+              <% if event_load.user_id == session[:user_id] %>
+                <li class="cd-schedule__event">
+                  <a data-start="<%= event_load.start_time.to_s(:time) %>" data-end="<%= event_load.end_time.to_s(:time) %>" data-content="<%= event_load.id %>" data-event="event-<%= check_date event_load %>" href="#0">
+                    <em class="cd-schedule__name"><%= event_load.title %></em>
+                  </a>
+                </li>
+              <% else %>
+                <li class="cd-schedule__event">
+                  <a data-start="<%= event_load.start_time.to_s(:time) %>" data-end="<%= event_load.end_time.to_s(:time) %>" data-event="event-5" href="#0">
+                    <em class="cd-schedule__name"></em>
+                  </a>
+                </li>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>
