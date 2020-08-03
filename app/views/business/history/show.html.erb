@@ -1,0 +1,63 @@
+<% provide :title, t("header.history") %>
+<% provide :page, "drop" %>
+<div class="page-heading about-heading header-text">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="text-content">
+          <h4>Security / Protective Services Jobs</h4>
+          <h2>History - Event</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<section class="timeline">
+  <div class="filter-date-content">
+    <div id="form-search-date" style="display: none;" class="position-fixed">
+      <form class="form">
+        <input type="date" class="form__field" id="date-filter"/>
+        <button type="button" id="go-date" class="btn btn--primary btn--inside uppercase">Go</button>
+      </form>
+    </div>
+    <button type="button" class="btn btn-primary btn-circle btn-xl position-fixed" onclick="showDateField()"><i class="fas fa-search"></i></button>
+  </div>
+  <div class="container">
+    <%= render "business/history/history_item", event: @event %>
+  </div>
+</section>
+<script>
+  function showDateField() {
+    window.sr = ScrollReveal();
+    let form = document.getElementById('form-search-date');
+    if (form.style.display === 'none') {
+      sr.reveal('.date_filter', {
+        origin: 'left',
+        distance: '300px',
+        easing: 'ease-in-out',
+        duration: 800,
+      });
+      form.style.display = 'block';
+    }
+    else {
+      form.style.display = 'none';
+      sr.reveal('.date_filter', {
+        origin: 'right',
+        distance: '30px',
+        easing: 'ease-in-out',
+        duration: 800,
+      });
+    }
+  }
+
+  $(document).ready(function(){
+    $('#go-date').on('click', function(){
+      let date = $('#date-filter').val();
+      $('html, body').stop().animate({
+        scrollTop: $("#" + date).offset().top
+      }, 1000);
+
+    })
+  })
+</script>

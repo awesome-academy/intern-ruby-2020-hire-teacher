@@ -1,0 +1,4 @@
+$('.cd-schedule__events').html('<%= j render "business/events/event",
+  event_load: @event_load, monday: @monday %>')
+
+$('.button_week').html('<%= j render "business/calendars/button_calendar", monday: @monday, id: @room_id %>')

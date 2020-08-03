@@ -1120,3 +1120,11 @@ footer .inner-content p a {
 .heading_home_page{
 	background-image: asset_url('slider-image-2-1920x600.jpg');
 }
+
+.btn_history{
+  float: right;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 700;
+  color: $button-text-color;
+}

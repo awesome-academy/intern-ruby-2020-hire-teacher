@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+<<<<<<< HEAD
 Group.create!(name: "administration")
 
 User.create!(name: "Manager",
@@ -17,6 +18,8 @@ User.create!(name: "Manager",
              role: 1,
              activated_at: Time.zone.now)
 
+=======
+>>>>>>> add toastr
 5.times do
   country = Faker::Address.country
   group = Faker::Ancient.hero
@@ -37,8 +40,6 @@ User.create!(name: "Hoang Anh",
              group_id: 1,
              role: 1)
 
-locations = Location.all
-
 5.times do
   Location.all.each do |location|
     name = Faker::Address.state
@@ -48,3 +49,10 @@ locations = Location.all
       address: address,
       user_id: 1)
   end
+end
+
+50.times do |n|
+  Report.create!(comment: Faker::Lorem.sentence(38),
+                 user_id: 1,
+                 room_id: 1)
+end

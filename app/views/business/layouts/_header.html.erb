@@ -16,20 +16,20 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <% if logged_in? %>
-            <li class="nav-item active">
+            <li class="nav-item <%= active_home yield(:page) %>">
               <%= link_to t("header.home"), business_home_path, class: "nav-link" %>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item <%= active_room yield(:page) %>">
               <%= link_to t("header.room"), business_rooms_path, class: "nav-link" %>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item <%= active_about yield(:page) %>">
               <%= link_to t("header.about"), business_about_path, class: "nav-link" %>
             </li>
-            <li class="nav-item dropdown active">
+            <li class="nav-item dropdown <%= active_drop yield(:page) %>">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name %></a>
               <div class="dropdown-menu">
                 <%= link_to t("header.update_profile"), "#", class: "dropdown-item" %>
-                <%= link_to t("header.history_book_room"), "#", class: "dropdown-item" %>
+                <%= link_to t("header.history_book_room"), business_history_path(current_user), class: "dropdown-item" %>
                 <%= link_to t("header.logout"), business_logout_path, method: :delete, class: "dropdown-item" %>
               </div>
             </li>

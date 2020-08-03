@@ -1,0 +1,25 @@
+<div class="timeline-item">
+  <div class="timeline-img"></div>
+  <div class="timeline-content timeline-card js--fadeIn<%= history_position i %>">
+    <div class="timeline-img-header">
+      <h2><%= event.title %></h2>
+    </div>
+    <div class="date"><%= event.date_event.strftime(Settings.format_date) %></div>
+    <p>
+      <strong>
+        <i class="fas fa-clock"></i><%= " : " + event.start_time.to_s(:time) + " - " + event.end_time.to_s(:time) %>
+      </strong>
+    </p>
+    <p>
+      <strong>
+        <i class="fa fa-building"></i> <%= event.room_name %>
+      </strong>
+    </p>
+    <p>
+      <strong title="Location">
+        <i class="fa fa-map-marker"></i> <%= event.room.location.name + " - " + event.room.location.country.name %>
+      </strong>
+    </p>
+    <a class="bnt-more" href="javascript:void(0)">More</a>
+  </div>
+</div>

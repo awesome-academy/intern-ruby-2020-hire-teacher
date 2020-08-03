@@ -4,6 +4,7 @@ class Business::StaticPagesController < BusinessController
 
   def home
     @rooms = Room.page(params[:page]).per Settings.pagination
+    @events = Event.order_by_event current_user.id
   end
 
   def about; end

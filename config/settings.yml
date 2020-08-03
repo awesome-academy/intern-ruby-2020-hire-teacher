@@ -24,3 +24,14 @@ room:
     maximum: 50
   address:
     maximum: 100
+pagination: 12
+event:
+  desc:
+    max_length: 80
+  title:
+    max_length: 15
+  time:
+    start: "8:00am"
+    end: "5:00pm"
+event_params: "%i(title date_event start_time end_time description user_id room_id color)"
+format_date: "%d-%m-%Y"

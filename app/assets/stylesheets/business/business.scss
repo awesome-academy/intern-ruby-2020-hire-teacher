@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_self
+ *= require_toastr
  */
 
 @import 'bootstrap-sprockets';
@@ -18,9 +19,7 @@
 @import './color';
 @import './layouts/header';
 @import './signup/signup';
-@import './vendor/style';
-@import './vendor/users';
-@import './rooms';
+@import 'toastr/build/toastr.min';
 
 $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import '@fortawesome/fontawesome-free/scss/fontawesome';
@@ -28,3 +27,8 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import '@fortawesome/fontawesome-free/scss/regular';
 @import '@fortawesome/fontawesome-free/scss/brands';
 @import '@fortawesome/fontawesome-free/scss/v4-shims';
+
+@import './calendar/style_calendar';
+@import './vendor/style';
+@import './rooms';
+@import './history/history'

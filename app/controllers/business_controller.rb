@@ -19,13 +19,13 @@ class BusinessController < ActionController::Base
     return if logged_in?
 
     store_location
-    flash[:danger] = t "controller.application.logged_in"
+    flash[:error] = t "business.not_correct_user"
     redirect_to business_login_url
   end
 
   def correct_user
     @user = User.find_by id: params[:id]
-    redirect_to business_root_url unless current_user? @user
+    redirect_to business_home_url unless current_user? @user
   end
 
   def load_room_pagination

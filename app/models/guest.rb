@@ -1,4 +1,4 @@
 class Guest < ApplicationRecord
   belongs_to :user
-  belongs_to :book_room
+  belongs_to :event
 end

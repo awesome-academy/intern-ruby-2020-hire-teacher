@@ -1,5 +1,5 @@
 <% provide :title, t("header.room") %>
-<% provide :id_page, "room" %>
+<% provide :page, "room" %>
 <div class="products">
   <div class="container">
     <div class="row">
@@ -7,7 +7,7 @@
         <div class="contact-form">
           <%= form_tag business_rooms_path, method: :get do %>
             <%= text_field_tag :search_name %>
-            <%= submit_tag t(".search") %>
+            <%= submit_tag t(".search"), class:"btn_week destroy_event filter_event" %>
           <% end %>
           <br>
           <% unless params[:filter_location] || params[:search_name] %>

@@ -1,6 +1,82 @@
 <% provide :title, t("header.room") %>
-
-<h2><%= @room.name %></h2>
-<h2><%= @room.location.country_name %></h2>
-<h2><%= @room.location_name %></h2>
-<h2><%= @room.address %></h2>
+<% provide :page, "room" %>
+<div class="page-heading about-heading header-text" style="background-image: url(assets/images/heading-6-1920x500.jpg);">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="text-content">
+          <h4>Security / Protective Services Jobs</h4>
+          <h2>Security Officer - Luxury Retail</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="products">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 col-sm-8">
+        <p class="lead">
+          <i class="fa fa-map-marker"></i> <%= [@room.location.country_name,@room.location_name,@room.address].join(" - ") %> &nbsp;&nbsp;
+        </p>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="section_calendar">
+  <div class="container">
+    <div class="page-header text-right">
+      <h1><%= t ".calendar" %></h1>
+    </div>
+    <hr>
+    <div class="form_prev">
+      <%= form_tag business_room_path(@room.id), method: :get do %>
+        <%= hidden_field_tag :day, @monday %>
+        <%= hidden_field_tag :status, "prev" %>
+        <%= button_tag(type: "submit", class: "btn_week") do %>
+          <i class="fas fa-angle-double-left"></i> <%= t ".prev" %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="button_week">
+      <button type="button" class="btn_modal" data-toggle="modal" data-target="#exampleModal">
+        <%= t ".add_event" %>
+      </button>
+    </div>
+    <div class="form_next">
+      <%= form_tag business_room_path(@room.id), method: :get do %>
+        <%= hidden_field_tag :day, @monday %>
+        <%= hidden_field_tag :status, "next" %>
+        <%= button_tag(type: "submit", class: "btn_week") do %>
+          <%= t ".next" %> <i class="fas fa-angle-double-right"></i>
+        <% end %>
+      <% end %>
+    </div>
+    <% if params[:day].present? %>
+      <div class="today">
+        <%= link_to "Today", business_room_path(@room.id), class: "btn_week" %>
+      </div>
+    <% end %>
+    <hr>
+  </div>
+</div>
+<div class="calendar">
+  <%= render "business/events/schedule" %>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Event</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render "business/events/form_add_event" %>
+      </div>
+    </div>
+  </div>
+</div>

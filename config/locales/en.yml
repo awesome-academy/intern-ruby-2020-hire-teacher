@@ -5,6 +5,14 @@ en:
   log_in: Log in
   profile: Profile
   base_title: Welcome to the BookRoom Website
+  you_sure: You Sure?
+  title: Title
+  date_event: Date event
+  start_time: Start Time
+  end_time: Finish Time
+  description: Description
+  color: Color
+  system: System
   image:
     length: "Image size should be less than 1 MB"
   date:
@@ -36,7 +44,9 @@ en:
     update_profile: Update Profile
     logout: Logout
     room: Room
+    history: History
   business:
+    not_current_user: Log in before using web!
     static_pages:
       home:
         read_more: Read more
@@ -61,9 +71,47 @@ en:
         create_new_account: Create New Account
     rooms:
       index:
-          choose_coutry: Choose Country
-          choose_location: Choose Location
-          search: Search
+        choose_coutry: Choose Country
+        choose_location: Choose Location
+        search: Search
+      show:
+        calendar: Calendar
+        next: Next
+        prev: Prev
+        add_event: Add Event
+        report_room: Report Room
+    events:
+      form_add_event:
+        title: Title
+        date_event: Date event
+        start: Start Time
+        end: Finish Time
+        description: Description
+        color: Color
+        add_event: Add Event
+        close: Close
+      edit:
+        title: Title
+        date_event: Date event
+        start: Start Time
+        end: Finish Time
+        description: Description
+        color: Color
+        add_event: Add Event
+        close: Close
+    calendars:
+      button_calendar:
+        next: Next
+        prev: Prev
+        add_event: Add Event
+    model:
+      event:
+        on_or_after: must be on or after today
+        between_before: must be before 5:00pm
+        between_after: must be after 8:00am
+        end_time_after_start_time: must be after the start time
+        day_off: must be the day of the week
+        room_ready: room has been booked
   controller:
     application:
       logged_in: Please log in to use the feature
@@ -73,6 +121,14 @@ en:
       success_signup: Sign up succsess!
       error_signup: Sign up error!
       load_user_error: Can't find in User!
+    events:
+      success_create: Create Event Success!
+      error_create: Create Failed!
+      success_update: Update Event Success!
+      error_update: Update Failed!
+      success_destroy: Destroy Event Success!
+      error_destroy: Destroy Failed!
+
   shared:
     form:
       name: Name
@@ -166,3 +222,5 @@ en:
   errors:
     messages:
       extension_whitelist_error: "File upload must be image."
+    room:
+      error_load_room: Can't find room!

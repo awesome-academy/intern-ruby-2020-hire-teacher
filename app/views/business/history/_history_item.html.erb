@@ -1,0 +1,27 @@
+<% (0..@event.size-1).each do |i| %>
+  <div class="timeline-item" id="<%= @event[i].date_event.strftime("%Y-%m-%d") %>">
+    <div class="timeline-img"></div>
+    <div class="timeline-content timeline-card js--fadeIn<%= history_position i %>">
+      <div class="timeline-img-header">
+        <h2><%= @event[i].title %></h2>
+      </div>
+      <div class="date"><%= @event[i].date_event.strftime(Settings.format_date) %></div>
+      <p>
+        <strong>
+          <i class="fas fa-clock"></i><%= " : " + @event[i].start_time.to_s(:time) + " - " + @event[i].end_time.to_s(:time) %>
+        </strong>
+      </p>
+      <p>
+        <strong>
+          <i class="fa fa-building"></i> <%= @event[i].room_name %>
+        </strong>
+      </p>
+      <p>
+        <strong title="Location">
+          <i class="fa fa-map-marker"></i> <%= @event[i].room.location.name + " - " + @event[i].room.location.country.name %>
+        </strong>
+        </p>
+      <%= link_to "More",{controller: "business/rooms", action: :show, id: @event[i].room_id, day: @event[i].date_event}, class:"btn-more" %>
+    </div>
+  </div>
+<% end %>
