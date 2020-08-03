@@ -1,14 +1,14 @@
 class Business::RoomsController < BusinessController
   before_action :load_room, only: :show
   before_action :load_room_pagination, only: :index
+  before_action :logged_in_user
 
   def index
     @countries = Country.pluck :name, :id
     if params[:filter_country].present?
       @country = Country.find_by id: params[:filter_country]
-      if @country.nil?
-        @locations = Location.pluck :name, :id
-      end
+      @locations = Location.pluck :name, :id unless @country
+
       @locations = @country.locations.pluck :name, :id
     end
     filter
@@ -16,6 +16,8 @@ class Business::RoomsController < BusinessController
 
   def show
     @reports = @room.reports.page(params[:page]).per Settings.pagination_commit
+    @event_load = Event.where room_id: params[:id]
+    @monday = DateTime.now -DateTime.now.cwday + 1
   end
 
   private
@@ -30,8 +32,8 @@ class Business::RoomsController < BusinessController
 
   def filter
     @rooms = Room.by_name(params[:search_name])
-                  .by_location(params[:filter_location])
-                  .by_country(params[:filter_country])
-                  .page(params[:page]).per Settings.pagination
+                 .by_country(params[:filter_country])
+                 .by_location(params[:filter_location])
+                 .page(params[:page]).per Settings.pagination
   end
 end

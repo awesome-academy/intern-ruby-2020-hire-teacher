@@ -1,11 +1,10 @@
 <% provide :title, t("header.room") %>
-<% provide :id_page, "room" %>
-<div class="page-heading about-heading header-text" style="background-image: url(assets/images/heading-6-1920x500.jpg);">
+<div class="page-heading about-heading header-text">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="text-content">
-          <!-- dòng này chỉ mang tính giao diện  -->
+        <!-- Chỉ mang tính giao diện nên không sử dụng i18n -->
           <h4>Security / Protective Services Jobs</h4>
           <h2>Security Officer - Luxury Retail</h2>
         </div>
@@ -18,16 +17,23 @@
     <div class="row">
       <div class="col-md-9 col-sm-8">
         <p class="lead">
-          <i class="fa fa-map-marker"></i> <%= [@room.location.country_name,@room.location.name,@room.address].join(" - ") %> &nbsp;&nbsp;
+          <i class="fa fa-map-marker"></i>
+          <%= [@room.location.country_name,@room.location_name,@room.address].join(" - ") %>
+          &nbsp;&nbsp;
         </p>
-        <br>
         <br>
       </div>
     </div>
   </div>
 </div>
-<div class="section">
-  <div class=calender_content">
+<div class="section_calendar">
+  <div class="container">
+    <div class="page-header text-center">
+      <h1></h1>
+    </div>
+    <hr>
+    <hr>
+    <%= render "business/events/schedule" %>
   </div>
 </div>
 <div class="section">

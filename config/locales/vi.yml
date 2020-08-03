@@ -7,6 +7,7 @@ vi:
   base_title: Chào mừng bạn đến với web đặt phòng
   report_room: Phản hồi
   ago: ngày trước
+  not_find_event: Không tìm thấy sự kiện tương ứng
   image:
     length: "Kích thước ảnh nên dưới 1 MB"
   date:
@@ -220,3 +221,5 @@ vi:
     location_name: "Khu vực"
     country_name: "Nước"
     user_name: "Người tạo"
+    room:
+      error_load_room: Không tìm thấy phòng!

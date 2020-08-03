@@ -7,6 +7,7 @@ en:
   report_room: Report Room
   base_title: Welcome to the BookRoom Website
   ago: day ago
+  not_find_event: Can't find event
   image:
     length: "Image size should be less than 1 MB"
   date:
@@ -220,3 +221,5 @@ en:
     location_name: "Location name"
     country_name: "Country name"
     user_name: "User name"
+    room:
+      error_load_room: Can't find room!
