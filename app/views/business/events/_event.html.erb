@@ -1,0 +1,24 @@
+<ul class="list_event">
+  <% (0..4).each do |i| %>
+    <li class="cd-schedule__group">
+      <div class="cd-schedule__top-info"><span><%= (@monday + i).strftime("%d-%m-%Y") %></span></div>
+      <ul>
+        <% if @event_load.any? %>
+          <% @event_load.each do |event_load| %>
+            <% if event_load.date_event.strftime("%d-%m-%Y") == (@monday + i).strftime("%d-%m-%Y") %>
+              <% if event_load.user_id == session[:user_id] %>
+                <%= render "business/events/event_correct", event_load: event_load %>
+              <% else %>
+                <li class="cd-schedule__event">
+                  <a data-start="<%= event_load.start_time.to_s(:time) %>" data-end="<%= event_load.end_time.to_s(:time) %>" data-event="event-5" href="#0">
+                    <em class="cd-schedule__name"></em>
+                  </a>
+                </li>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>

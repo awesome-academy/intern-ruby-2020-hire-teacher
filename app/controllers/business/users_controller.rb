@@ -28,7 +28,7 @@ class Business::UsersController < BusinessController
   private
 
   def user_params
-    params.require(:user).permit User::USER_PARAMS
+    params.require(:user).permit :name, :email, :password, :password_confirmation, :role_id, :group_id
   end
 
   def load_user

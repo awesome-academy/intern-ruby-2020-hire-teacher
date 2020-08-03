@@ -1,0 +1,30 @@
+<?xml version='1.0'?>
+<checkstyle>
+  <file name='app/channels/application_cable/channel.rb'/>
+  <file name='app/channels/application_cable/connection.rb'/>
+  <file name='app/controllers/application_controller.rb'/>
+  <file name='app/controllers/business/rooms_controller.rb'/>
+  <file name='app/controllers/business/sessions_controller.rb'/>
+  <file name='app/controllers/business/static_pages_controller.rb'/>
+  <file name='app/controllers/business/users_controller.rb'/>
+  <file name='app/controllers/business_controller.rb'/>
+  <file name='app/controllers/managers/homes_controller.rb'/>
+  <file name='app/controllers/managers/rooms_controller.rb'/>
+  <file name='app/controllers/managers_controller.rb'/>
+  <file name='app/helpers/application_helper.rb'/>
+  <file name='app/helpers/rooms_helper.rb'/>
+  <file name='app/helpers/sessions_helper.rb'/>
+  <file name='app/jobs/application_job.rb'/>
+  <file name='app/mailers/application_mailer.rb'/>
+  <file name='app/models/application_record.rb'/>
+  <file name='app/models/book_room.rb'/>
+  <file name='app/models/country.rb'/>
+  <file name='app/models/group.rb'/>
+  <file name='app/models/guest.rb'/>
+  <file name='app/models/image.rb'/>
+  <file name='app/models/location.rb'/>
+  <file name='app/models/report.rb'/>
+  <file name='app/models/role.rb'/>
+  <file name='app/models/room.rb'/>
+  <file name='app/models/user.rb'/>
+</checkstyle>
