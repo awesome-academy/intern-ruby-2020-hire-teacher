@@ -1,28 +1,41 @@
 <% provide :title, t("header.room") %>
-<div class="latest-products">
+<% provide :id_page, "room" %>
+<div class="products">
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
-        <div class="section-heading">
-          <h2><%= t ".list_room" %></h2>
+      <div class="col-md-3">
+        <div class="contact-form">
+          <%= form_tag business_rooms_path, method: :get do %>
+            <%= text_field_tag :search_name %>
+            <%= submit_tag t(".search") %>
+          <% end %>
+          <br>
+          <% unless params[:filter_location] || params[:search_name] %>
+            <%= form_tag business_rooms_path, method: :get do %>
+              <%= select_tag :filter_country, options_for_select(@countries, params[:filter_country]), include_blank: t(".choose_country"), onchange: "this.form.submit()" %>
+              <% if params[:filter_country].present? %>
+                <%= select_tag :filter_location, options_for_select(@locations, params[:filter_location]), include_blank: t(".choose_location"), onchange: "this.form.submit()" %>
+              <% end %>
+            <% end %>
+          <% else %>
+            <%= link_to t(".reset"), business_rooms_path %>
+          <% end %>
         </div>
       </div>
+      <div class="col-md-9">
+        <% if @rooms.any? %>
+          <% (0..@rooms.size - 1).step(3).each do |i| %>
+            <div class ="row">
+              <% (0..2).each do |j| %>
+                <div class="col-md-4">
+                  <%= render @rooms[i+j] if @rooms[i+j] %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+        <%= paginate @rooms, theme: Settings.theme_pagination %>
+      </div>
     </div>
-    <% if @rooms.any? %>
-      <% (0..@rooms.size - 1).step(3).each do |i| %>
-        <div class ="row">
-          <div class="col-md-4">
-            <%= render @rooms[i] if @rooms[i].present? %>
-          </div>
-          <div class="col-md-4">
-            <%= render @rooms[i+1] if @rooms[i+1].present? %>
-          </div>
-          <div class="col-md-4">
-            <%= render @rooms[i+2] if @rooms[i+2].present? %>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-    <%= paginate @rooms, theme: Settings.theme_pagiantion %>
   </div>
 </div>
