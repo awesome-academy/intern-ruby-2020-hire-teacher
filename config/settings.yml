@@ -1,0 +1,6 @@
+model:
+  user:
+    email_validate_regex: !ruby/regexp '/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i'
+    email_max_length: 80
+    password_length: 6
+user_params: "%i(name email password password_confirmation role_id group_id)"

@@ -1,0 +1,37 @@
+class UsersController < ApplicationController
+  before_action :load_user, :logged_in_user, except: %i(new create)
+
+  def show; end
+
+  def new
+    @user = User.new
+    @role = Role.pluck :name, :id
+    @group = Group.pluck :name, :id
+  end
+
+  def create
+    @user = User.new user_params
+    if @user.save
+      flash[:success] = t "controller.users.success_signup"
+      log_in @user
+      redirect_to home_path
+    else
+      flash[:danger] = t "controller.users.error_signup"
+      render :new
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit User::USER_PARAMS
+  end
+
+  def load_user
+    @user = User.find_by id: params[:id]
+    return if @user
+
+    flash[:danger] = t "controller.users.load_user_error"
+    redirect_to home_path
+  end
+end
