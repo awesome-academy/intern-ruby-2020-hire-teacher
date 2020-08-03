@@ -8,6 +8,7 @@ en:
   date_event: Date event
   system: System
   title: Title
+  list_guest_null: List guest null
   error_load_room: Error load room
   error_load_report: Error load report
   date_event: Date event
@@ -142,13 +143,17 @@ en:
       error_signup: Sign up error!
       load_user_error: Can't find in User!
     events:
+      send_mail: Send mail for guest success!
       success_create: Create Event Success!
       error_create: Create Failed!
       success_update: Update Event Success!
       error_update: Update Failed!
       success_destroy: Destroy Event Success!
       error_destroy: Destroy Failed!
-
+    rooms:
+      error_load_report: Error load report!
+      error_load_event: Error load event!
+      error_load_room: Error load room!
   shared:
     form:
       name: Name
@@ -402,3 +407,5 @@ en:
       no_event: "No event yet"
       room: "Room"
       total_record: "Total record"
+    room:
+      error_load_room: Can't find room!

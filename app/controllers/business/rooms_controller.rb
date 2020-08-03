@@ -1,7 +1,8 @@
 class Business::RoomsController < BusinessController
   before_action :logged_in_user
-  before_action :load_room, :check_week_create_event, :load_report, only: :show
+  before_action :load_room, :check_week_create_event, :load_report, :load_event, only: :show
   before_action :load_room_pagination, only: :index
+  before_action :logged_in_user
 
   def index
     @countries = Country.pluck :name, :id
@@ -14,6 +15,17 @@ class Business::RoomsController < BusinessController
     filter
   end
 
+  def show
+    @event = Event.new
+    @event.guests.build
+    @users = User.all
+    if params[:status] == Settings.prev
+      @monday = Date.parse(params[:day]) - Settings.week_day
+    elsif params[:status] == Settings.next
+      @monday = Date.parse(params[:day]) + Settings.week_day
+    end
+  end
+
   private
 
   def check_week_create_event
@@ -24,20 +36,28 @@ class Business::RoomsController < BusinessController
               end
   end
 
-  def load_report
-    @reports = @room.reports.page(params[:page]).per Settings.pagination_commit
-    return if reports
-
-    flash[:error] = t "error_load_report"
-    redirect_to business_home_path
-  end
-
   def load_room
     @room = Room.find_by id: params[:id]
-    return if @room
+    return if @room.present?
 
     render :index
     flash.now[:danger] = t "business.room.error_load_room"
+  end
+
+  def load_event
+    @event_load = Event.by_room_id params[:id]
+    return if @event_load.present?
+
+    flash[:error] = t "controller.room.error_load_event"
+    redirect_to store_location
+  end
+
+  def load_report
+    @reports = @room.reports.page(params[:page]).per Settings.pagination_commit
+    return if @reports.present?
+
+    flash[:error] = t "controller.room.error_load_report"
+    redirect_to store_location
   end
 
   def filter

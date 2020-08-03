@@ -10,6 +10,7 @@ vi:
   start_time: Thời gian bắt đầu
   end_time: Thời gian kết thúc
   description: Mô tả
+  list_guest_null: Danh sách khách mời trống
   color: Màu sắc
   error_load_room: Không tìm thấy phòng!
   error_load_report: Không tìm thấy báo cáo!
@@ -162,12 +163,17 @@ vi:
       error_signup: Đăng ký thất bại!
       load_user_error: Không tìm thấy người dùng!
     events:
+      send_mail: Đã gửi mail cho các khách mời!
       success_create: Tạo sự kiện thành công!
       error_create: Tạo sự kiện thất bại!
       success_update: Cập nhật sự kiện thành công!
       error_update: Cập nhật thất bại!
       success_destroy: Xóa sự kiện thành công!
       error_destroy: Xóa sự kiện thất bại!
+    rooms:
+      error_load_report: Không tìm thấy báo cáo!
+      error_load_event: Không tìm thấy sự kiện!
+      error_load_room: Không tìm thấy phòng!
   shared:
     form:
       name: Họ và tên
@@ -420,3 +426,5 @@ vi:
       no_event: "Chưa có sự kiện"
       room: "Phòng"
       total_record: "Tổng số bản ghi"
+    room:
+      error_load_room: Không tìm thấy phòng!

@@ -1,0 +1,9 @@
+<div class="nested-fields">
+  <div class="field">
+    <%= f.hidden_field :user_id, value: user_id %>
+    <span><strong><%= image_tag "avatar.png", class: "avatar-box-invite", size: Settings.size_avatar %> <%= user_profile %></strong></span>
+    <%= link_to_remove_association f do %>
+      <i class="fas fa-times-circle"></i>
+    <% end %>
+  </div>
+</div>

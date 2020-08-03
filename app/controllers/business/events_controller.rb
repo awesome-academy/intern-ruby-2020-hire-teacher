@@ -8,11 +8,15 @@ class Business::EventsController < BusinessController
   def edit; end
 
   def create
-    @event_new = Event.new event_params
-    if @event_new.save
+    @event = Event.new event_params
+    if @event.save
       flash[:success] = t "controller.events.success_create"
-      redirect_to business_room_path id: params[:event_new][:room_id],
-        day: params[:event_new][:date_event]
+      @event.guests.each do |guest|
+        UserMailer.invite_event(guest).deliver_now
+        flash[:success] = t "controller.events.send_mail"
+      end
+      redirect_to business_room_path id: params[:event][:room_id],
+        day: params[:event][:date_event]
     else
       flash[:error] = t "controller.events.error_create"
       render "business/rooms/show"
@@ -21,9 +25,9 @@ class Business::EventsController < BusinessController
 
   def update
     if @event.update event_params
-      flash[:success] = t "success"
-      redirect_to business_room_path id: params[:event_new][:room_id],
-        day: params[:event_new][:date_event]
+      flash[:success] = t "controller.events.success_update"
+      redirect_to business_room_path id: params[:event][:room_id],
+        day: params[:event][:date_event]
     else
       flash[:danger] = @event.errors.messages
       redirect_to business_room_path @event.room_id
@@ -41,23 +45,25 @@ class Business::EventsController < BusinessController
   end
 
   private
+
   def set_event
     @event = Event.find_by id: params[:id]
-    return if @event
+    return if @event.present?
 
     flash[:danger] = t "error_load_event"
     redirect_to business_home_path
   end
 
   def event_params
-    params.require(:event_new).permit Event::EVENT_PARAMS
+    params.require(:event).permit Event::EVENT_PARAMS
   end
 
   def load_room
-    @room = Room.find_by id: params[:event_new][:room_id]
-    @event_load = Event.by_room_id params[:event_new][:room_id]
+    @room = Room.find_by id: params[:event][:room_id]
+    @event_load = Event.by_room_id params[:event][:room_id]
     @reports = @room.reports.page(params[:page]).per Settings.pagination_commit
+    @users = User.all
     @monday = DateTime.now - DateTime.now.cwday + Settings.one
-    @monday = Date.parse(params[:event_new][:day]) if params[:event_new][:day].present?
+    @monday = Date.parse(params[:event][:day]) if params[:event][:day].present?
   end
 end

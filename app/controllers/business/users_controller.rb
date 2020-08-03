@@ -4,7 +4,6 @@ class Business::UsersController < BusinessController
   before_action :correct_user, only: :show
 
   def show
-    @role = @user.role
     @group = @user.group
   end
 
@@ -34,7 +33,7 @@ class Business::UsersController < BusinessController
 
   def load_user
     @user = User.find_by id: params[:id]
-    return if @user
+    return if @user.present?
 
     flash[:danger] = t "controller.users.load_user_error"
     redirect_to business_home_path

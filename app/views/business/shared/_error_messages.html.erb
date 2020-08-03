@@ -1,12 +1,12 @@
-<% if @event_new.errors.any? %>
+<% if @event.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-danger">
-      <%= pluralize @event_new.errors.size, "error" %>.
+      <%= pluralize @event.errors.size, t("error") %>.
       <ul>
-      <% @event_new.errors.messages.each do |key, value| %>
-        <li><%= [t(key), value].join(" ") %></li>
-      <% end %>
-    </ul>
+        <% @event.errors.messages.each do |key, value| %>
+          <li><%= [t(key), value].join(" ") %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
 <% end %>

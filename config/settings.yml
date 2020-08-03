@@ -76,3 +76,4 @@ activated_user_options:
   option.all: ""
   option.activated: true
   option.inactivated: false
+size_avatar: 35

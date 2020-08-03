@@ -799,3 +799,61 @@ a {
   top: 85%;
   left: 47%;
 }
+
+#myInput {
+  padding: 20px;
+  margin-top: -6px;
+  border: 0;
+  border-radius: 0;
+  background: $whitef1f1f1;
+}
+
+.dropdown{
+  height: 70px;
+
+  a{
+    color: $black000;
+  }
+
+  .btn-invite{
+    padding: 15px 30px 15px 30px;
+    background-color: $green2e7d32;
+    color: $whitefff;
+    &:hover{
+      background-color: $green388e3c;
+    }
+  }
+
+  ul li{
+    margin-left: 20px;
+    margin-top: 10px;
+  }
+}
+
+.scrollBox {
+  height:300px;
+  overflow-y: scroll;
+}
+
+.modal-content{
+  width: 800px;
+}
+
+#createEventModal{
+  margin-right: 250px;
+}
+
+#list-invite{
+  border: solid 1px $black000;
+  border-radius: 15px;
+  height: 130px;
+  overflow-y: scroll;
+  &:empty:before {
+    content:attr(data-placeholder);
+    color:$gray;
+  }
+}
+
+.nested-fields{
+  margin: 5px 5px 5px 5px;
+}
