@@ -22,4 +22,13 @@ class BusinessController < ActionController::Base
     flash[:danger] = t "controller.application.logged_in"
     redirect_to business_login_url
   end
+
+  def correct_user
+    @user = User.find_by id: params[:id]
+    redirect_to business_root_url unless current_user? @user
+  end
+
+  def load_room_pagination
+    @rooms = Room.page(params[:page]).per Settings.paginationl
+  end
 end

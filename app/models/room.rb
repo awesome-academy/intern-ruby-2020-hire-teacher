@@ -3,4 +3,7 @@ class Room < ApplicationRecord
   has_many :reports, dependent: :destroy
   has_many :images, dependent: :destroy
   belongs_to :user
+  belongs_to :location
+
+  delegate :name, to: :location, prefix: :location, allow_nil: true
 end

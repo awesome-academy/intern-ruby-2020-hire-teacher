@@ -11,6 +11,7 @@ en:
     history_book_room: History Book Room
     update_profile: Update Profile
     logout: Logout
+    room: Room
   business:
     static_pages:
       home:

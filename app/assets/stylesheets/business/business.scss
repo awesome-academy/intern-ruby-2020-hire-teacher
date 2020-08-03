@@ -18,8 +18,9 @@
 @import './color';
 @import './layouts/header';
 @import './signup/signup';
-@import './vendor/users';
 @import './vendor/style';
+@import './vendor/users';
+@import './rooms';
 
 $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import '@fortawesome/fontawesome-free/scss/fontawesome';

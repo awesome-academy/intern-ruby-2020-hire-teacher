@@ -1,7 +1,11 @@
 class Business::UsersController < BusinessController
   before_action :load_user, :logged_in_user, except: %i(new create)
+  before_action :correct_user, only: :show
 
-  def show; end
+  def show
+    @role = @user.role
+    @group = @user.group
+  end
 
   def new
     @user = User.new
