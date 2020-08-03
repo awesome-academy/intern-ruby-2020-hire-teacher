@@ -5,16 +5,16 @@
     <div class="row">
       <div class="col-md-3">
         <div class="contact-form">
-          <%= form_tag business_rooms_path, method: :get do %>
+          <%= form_tag business_rooms_path, method: "get" do %>
             <%= text_field_tag :search_name %>
             <%= submit_tag t(".search") %>
           <% end %>
           <br>
           <% unless params[:filter_location] || params[:search_name] %>
-            <%= form_tag business_rooms_path, method: :get do %>
+            <%= form_tag business_rooms_path, method: "get" do %>
               <%= select_tag :filter_country, options_for_select(@countries, params[:filter_country]), include_blank: t(".choose_country"), onchange: "this.form.submit()" %>
-              <% if params[:filter_country].present? %>
-                <%= select_tag :filter_location, options_for_select(@locations, params[:filter_location]), include_blank: t(".choose_location"), onchange: "this.form.submit()" %>
+              <% unless params[:filter_country].nil? %>
+                <%= select_tag :filter_location, options_for_select(@locations, params[:filter_location]), include_blank: t(".choose_location"), onchange:  "this.form.submit()" %>
               <% end %>
             <% end %>
           <% else %>
