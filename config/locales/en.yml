@@ -1,2 +1,14 @@
 en:
   name_app: Book Room
+  base_title: Welcome to the BookRoom Website
+  header:
+    home: Home
+    about: About
+  static_pages:
+    home:
+      read_more: Read more
+      list_room: List room
+      history_book_room: History book room
+    about:
+      about: About
+      content_heading_about: Our Company

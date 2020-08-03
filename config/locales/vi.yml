@@ -1,2 +1,14 @@
 vi:
   name_app: Đặt phòng
+  base_title: Chào mừng bạn đến với web đặt phòng
+  header:
+    home: Trang chủ
+    about: Giới thiệu
+  static_pages:
+      home:
+        read_more: Xem thêm
+        list_room: Danh sách phòng
+        history_book_room: Lịch sử đặt phòng
+      about:
+        about: Giới thiệu
+        content_heading_about: Công ty của chúng tôi
