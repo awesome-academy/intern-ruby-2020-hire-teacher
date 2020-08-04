@@ -397,6 +397,7 @@ en:
       start_time: "Start time"
       end_time: "End time"
       day: "Date"
+      location: "At %{name} room"
   trainers:
     warning:
       not_correct: "Please login as trainer"

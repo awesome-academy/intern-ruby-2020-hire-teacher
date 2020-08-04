@@ -101,3 +101,6 @@ rspec:
     room_name: "room demo"
 password_regex: !ruby/regexp /^(?=.*[a-zA-Z])(?=.*[0-9])/i
 image_name: "login.png"
+worker:
+  mail_delay: 30
+  mail_room_delay: 10

@@ -4,6 +4,8 @@ class TrainersController < ApplicationController
   include RoomsHelper
   include ManagersHelper
 
+  before_action :authenticate_user!
+
   private
 
   def correct_trainer
@@ -18,6 +20,6 @@ class TrainersController < ApplicationController
     return if @event
 
     flash[:warning] = t "managers.warning.show_room", id: params[:id]
-    redirect_to managers_rooms_path
+    redirect_to trainers_root_path
   end
 end

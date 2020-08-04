@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 Group.create!(name: "administration")
 
 5.times do
@@ -14,18 +7,22 @@ Group.create!(name: "administration")
   Country.create!(name: country)
 end
 
-5.times do
-  Country.all.each{|country| country.locations.create!(name: Faker::Address.unique.city)}
-end
+User.create!(name: "Manager",
+             email: "manager@demo.com",
+             password: "foobar",
+             password_confirmation: "foobar",
+             activated: true,
+             activated_at: Time.zone.now,
+             group_id: Group.first.id,
+             role: 1)
 
 User.create!(name: "Hoang Anh",
              email: "nguyen.@gmail.com",
              password: "hoanganh",
-             encrypted_password: "taawktljasktlw4aaglj",
              password_confirmation: "hoanganh",
              activated: true,
              activated_at: Time.zone.now,
-             group_id: 1,
+             group_id: Group.first.id,
              role: 1)
 
 10.times do
@@ -34,36 +31,38 @@ User.create!(name: "Hoang Anh",
   User.create!(name: name,
                email: email,
                password: "123456",
-               encrypted_password: '#$taawktljasktlw4aaglj',
                password_confirmation: "123456",
-               activated: false,
-               activated_at: nil,
-               group_id: 2,
-               role: 2)
+               activated: true,
+               activated_at: Time.zone.now,
+               group_id: Group.ids.sample,
+               role: Faker::Number.between(1, 4))
 end
 
-5.times do
-  Location.all.each do |location|
-    name = Faker::Address.state
-    address = Faker::Address.street_address
-    location.rooms.create!(
-      name: name,
-      address: address,
-      user_id: 1)
-  end
+20.times do
+  Location.create!(name: Faker::Address.unique.city,
+                   country_id: Country.ids.sample)
+end
+
+100.times do
+  name = Faker::Address.state
+  address = Faker::Address.street_address
+  Room.create!(name: name,
+               address: address,
+               location_id: Location.ids.sample,
+               user_id: User.ids.sample)
 end
 
 5.times do |n|
   Report.create!(comment: Faker::Lorem.sentence(38),
-                 user_id: 1,
-                 room_id: 1)
+                 user_id: User.ids.sample,
+                 room_id: Room.ids.sample)
 end
 
 Room.all.each do |room|
   title = Faker::Company.industry
   description = Faker::Company.catch_phrase
   message = Faker::Company.catch_phrase
-  user_id = Faker::Number.between(2, User.count)
+  user_id = User.ids.sample
   start_time = Faker::Time.between(DateTime.now, DateTime.now + 1, :morning)
   end_time = Faker::Time.between(DateTime.now, DateTime.now + 1, :morning)
   status = "activate"
@@ -87,6 +86,8 @@ Room.all.each do |room|
   end
 end
 
-Room.all.each do |room|
-  room.update active: :opened
+Event.all.each do |event|
+  5.times do |n|
+    event.guests.create!(user_id: User.ids.sample)
+  end
 end

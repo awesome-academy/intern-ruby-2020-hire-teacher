@@ -4,6 +4,8 @@ class ManagersController < ApplicationController
   include RoomsHelper
   include ManagersHelper
 
+  before_action :authenticate_user!
+
   def correct_manager
     return if current_user&.manager?
 
