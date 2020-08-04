@@ -36,4 +36,8 @@ class BusinessController < ActionController::Base
   def load_room_pagination
     @rooms = Room.page(params[:page]).per Settings.pagination
   end
+
+  def current_ability
+    @current_ability ||= UserAbility.new(current_user)
+  end
 end
