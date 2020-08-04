@@ -10,7 +10,8 @@ class User < ApplicationRecord
   has_many :reports, dependent: :destroy
 
   validates :name, presence: true
-  validates :email, presence: true, length: {maximum: Settings.model.user.email_max_length},
+  validates :email, presence: true,
+    length: {maximum: Settings.model.user.email_max_length},
     format: {with: VALID_EMAIL_REGEX}
   validates :email, uniqueness: true
   validates :password, presence: true,

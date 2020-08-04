@@ -12,5 +12,6 @@ class Managers::HomesController < ManagersController
     return if @user && @user == current_user
 
     flash[:warning] = t "managers.warning.not_correct"
-    redirect
+    redirect_to home_path
+  end
 end
