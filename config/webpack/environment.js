@@ -1,5 +1,6 @@
 
 const { environment } = require('@rails/webpacker')
+const coffee =  require('./loaders/coffee')
 const erb = require('./loaders/erb')
 
 const less_loader= {
@@ -10,14 +11,6 @@ const less_loader= {
 
 const webpack = require('webpack')
 
-environment.plugins.prepend(
-  'Provide',
-  new webpack.ProvidePlugin({
-    $: 'jquery',
-    jQuery: 'jquery'
-  })
-)
-
 environment.loaders.append("jquery", {
   test: require.resolve("jquery"),
   use: [
@@ -26,4 +19,5 @@ environment.loaders.append("jquery", {
 });
 
 environment.loaders.prepend('erb', erb)
+environment.loaders.prepend('coffee', coffee)
 module.exports = environment

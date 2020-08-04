@@ -17,7 +17,7 @@ class Business::RoomsController < BusinessController
   def show
     @reports = @room.reports.page(params[:page]).per Settings.pagination_commit
     @event_load = Event.where room_id: params[:id]
-    @monday = DateTime.now -DateTime.now.cwday + 1
+    @monday = DateTime.now - DateTime.now.cwday + 1
   end
 
   private

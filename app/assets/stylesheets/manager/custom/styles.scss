@@ -11,8 +11,25 @@ div#image-carousel div.item img {
   margin: 0 auto;
 }
 
-div.img-pre-show, .mr-4 {
-  margin-right: 4px;
+td.img-pre-show {
+  padding-bottom: 4px;
+}
+
+div.none-img-show {
+  width: 200px;
+  height: 150px;
+  background: url("https://vnpi-hcm.vn/wp-content/uploads/2018/01/no-image-800x600.png") no-repeat;
+  background-color: $dark-1;
+  background-size: cover;
+}
+
+.mr-8 {
+  margin-right: 8px;
+}
+
+.px-8 {
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .mr-8 {

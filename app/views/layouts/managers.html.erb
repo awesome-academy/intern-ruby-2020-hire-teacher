@@ -11,8 +11,8 @@
     <%= javascript_tag do %>
       I18n.locale = "<%= I18n.locale %>";
     <% end %>
-
     <%= javascript_pack_tag "manager/translations/#{I18n.locale}" %>
+    <%= javascript_pack_tag "manager/room" %>
   </head>
   <body>
     <div id="wrapper">
