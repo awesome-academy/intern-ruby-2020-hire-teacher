@@ -3,6 +3,7 @@ class Managers::RoomActivesController < ManagersController
   def update
     @state = @room.locked?
     if @room.update active: @state ? :opened : :locked
+      Sendmail.new.mail_to_booking_user @room
       respond_to :js
     else
       flash[:warning] = t "managers.warning.locking"

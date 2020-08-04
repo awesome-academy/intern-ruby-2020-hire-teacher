@@ -17,21 +17,21 @@ class Event < ApplicationRecord
   delegate :name, :id, to: :user, prefix: :user
   delegate :name, :address, :id, :active, to: :room, prefix: :room
 
-  validates :title, presence: true,
-    length: {maximum: Settings.event.title.max_length}
-  validates :date_event, :start_time, :end_time, presence: true
-  validates :description, presence: true, allow_nil: true,
-    length: {maximum: Settings.event.desc.max_length}
-  validate :end_time_after_start_time, :day_off, :during_day
-  validates_time :start_time, between: Settings.event.time.start...Settings.event.time.end,
-    message: I18n.t("business.model.event.between_after")
-  validates_time :end_time, between: Settings.event.time.start...Settings.event.time.end,
-    message: I18n.t("business.model.event.between_before")
-  validates_date :date_event, on_or_after: Time.zone.today,
-    message: I18n.t("business.model.event.on_or_after")
+  # validates :title, presence: true,
+  #   length: {maximum: Settings.event.title.max_length}
+  # validates :date_event, :start_time, :end_time, presence: true
+  # validates :description, presence: true, allow_nil: true,
+  #   length: {maximum: Settings.event.desc.max_length}
+  # validate :end_time_after_start_time, :day_off, :during_day
+  # validates_time :start_time, between: Settings.event.time.start...Settings.event.time.end,
+  #   message: I18n.t("business.model.event.between_after")
+  # validates_time :end_time, between: Settings.event.time.start...Settings.event.time.end,
+  #   message: I18n.t("business.model.event.between_before")
+  # validates_date :date_event, on_or_after: Time.zone.today,
+  #   message: I18n.t("business.model.event.on_or_after")
 
-  before_save :update_previous_status
-  after_update :send_email, if: :check_send_mail?
+  before_update :update_previous_status
+  after_update :send_email, unless: :check_send_mail?
 
   scope :in_day, ->(date_event, room_id){where(date_event: date_event, room_id: room_id)}
   scope :check_event_time_with_calendar, (lambda do |start_time, end_time|
@@ -84,17 +84,7 @@ class Event < ApplicationRecord
   end
 
   def send_email
-    users = User.includes(guests: :event).where event: {id: id}
-    if activate? && room_active == Settings.room_options.option.open
-      GuestMailer.invitation_guest(user, self).deliver_now
-      users.each do |user|
-        GuestMailer.invitation_guest(user, self).deliver_now
-      end
-    elsif inactivate? && room_active == Settings.room_options.option.lock
-      users.each do |user|
-        GuestMailer.cancel_invitation(user, self).deliver_now
-      end
-    end
+    MailToGuestWorker.perform_async id
   end
 
   def update_previous_status
@@ -102,6 +92,6 @@ class Event < ApplicationRecord
   end
 
   def check_send_mail?
-    return false if end_time.blank? || start_time.blank? || end_time >= start_time
+    return true if previous_status == status || end_time.blank? || start_time.blank? || end_time <= start_time
   end
 end

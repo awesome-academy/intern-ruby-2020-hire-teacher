@@ -4,6 +4,7 @@ vi:
   sign_up: Đăng ký
   log_in: Đăng nhập
   profile: Thông tin cá nhân
+  report_room: Nhận xét phòng
   date_event: Ngày diễn ra
   title: Tiêu đề
   system: Hệ thống
@@ -403,8 +404,10 @@ vi:
     invitation_guest:
       hi: "Chào"
       title: "Tiêu đề sự kiện"
+      day: "Ngày"
       start_time: "Thời gian bắt đầu"
       end_time: "Thời gian kết thúc"
+      location: "Tại phòng %{name}"
   trainers:
     warning:
       not_correct: "Hãy đăng nhập với tư cách là trainer"

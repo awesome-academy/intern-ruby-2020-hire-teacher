@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  require "sidekiq/web"
 
+  mount Sidekiq::Web, at: "/sidekiq"
   scope "(:locale)", locale: /en|vi/ do
     namespace :business do
       get "/home", to: "static_pages#home"
