@@ -1,0 +1,19 @@
+<tr>
+  <td><%= user_counter + indexing_page(@users) %></td>
+  <td>
+    <%= link_to user.name, managers_user_path(user) %>
+  </td>
+  <td><%= user.email %></td>
+  <td><%= user.group_name %></td>
+  <td><%= user.role %></td>
+  <td><%= l user.created_at, format: :date %></td>
+  <td><%= l user.updated_at, format: :date %></td>
+  <td align="center">
+    <% if user.activated? %>
+      <i class="fa fa-unlock fa-lg unlock-icon"></i>
+    <% else %>
+      <i class="fa fa-lock fa-lg trash-icon"></i>
+    <% end %>
+  </td>
+  <td><%= l user.activated_at, format: :date %></td>
+</tr>

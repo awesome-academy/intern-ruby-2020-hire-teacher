@@ -244,6 +244,21 @@ vi:
       search:
         search: "Tìm kiếm..."
         by: "Theo"
+    users:
+      index:
+        title: "Danh sách người dùng"
+      table:
+        table_name: "Danh sách người dùng"
+        total_record: "Tổng số bản ghi"
+        name: "Tên"
+        email: "Email"
+        group_name: "Nhóm"
+        role: "Vai trò"
+        created_at: "Ngày tạo"
+        updated_at: "Ngày cập nhật"
+        activated: "Trạng thái"
+        activated_at: "Ngày kích hoạt"
+        no_user: "Không có người dùng để hiển thị"
   errors:
     messages:
       extension_whitelist_error: "Tệp tải lên phải là ảnh."

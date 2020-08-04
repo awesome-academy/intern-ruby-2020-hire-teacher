@@ -6,8 +6,8 @@
   <td><%= room.address %></td>
   <td><%= room.location_name %></td>
   <td><%= room.location.country_name %></td>
-  <td><%= l room.created_at, format: :long %></td>
-  <td><%= l room.updated_at, format: :long %></td>
+  <td><%= l room.created_at, format: :date %></td>
+  <td><%= l room.updated_at, format: :date %></td>
   <td align="center">
     <%= link_to edit_managers_room_path(id: room.id),
       class: "btn btn-outline btn-link" do %>

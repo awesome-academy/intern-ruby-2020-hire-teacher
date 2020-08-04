@@ -243,6 +243,21 @@ en:
       search:
         search: "Search..."
         by: "By"
+    users:
+      index:
+        title: "List user"
+      table:
+        table_name: "List user"
+        total_record: "Total record"
+        name: "Name"
+        email: "Email"
+        group_name: "Group"
+        role: "Role"
+        created_at: "Created at"
+        updated_at: "Updated at"
+        activated: "Account status"
+        activated_at: "Activated at"
+        no_user: "No user to display"
   errors:
     messages:
       extension_whitelist_error: "File upload must be image."
