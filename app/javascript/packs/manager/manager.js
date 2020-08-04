@@ -4,7 +4,6 @@ require('@rails/activestorage').start()
 require('channels')
 require ('jquery')
 require('jquery-validation')
-
 require('packs/manager/jquery.min')
 require('packs/manager/bootstrap.min')
 require('packs/manager/metisMenu.min')

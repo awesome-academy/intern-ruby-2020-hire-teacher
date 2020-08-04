@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       root to: "homes#index"
       resources :rooms
       resources :events
+      resources :room_actives, only: :update
     end
   end
 end

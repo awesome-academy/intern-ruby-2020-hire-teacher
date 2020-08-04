@@ -97,6 +97,7 @@ en:
       not_correct: "Please login as manager"
       show_room: "Room not exist with id %{id}"
       no_event: "No event yet"
+      locking: "Can not change status room"
     danger:
       create_room: "Can not create room!"
       update_room: "Can not update room!"
@@ -136,12 +137,20 @@ en:
       new_book: "New Booking"
       time_demo: "9:49 AM"
     rooms:
+      index:
+        title: "List rooms"
+        dashboard: "Dashboard"
+        new_comment: "New Comments!"
+        view_detail: "View Details"
+        new_task: "New Tasks!"
+        new_book: "New Booking!"
+        active_account: "New Account!"
       table:
         table_name: "List Rooms"
         action: "Actions"
         add_new: "Add new"
         edit: "Edit"
-        delete: "Delete"
+        delete: "State"
         name: "Name"
         location: "Location"
         address: "Address"
@@ -177,10 +186,15 @@ en:
       image_fields:
         remove: "Remove"
       room:
-        confirm: "Are you sure want to delete %{name} room?"
+        open: "Are you sure want to open %{name} room?"
+        lock: "Are you sure want to lock %{name} room?"
       destroy:
         success: "Room have been deleted!"
         danger: "Room may by not exist!"
+    room_actives:
+      update:
+        open: "Are you sure want to open %{name} room?"
+        lock: "Are you sure want to lock %{name} room?"
     events:
       table:
         table_name: "Events"
@@ -224,3 +238,6 @@ en:
     user_name: "User name"
     room:
       error_load_room: Can't find room!
+  user_mailer:
+    room_locking: "Hi, manager already locked %{name} room, you need to book another room!"
+    link: "Book new room"

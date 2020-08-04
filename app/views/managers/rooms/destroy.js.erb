@@ -1,7 +1,7 @@
 $(".destroy-room").bind("ajax:success", function() {
   <% if @status.eql? 1 %>
     alert('<%= t ".success" %>');
-    $(this).closest("tr").remove();
+    $(this).closest("tr").fadeOut();
   <% else %>
     alert('<%= t ".danger" %>');
   <% end %>

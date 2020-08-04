@@ -1,5 +1,5 @@
 <tr>
-  <td><%= room_counter + 1 %></td>
+  <td><%= room_counter + indexing_page(@rooms) %></td>
   <td>
     <%= link_to room.name, managers_room_path(room) %>
   </td>
@@ -15,10 +15,15 @@
     <% end %>
   </td>
   <td align="center">
-    <%= link_to managers_room_path(room), method: :delete,
-      data: {confirm: t(".confirm", name: room.name)}, remote: true,
-      class: "btn btn-outline btn-link btn-id destroy-room" do %>
-      <i class="fa fa-trash fa-lg animation-resize trash-icon"></i>
+    <%= link_to managers_room_active_path(room), method: :patch,
+      data: {confirm: t(room.locked? ? ".open" : ".lock", name: room.name)},
+      remote: true,
+      class: "btn btn-default btn-circle animation-resize active-locking" do %>
+      <% if room.locked? %>
+        <i class="fa fa-lock fa-lg trash-icon"></i>
+      <% else %>
+        <i class="fa fa-unlock fa-lg unlock-icon"></i>
+      <% end %>
     <% end %>
   </td>
 </tr>

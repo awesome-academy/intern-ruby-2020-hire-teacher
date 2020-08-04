@@ -21,6 +21,8 @@ class User < ApplicationRecord
 
   before_save :downcase_email
 
+  scope :get_user_booking, ->(room_id){where "events.room_id = ?", room_id}
+
   has_secure_password
 
   private

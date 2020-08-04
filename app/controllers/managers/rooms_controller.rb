@@ -3,7 +3,10 @@ class Managers::RoomsController < ManagersController
   before_action :load_room, except: %i(index create new)
   before_action :get_location, except: %i(index destroy)
 
-  def index; end
+  def index
+    @rooms = current_user.rooms.includes(location: :country)
+                         .page(params[:page]).per Settings.page.size
+  end
 
   def new
     @room = Room.new
@@ -44,7 +47,7 @@ class Managers::RoomsController < ManagersController
   def destroy
     @status = @room.destroy ? Settings.status.pass : Settings.status.fail
     respond_to do |format|
-      format.html{redirect_to managers_root_path}
+      format.html{redirect_to managers_rooms_path}
       format.js
     end
   end
