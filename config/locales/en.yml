@@ -167,12 +167,6 @@ en:
     rooms:
       index:
         title: "List rooms"
-        dashboard: "Dashboard"
-        new_comment: "New Comments!"
-        view_detail: "View Details"
-        new_task: "New Tasks!"
-        new_book: "New Booking!"
-        active_account: "New Account!"
       table:
         table_name: "List Rooms"
         action: "Actions"
@@ -185,6 +179,7 @@ en:
         created_at: "Created at"
         updated_at: "Updated at"
         no_room: "No new rooms to display"
+        total_record: "Total record"
       show:
         title: "%{name} room"
         room: "Room"
@@ -219,6 +214,11 @@ en:
       destroy:
         success: "Room have been deleted!"
         danger: "Room may by not exist!"
+      filter:
+        filter: "Filter"
+        search: "Search by room name"
+        label_date: "Created at"
+        search_btn: "Search"
     room_actives:
       update:
         open: "Are you sure want to open %{name} room?"
@@ -266,6 +266,9 @@ en:
     user_name: "User name"
     room:
       error_load_room: Can't find room!
+    open: "Opening room"
+    lock: "Locking room"
+    all: "All"
   user_mailer:
     room_locking: "Hi, manager already locked %{name} room, you need to book another room!"
     link: "Book new room"

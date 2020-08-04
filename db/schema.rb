@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_20_222730) do
+ActiveRecord::Schema.define(version: 2020_08_26_024112) do
 
   create_table "countries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_08_20_222730) do
     t.datetime "date_event"
     t.datetime "start_time"
     t.datetime "end_time"
+    t.boolean "status"
     t.index ["room_id"], name: "index_events_on_room_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
@@ -81,8 +82,8 @@ ActiveRecord::Schema.define(version: 2020_08_20_222730) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
-    t.bigint "location_id", null: false
     t.boolean "active", default: true
+    t.bigint "location_id", null: false
     t.index ["location_id"], name: "index_rooms_on_location_id"
     t.index ["user_id"], name: "index_rooms_on_user_id"
   end

@@ -1,18 +1,18 @@
-<%= form_tag managers_events_path, method: :get, remote: true do %>
-<div class="sidebar-search col-md-5">
-  <div class="input-group custom-search-form">
-    <%= text_field_tag :search, "", class: "form-control", placeholder: t(".search") %>
-    <span class="input-group-btn">
-      <%= button_tag type: "submit",  class: "btn btn-primary" do %>
-        <i class="fa fa-search"></i>
-      <% end %>
-    </span>
+<%= form_tag managers_events_path, method: :get do %>
+  <div class="sidebar-search col-md-5">
+    <div class="input-group custom-search-form">
+      <%= text_field_tag :search, "", class: "form-control", placeholder: t(".search") %>
+      <span class="input-group-btn">
+        <%= button_tag type: "submit",  class: "btn btn-primary" do %>
+          <i class="fa fa-search"></i>
+        <% end %>
+      </span>
+    </div>
   </div>
-</div>
-<div class="form-group col-md-3">
-  <div class="flex-box">
-    <label><%= t ".by" %>:&ensp;</label>
-    <%= select_tag :option, options_for_select(@options, params[:option]), class: "form-control" %>
+  <div class="form-group col-md-3">
+    <div class="flex-box">
+      <label><%= t ".by" %>:&ensp;</label>
+      <%= select_tag :option, options_for_select(event_option, params[:option]), class: "form-control" %>
+    </div>
   </div>
-</div>
 <% end %>

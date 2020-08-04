@@ -54,3 +54,7 @@ event:
 event_params: "%i(title date_event start_time end_time description user_id room_id color)"
 array_color: [["Smalt Blue", 1], ["Martinique", 2], ["Edward", 3], ["Rajah", 4]]
 color_passed: 5
+room_options:
+  option.all: ""
+  option.open: "opened"
+  option.lock: "locked"

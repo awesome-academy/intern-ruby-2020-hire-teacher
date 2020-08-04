@@ -1,0 +1,29 @@
+<%= form_tag managers_rooms_path, method: :get do %>
+  <div class="row flex-box">
+    <div class="form-group col-md-3">
+      <%= text_field_tag :room_name, "", class: "form-control", placeholder: t(".search") %>
+    </div>
+    <div class="form-group col-md-3">
+      <div class="flex-box">
+        <%= label_tag :option do %>
+          <%= t ".filter" %>:&ensp;
+        <% end %>
+        <%= select_tag :option, options_for_select(room_option, params[:option]), class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group col-md-3">
+      <div class="flex-box">
+        <%= label_tag :search_day do %>
+          <%= t ".label_date" %>:&ensp;
+        <% end %>
+        <%= date_field_tag :search_day, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group ">
+    <%= button_tag type: "submit", class: "btn btn-primary" do %>
+      <i class="fa fa-search"></i>
+      <%= t ".search_btn" %>
+    <% end %>
+  </div>
+<% end %>

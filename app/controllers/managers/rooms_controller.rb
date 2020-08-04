@@ -4,8 +4,12 @@ class Managers::RoomsController < ManagersController
   before_action :get_location, except: %i(index destroy)
 
   def index
-    @rooms = current_user.rooms.includes(location: :country)
-                         .page(params[:page]).per Settings.page.size
+    @rooms = Room.join_location_country
+                 .by_name(params[:room_name])
+                 .by_created_at(params[:search_day])
+                 .by_active(params[:option])
+                 .desc_created_at
+                 .page(params[:page]).per Settings.page.size
   end
 
   def new
