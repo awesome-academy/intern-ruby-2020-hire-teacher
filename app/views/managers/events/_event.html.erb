@@ -12,5 +12,11 @@
   <td><%= l event.date_event, format: :date %></td>
   <td><%= l event.start_time, format: :time %></td>
   <td><%= l event.end_time, format: :time %></td>
-  <td><%= event.status %></td>
+  <td align="center">
+    <% if event.activate? %>
+      <i class="fa fa-unlock fa-lg unlock-icon"></i>
+    <% else %>
+      <i class="fa fa-lock fa-lg trash-icon"></i>
+    <% end %>
+  </td>
 </tr>

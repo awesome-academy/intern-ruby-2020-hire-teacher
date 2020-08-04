@@ -1,10 +1,16 @@
 class Event < ApplicationRecord
   EVENT_PARAMS = %i(title start_time end_time user_id
                     room_id color description date_event).freeze
+  attr_accessor :previous_status
+
+  enum status: {inactivate: false, activate: true}
 
   has_many :guests, dependent: :destroy
   belongs_to :room
   belongs_to :user
+
+  delegate :name, :id, to: :user, prefix: :user
+  delegate :name, :address, :id, :active, to: :room, prefix: :room
 
   validates :title, presence: true,
     length: {maximum: Settings.event.title.max_length}
@@ -18,6 +24,9 @@ class Event < ApplicationRecord
     message: I18n.t("business.model.event.between_before")
   validates_date :date_event, on_or_after: Time.zone.today,
     message: I18n.t("business.model.event.on_or_after")
+
+  before_save :update_previous_status
+  after_update :send_email
 
   scope :in_day, ->(date_event, room_id){where(date_event: date_event, room_id: room_id)}
   scope :check_event_time_with_calendar, ->(start_time, end_time) do
@@ -34,24 +43,7 @@ class Event < ApplicationRecord
   scope :desc_date_event, ->{order "events.date_event DESC"}
   scope :by_room_id, ->(room_id){where room_id: room_id if room_id.present?}
 
-  delegate :name, :id, to: :user, prefix: :user
-  delegate :name, :address, :id, to: :room, prefix: :room
-
   private
-
-  def end_time_after_start_time
-    return if end_time.blank? || start_time.blank?
-
-    if end_time < start_time
-      errors.add(:end_time, I18n.t("business.model.event.end_time_after_start_time"))
-    end
-  end
-
-  def day_off
-    return if date_event.blank?
-
-    errors[:date_event] << I18n.t("business.model.event.day_off") if (date_event.sunday? || date_event.saturday? )
-  end
 
   def end_time_after_start_time
     return if end_time.blank? || start_time.blank?
@@ -80,5 +72,22 @@ class Event < ApplicationRecord
   def during_day
     events_during = Event.in_day(date_event, room_id).check_event_time_with_calendar(start_time, end_time)
     errors.add(:system, I18n.t("business.model.event.room_ready")) if events_during.present?
+  end
+
+  def send_email
+    return if previous_status == status
+
+    return if activate? || room_active == "opened"
+
+    return if date_event < Time.zone.now
+
+    @users = User.includes(guests: :event).where events: {id: id}
+    @users.each do |user|
+      GuestMailer.cancel_invitation(user, self).deliver_now
+    end
+  end
+
+  def update_previous_status
+    self.previous_status = status_was
   end
 end

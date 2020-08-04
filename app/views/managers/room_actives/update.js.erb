@@ -1,5 +1,5 @@
 $('.active-locking').bind("ajax:success", function() {
-  $(this).closest('td').html(`
+  $(this).closest('a').parent().html(`
     <%= link_to managers_room_active_path(@room), method: :patch,
       data: {confirm: t(@room.locked? ? ".open" : ".lock", name: @room.name)},
       remote: true,
