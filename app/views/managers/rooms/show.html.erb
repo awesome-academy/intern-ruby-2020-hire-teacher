@@ -7,34 +7,7 @@
           <%= t ".room" %>: <%= @room.name %>
         </h1>
         <% if @images.present? %>
-          <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <% @images.size.times do |i| %>
-                <li data-target="#myCarousel" data-slide-to="<%= i %>"
-                  class="<%= "active" if i==0 %>"></li>
-              <% end %>
-            </ol>
-            <div class="carousel-inner" id="image-carousel">
-              <% @images.each do |img| %>
-                <div class="item <%= "active" if @images.first.id == img.id %>">
-                  <%= image_tag(img.image.thumb.url, alt: "Image #{img.id}",
-                    class: "image_carousel") if img.image? %>
-                </div>
-              <% end %>
-            </div>
-            <%= link_to "#myCarousel", {class: "left carousel-control",
-              "data-slide": "prev"} do %>
-              <span class="glyphicon-chevron-left fa fa-chevron-left fa-lg">
-              </span>
-              <span class="sr-only"><%= t ".prev" %></span>
-            <% end %>
-            <%= link_to "#myCarousel", {class: "right carousel-control",
-              "data-slide": "next"} do %>
-              <span class="glyphicon-chevron-right fa fa-chevron-right fa-lg">
-              </span>
-              <span class="sr-only"><%= t ".next" %></span>
-            <% end %>
-          </div>
+          <%= render "managers/rooms/carousel" %>
         <% else %>
           <p class="help-block"><%= t ".no_img" %></p>
         <% end %>
@@ -58,10 +31,16 @@
                 <%= t ".country" %>: <%= @room.location.country_name %>
               </p>
               <p class="help-block">
-                <small><%= t ".created_at" %>: <%= @room.created_at %></small>
+                <small>
+                  <%= t ".created_at" %>:
+                  <%= l @room.created_at, format: :long %>
+                </small>
               </p>
               <p class="help-block">
-                <small><%= t ".updated_at" %>: <%= @room.updated_at %></small>
+                <small>
+                  <%= t ".updated_at" %>:
+                  <%= l @room.updated_at, format: :long %>
+                </small>
               </p>
             </address>
           </div>

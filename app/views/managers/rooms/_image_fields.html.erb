@@ -4,11 +4,13 @@
     <div class="flex-box">
       <% if i.object.image? %>
         <%= i.label :image do %>
-          <%= image_tag i.object.image.small_thumb.url %>
+          <%= image_tag i.object.image.small_thumb.url,
+            class: "animation-resize img-margin" %>
         <% end %>
       <% end %>
       <%= i.file_field :image, class: "form-control-file" %>
-      <button type = "button" class="btn btn-default btn-circle delete-btn">
+      <button type = "button"
+        class="btn btn-default btn-circle delete-btn animation-resize">
         <i class="fa fa-trash"></i>
       </button>
     </div>

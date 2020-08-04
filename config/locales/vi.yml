@@ -85,12 +85,14 @@ vi:
     success:
       create_room: "Tạo phòng %{name} thành công!"
       update_room: "Cập nhật phòng %{name} thành công!"
+      destroy_room: "Xóa phòng %{name} thành công!"
     warning:
       not_correct: "Hãy đăng nhập với tư cách là quản trị viên"
       show_room: "Không tồn tại phòng có id = %{id}"
     danger:
       create_room: "Không thể tạo phòng!"
       update_room: "Không thể sửa phòng!"
+      destroy_room: "Không thể xóa phòng!"
     header:
       home: "Đặt phòng"
       english: "Tiếng Anh"
@@ -152,9 +154,11 @@ vi:
       new:
         title: "Quản lý thêm phòng mới"
         header: "Phòng mới"
+        submit: "Tạo"
       edit:
         title: "Quản lý sửa phòng"
         header: "Sửa phỏng %{name}"
+        submit: "Cập nhật"
       form:
         name: "Tên"
         address:  "Địa chỉ"
@@ -163,6 +167,15 @@ vi:
         create: "Tạo"
       image_fields:
         image: "Tải ảnh lên"
+      room:
+        confirm: "Bạn có chắc muốn xóa phòng %{name}?"
   errors:
     messages:
       extension_whitelist_error: "Tệp tải lên phải là ảnh."
+  js:
+    validates:
+      room:
+        name_required: "Hãy nhập tên phòng"
+        name_length: "Hãy nhập tối đa 30 ký tự"
+        address_required: "Hãy điền địa chỉ cụ thể của phòng"
+        address_length: "Nhập tối đa 50 ký tự"

@@ -1,0 +1,4 @@
+<div class="item <%= "active" if @images.first.id.eql? image.id %>">
+  <%= image_tag image.image.thumb.url, alt: "Image #{image.id}",
+    class: "image_carousel" if image.image? %>
+</div>

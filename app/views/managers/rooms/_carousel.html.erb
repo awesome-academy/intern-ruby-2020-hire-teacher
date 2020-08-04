@@ -1,0 +1,22 @@
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+  <% @images.size.times do |i| %>
+    <li data-target="#myCarousel" data-slide-to="<%= i %>"
+      class="<%= "active" if i.eql? 0 %>"></li>
+  <% end %>
+  </ol>
+  <div class="carousel-inner" id="image-carousel">
+    <%= render @images %>
+  </div>
+
+  <%= link_to "#myCarousel", {class: "left carousel-control",
+    "data-slide": "prev"} do %>
+    <span class="glyphicon-chevron-left fa fa-chevron-left fa-lg"></span>
+    <span class="sr-only"><%= t ".prev" %></span>
+  <% end %>
+  <%= link_to "#myCarousel", {class: "right carousel-control",
+    "data-slide": "next"} do %>
+    <span class="glyphicon-chevron-right fa fa-chevron-right fa-lg"></span>
+    <span class="sr-only"><%= t ".next" %></span>
+  <% end %>
+</div>

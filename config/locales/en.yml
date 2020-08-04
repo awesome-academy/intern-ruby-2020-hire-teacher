@@ -85,12 +85,14 @@ en:
     success:
       create_room: "Create %{name} room successfuly!"
       update_room: "Update %{name} room successfuly!"
+      destroy_room: "Destroy %{name} room successfully!"
     warning:
       not_correct: "Please login as manager"
       show_room: "Room not exist with id %{id}"
     danger:
       create_room: "Can not create room!"
       update_room: "Can not update room!"
+      destroy_room: "Can't destroy room!"
     header:
       home: "Book Room"
       english: "English"
@@ -152,9 +154,11 @@ en:
       new:
         title: "Manager new room"
         header: "New room"
+        submit: "Create"
       edit:
         title: "Manager edit room"
         header: "Edit %{name} room"
+        submit: "Update"
       form:
         name: "Name"
         address:  "Address"
@@ -163,6 +167,15 @@ en:
         create: "Submit create"
       image_fields:
         image: "Upload image"
+      room:
+        confirm: "Are you sure want to delete %{name} room?"
   errors:
     messages:
       extension_whitelist_error: "File upload must be image."
+  js:
+    validates:
+      room:
+        name_required: "Please enter a room name"
+        name_length: "Please enter up to 30 characters"
+        address_required: "Please enter the specific address of the room"
+        address_length: "Enter up to 50 characters"

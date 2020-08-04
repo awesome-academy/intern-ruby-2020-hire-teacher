@@ -1,16 +1,29 @@
 
 const { environment } = require('@rails/webpacker')
+const erb = require('./loaders/erb')
 
-const webpack = require("webpack")
+const less_loader= {
+  test: /\.less$/,
+  use: ['css-loader', 'less-loader']
+ };
+ environment.loaders.append('less', less_loader)
 
-environment.plugins.append("Provide", new webpack.ProvidePlugin({
+const webpack = require('webpack')
 
-$: 'jquery',
+environment.plugins.prepend(
+  'Provide',
+  new webpack.ProvidePlugin({
+    $: 'jquery',
+    jQuery: 'jquery'
+  })
+)
 
-jQuery: 'jquery',
+environment.loaders.append("jquery", {
+  test: require.resolve("jquery"),
+  use: [
+    { loader: "expose-loader", options: { exposes: ["$", "jQuery"] } },
+  ],
+});
 
-Popper: ['popper.js', 'default']
-
-}))
-
+environment.loaders.prepend('erb', erb)
 module.exports = environment
