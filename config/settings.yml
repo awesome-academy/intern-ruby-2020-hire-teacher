@@ -31,13 +31,13 @@ format_date: "%d-%m-%Y"
 format_year_month_date: "%Y-%m-%d"
 many_day: 2
 options:
-  option.event_title: "event_title"
-  option.room_name: "room_name"
-  option.room_address: "room_address"
-  option.location_name: "location_name"
-  option.country_name: "country_name"
-  option.user_name: "user_name"
-  option.user_email: "user_email"
+  option.event_title: "title_cont"
+  option.room_name: "room_name_cont"
+  option.room_address: "room_address_cont"
+  option.location_name: "location_name_cont"
+  option.country_name: "country_name_cont"
+  option.user_name: "user_name_cont"
+  option.user_email: "user_email_cont"
 status:
   pass: 1
   fail: 0
@@ -60,8 +60,8 @@ array_role: [["Manager", "manager"], ["Employee", "employee"], ["Trainer", "trai
 color_passed: 5
 room_options:
   option.all: ""
-  option.open: "opened"
-  option.lock: "locked"
+  option.open: true
+  option.lock: false
 report:
   max_length: 255
 event_params: "%i(title date_event start_time end_time description color user_id room_id)"

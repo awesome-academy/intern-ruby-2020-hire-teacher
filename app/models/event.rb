@@ -40,12 +40,6 @@ class Event < ApplicationRecord
   end)
   scope :user_room_join, ->{includes :user, :room}
   scope :join_multi_table, ->{eager_load :user, room: [location: :country]}
-  scope :by_event_title, ->(name){where "events.title LIKE ?", "%#{name}%"}
-  scope :by_room_name, ->(name){where "rooms.name LIKE ?", "%#{name}%"}
-  scope :by_room_address, ->(name){where "rooms.address LIKE ?", "%#{name}%"}
-  scope :by_location_name, ->(name){where "locations.name LIKE ?", "%#{name}%"}
-  scope :by_country_name, ->(name){where "countries.name LIKE ?", "%#{name}%"}
-  scope :by_user_name, ->(name){where "users.name LIKE ?", "%#{name}%"}
   scope :sort_by_date_event, ->(type){order date_event: type}
   scope :by_room_id, ->(room_id){where room_id: room_id if room_id.present?}
   scope :by_trainee, (lambda do |group_id|

@@ -33,8 +33,11 @@ class Room < ApplicationRecord
 
   class << self
     def ransackable_attributes _auth_object = nil
-      %w(name address location_id title)
+      %w(name address location_id title active created_at updated_at)
     end
+  end
+  ransacker :created_on do
+    Arel.sql("DATE(#{table_name}.created_at)")
   end
 
   private

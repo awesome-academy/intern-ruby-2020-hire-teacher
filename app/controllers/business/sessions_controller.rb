@@ -4,7 +4,9 @@ class Business::SessionsController < Devise::SessionsController
   protected
 
   def after_sign_in_path_for user
-    managers_root_path if user.manager?
+    return managers_root_path if user.manager?
+
+    return trainers_root_path if user.trainer?
 
     business_home_path
   end

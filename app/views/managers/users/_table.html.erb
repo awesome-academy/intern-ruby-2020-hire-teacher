@@ -13,11 +13,12 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th><%= t ".name" %></th>
+                  <th><%= sort_link @q, :name, t(".name") %></th>
                   <th><%= t ".email" %></th>
                   <th><%= t ".group_name" %></th>
                   <th><%= t ".role" %></th>
-                  <th><%= t ".created_at" %></th>
+                  <th><%= sort_link @q, :created_at, t(".created_at"),
+                    default_order: :desc %></th>
                   <th><%= t ".updated_at" %></th>
                   <th><%= t ".activated" %></th>
                   <th><%= t ".activated_at" %></th>

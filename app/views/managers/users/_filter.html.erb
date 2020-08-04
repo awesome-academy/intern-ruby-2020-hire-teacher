@@ -1,45 +1,45 @@
-<%= form_tag managers_users_path, method: :get do %>
+<%= search_form_for @q, url: managers_users_path do |f| %>
   <div class="row mb-8">
     <div class="form-group col-md-4">
-      <%= label_tag :name do %>
+      <%= f.label :name_cont do %>
         <%= t ".name" %>
       <% end %>
-      <%= text_field_tag :name, "", class: "form-control",
-        placeholder: t(".search"), value: params[:name] %>
+      <%= f.text_field :name_cont, class: "form-control",
+        placeholder: t(".search"), value: handle_key_search(:name_cont) %>
     </div>
     <div class="form-group col-md-4">
-      <%= label_tag :email do %>
+      <%= f.label :email_cont do %>
         <%= t ".email" %>
       <% end %>
-      <%= text_field_tag :email, "", class: "form-control",
-        placeholder: t(".search"), value: params[:email] %>
+      <%= f.text_field :email_cont, class: "form-control",
+        placeholder: t(".search"), value: handle_key_search(:email_cont) %>
     </div>
     <div class="form-group col-md-4">
-      <%= label_tag :group do %>
+      <%= f.label :group_id_eq do %>
         <%= t ".group" %>
       <% end %>
-      <%= select_tag :group,
-        options_for_select(load_group, params[:group]),
-        class: "form-control" %>
+      <%= f.select :group_id_eq,
+        options_for_select(load_group, handle_key_search(:group_id_eq)), {},
+        {class: "form-control"} %>
     </div>
     <div class="form-group col-md-4">
-      <%= label_tag :role do %>
+      <%= f.label :role_eq do %>
         <%= t ".role" %>
       <% end %>
-      <%= select_tag :role,
-        options_for_select(load_role, params[:role]),
-        class: "form-control" %>
+      <%= f.select :role_eq,
+        options_for_select(load_role, handle_key_search(:role_eq)), {},
+        {class: "form-control"} %>
     </div>
     <div class="form-group col-md-4">
-      <%= label_tag :status do %>
+      <%= f.label :activated_eq do %>
         <%= t ".status" %>
       <% end %>
-      <%= select_tag :status,
-        options_for_select(activated_user_option, params[:status]),
-        class: "form-control" %>
+      <%= f.select :activated_eq,
+        options_for_select(activated_user_option, handle_key_search(:activated_eq)), {},
+        {class: "form-control"} %>
     </div>
-    <div class="col-md-4">
-      <%= button_tag type: "submit", class: "btn btn-primary btn-search" do %>
+    <div class="col-md-4 mt-rem">
+      <%= f.submit class: "btn btn-primary btn-search" do %>
         <i class="fa fa-search"></i>
         <%= t ".search_btn" %>
       <% end %>
