@@ -3,6 +3,7 @@ model:
     email_validate_regex: !ruby/regexp '/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i'
     email_max_length: 80
     password_length: 6
+    roles: {manager: 1, employee: 2, trainer: 3, trainee: 4}
 user_params: "%i(name email password password_confirmation role group_id)"
 link_font_awesome: "https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
 pagination: 9
@@ -36,6 +37,7 @@ options:
   option.location_name: "location_name"
   option.country_name: "country_name"
   option.user_name: "user_name"
+  option.user_email: "user_email"
 status:
   pass: 1
   fail: 0
@@ -67,3 +69,10 @@ one: 1
 zero: 0
 next: next
 prev: prev
+user_options:
+  option.user_name: "name"
+  option.user_email: "email"
+activated_user_options:
+  option.all: ""
+  option.activated: true
+  option.inactivated: false

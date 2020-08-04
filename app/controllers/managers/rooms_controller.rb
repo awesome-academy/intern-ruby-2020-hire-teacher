@@ -2,6 +2,7 @@ class Managers::RoomsController < ManagersController
   before_action :correct_manager
   before_action :load_room, except: %i(index create new)
   before_action :get_location, except: %i(index destroy)
+  before_action :room_option, only: :index
 
   def index
     @rooms = Room.join_location_country

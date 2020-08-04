@@ -39,6 +39,11 @@
               </tbody>
             </table>
             <%= paginate @rooms, theme: "twitter-bootstrap-3" %>
+            <p class="help-block">
+              <%= t(".total_record") %>: <%= @rooms.total_count %> -
+              <%= page_sum @rooms %>
+            </p>
+            <p class="help-block"><%= record_sum @rooms %></p>
           <% else %>
             <p class="help-block"><%= t ".no_room" %></p>
           <% end %>

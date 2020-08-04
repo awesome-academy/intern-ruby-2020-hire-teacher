@@ -28,6 +28,11 @@
               </tbody>
             </table>
             <%= paginate @users, theme: "twitter-bootstrap-3" %>
+            <p class="help-block">
+              <%= t(".total_record") %>: <%= @users.total_count %> -
+              <%= page_sum @users %>
+            </p>
+            <p class="help-block"><%= record_sum @users %></p>
           <% else %>
             <p class="help-block"><%= t ".no_user" %></p>
           <% end %>

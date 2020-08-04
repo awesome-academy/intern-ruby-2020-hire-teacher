@@ -2,7 +2,7 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = Settings.model.user.email_validate_regex
   USER_PARAMS = %i(name email password password_confirmation role_id group_id).freeze
 
-  enum role: {manager: 1, employee: 2, trainer: 3, trainee: 4}
+  enum role: Settings.model.user.roles.to_h
 
   has_many :events, dependent: :destroy
   has_many :guests, dependent: :destroy
@@ -26,6 +26,11 @@ class User < ApplicationRecord
 
   scope :get_user_booking, ->(room_id){where "events.room_id = ?", room_id}
   scope :desc_user_created_at, ->{order created_at: :desc}
+  scope :by_name, ->(name){where "users.name LIKE ?", "%#{name}%"}
+  scope :by_email, ->(email){where "users.email LIKE ?", "%#{email}%"}
+  scope :by_group, ->(group_id){where(group_id: group_id) if group_id.present?}
+  scope :by_role, ->(role){where(role: role) if role.present?}
+  scope :by_status, ->(status){where(activated: status) if status.present?}
 
   has_secure_password
 

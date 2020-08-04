@@ -53,11 +53,27 @@ class Event < ApplicationRecord
     errors[:date_event] << I18n.t("business.model.event.day_off") if (date_event.sunday? || date_event.saturday? )
   end
 
-  def self.search_events search, option
-    if option.present?
-      Event.join_multi_table.send "by_#{option}", search
-    else
-      Event.user_room_join
+  def end_time_after_start_time
+    return if end_time.blank? || start_time.blank?
+
+    return unless end_time < start_time
+
+    errors.add(:end_time, I18n.t("business.model.event.end_time_after_start_time"))
+  end
+
+  def day_off
+    return if date_event.blank?
+
+    errors[:date_event] << I18n.t("business.model.event.day_off") if date_event.sunday? || date_event.saturday?
+  end
+
+  class << self
+    def search_events search, option
+      if option.present?
+        Event.join_multi_table.send "by_#{option}", search
+      else
+        Event.user_room_join
+      end
     end
   end
 

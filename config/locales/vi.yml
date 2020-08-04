@@ -274,7 +274,8 @@ vi:
         success: "Phòng đã được xóa!"
         danger: "Phòng này dường như không tồn tại!"
       filter:
-        filter: "Lọc"
+        status: "Trạng thái"
+        room_name: "Tên phòng"
         search: "Tìm kiếm theo tên phòng"
         label_date: "Ngày tạo"
         search_btn: "Tìm kiếm"
@@ -298,8 +299,10 @@ vi:
       index:
         title: "Danh sách các sự kiện"
       search:
+        label_search: "Tìm kiếm"
         search: "Tìm kiếm..."
         by: "Theo"
+        btn_search: "Tìm kiếm"
     users:
       index:
         title: "Danh sách người dùng"
@@ -323,9 +326,20 @@ vi:
         not_activated: "chưa có"
         activate: "bạn chắc chắn muốn mở tài khoản người dùng %{name}?"
         lock: "Bạn chắc chắn muốn khóa tài khoản người dùng %{name}?"
+      filter:
+        search: "Tìm kiếm..."
+        name: "Tên"
+        email: "Email"
+        group: "Nhóm"
+        role: "Vai trò"
+        status: "Trạng thái"
+        search_btn: "Tìm kiếm"
     account_mailer:
       subject_activate: "Mở tài khoản"
       subject_lock: "Khóa tài khoản"
+    page:
+      current_page: "Trang số "
+      record: "Bản ghi"
   errors:
     messages:
       extension_whitelist_error: "Tệp tải lên phải là ảnh."
@@ -354,6 +368,8 @@ vi:
     open: "Phòng đang mở"
     lock: "Phòng bị khóa"
     all: "Tất cả"
+    activated: "Tài khoản đang hoạt động"
+    inactivated: "Tài khoản bị khóa"
   user_mailer:
     room_locking: "Chào bạn, quản trị viên đã khóa phòng %{name}, bạn nên đặt một phòng khác!"
     link: "Đặt phòng mới"

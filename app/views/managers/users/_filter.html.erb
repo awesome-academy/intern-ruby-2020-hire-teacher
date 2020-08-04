@@ -1,0 +1,48 @@
+<%= form_tag managers_users_path, method: :get do %>
+  <div class="row mb-8">
+    <div class="form-group col-md-4">
+      <%= label_tag :name do %>
+        <%= t ".name" %>
+      <% end %>
+      <%= text_field_tag :name, "", class: "form-control",
+        placeholder: t(".search"), value: params[:name] %>
+    </div>
+    <div class="form-group col-md-4">
+      <%= label_tag :email do %>
+        <%= t ".email" %>
+      <% end %>
+      <%= text_field_tag :email, "", class: "form-control",
+        placeholder: t(".search"), value: params[:email] %>
+    </div>
+    <div class="form-group col-md-4">
+      <%= label_tag :group do %>
+        <%= t ".group" %>
+      <% end %>
+      <%= select_tag :group,
+        options_for_select(load_group, params[:group]),
+        class: "form-control" %>
+    </div>
+    <div class="form-group col-md-4">
+      <%= label_tag :role do %>
+        <%= t ".role" %>
+      <% end %>
+      <%= select_tag :role,
+        options_for_select(load_role, params[:role]),
+        class: "form-control" %>
+    </div>
+    <div class="form-group col-md-4">
+      <%= label_tag :status do %>
+        <%= t ".status" %>
+      <% end %>
+      <%= select_tag :status,
+        options_for_select(activated_user_option, params[:status]),
+        class: "form-control" %>
+    </div>
+    <div class="col-md-4">
+      <%= button_tag type: "submit", class: "btn btn-primary btn-search" do %>
+        <i class="fa fa-search"></i>
+        <%= t ".search_btn" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
