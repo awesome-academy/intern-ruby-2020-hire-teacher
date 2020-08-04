@@ -35,3 +35,6 @@ options:
   option.location_name: "location_name"
   option.country_name: "country_name"
   option.user_name: "user_name"
+status
+  pass: 1
+  fail: 0

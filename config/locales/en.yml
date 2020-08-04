@@ -176,6 +176,9 @@ en:
         image: "Upload image"
       room:
         confirm: "Are you sure want to delete %{name} room?"
+      destroy:
+        success: "Room have been deleted!"
+        danger: "Room may by not exist!"
     events:
       table:
         table_name: "Events"
@@ -204,6 +207,8 @@ en:
         name_length: "Please enter up to 30 characters"
         address_required: "Please enter the specific address of the room"
         address_length: "Enter up to 50 characters"
+      image:
+        max_size: "Image size should be less than 1MB"
   image:
     length: "Image should be less than 1MB"
     room:

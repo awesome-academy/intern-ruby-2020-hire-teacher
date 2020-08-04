@@ -13,11 +13,17 @@ require('packs/manager/morris.min')
 require('packs/manager/morris-data')
 require('packs/manager/startmin')
 
-import I18n from "i18n-js";
+import I18n from 'i18n-js';
 
 global.I18n = I18n;
 
 $(document).on('turbolinks:load', function () {
+  $('input[type=file]').bind('change', function (e) {
+    let file_size = $(this)[0].files[0].size / 1024 / 1024;
+    let tag = $(this).parent().parent().find('.show-img');
+    validate_image(file_size, tag, e);
+  });
+
   setTimeout(function() {
     $('#flash').slideUp();
   }, TIME_OUT);
@@ -58,50 +64,44 @@ $(document).on('turbolinks:load', function () {
 });
 
 function addImageField() {
-  var length = document.getElementsByClassName('form-control-file').length;
-  var div = document.createElement('div');
+  let length = document.getElementsByClassName('flex-box').length;
+  let div = document.createElement('div');
   div.className = 'flex-box';
-
-  var input = document.createElement('input');
-  var button = document.createElement('button');
-  var i = document.createElement('i');
-
-  input.type = 'file';
-  input.name = 'room[images_attributes]['+ length +'][image]';
-  input.className = 'form-control-file';
-  input.id = 'room_images_attributes_' + length + '_image';
-
-  button.type = 'button';
-  button.id = 'remove_js_btn_' + length;
-  button.className = 'btn btn-default btn-circle delete-btn animation-resize';
-  button.onclick = () => {
-    $(button).parent().remove();
-  }
-
-  i.className = 'fa fa-trash';
-
-  button.appendChild(i);
-  div.appendChild(input);
-  div.appendChild(button);
+  div.innerHTML =
+  ` <label for="room_images_attributes_${length}_image">
+      <span class="btn btn-outline btn-link mr-8 animation-resize">
+        <i class="fa fa-cloud-upload fa-2x"></i>
+      </span>
+    </label>
+    <div class="imgs">
+      <div hidden>
+        <input class="images" type="file" name="room[images_attributes][${length}][image]"
+          id="room_images_attributes_${length}_image" accept="image/*">
+      </div>
+      <div class="show-img">
+      </div>
+    </div>
+    <button type="button" class="btn btn-default btn-circle delete-btn animation-resize">
+      <i class="fa fa-trash"></i>
+    </button>
+    <hr>`
   $('.image-container').append(div);
+  $(div).find('button').on('click', () => div.remove());
+  $(div).find('input').bind('change', (e) => {
+    let file_size = $(div).find('input')[0].files[0].size / 1024 / 1024;
+    let tag = $(div).find('.show-img');
+    validate_image(file_size, tag, e);
+  });
 }
 
-function readURL(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    reader.onload = function(e) {
-      $('#previewHolder').attr('src', e.target.result);
-    }
-    reader.readAsDataURL(input.files[0]);
+function validate_image(file_size, tag, e) {
+  if (file_size > 1) {
+    alert(I18n.t('js.validates.image.max_size'));
+    $(this).val(null);
   } else {
-    alert('select a file to see preview');
-    $('#previewHolder').attr('src', '');
+    tag.html(`<img src='${URL.createObjectURL(e.target.files[0])}' class='preview mr-8'>`);
   }
 }
-
-$('#filePhoto').change(function() {
-  readURL(this);
-});
 
 const TIME_OUT = 3000;
 const ROOM_NAME_MAXLENGTH = 30;
