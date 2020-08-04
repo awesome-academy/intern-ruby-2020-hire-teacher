@@ -16,8 +16,17 @@ $(document).on('turbolinks:load', function () {
   setTimeout(function() {
     $('#flash').slideUp();
   }, TIME_OUT);
-  $('#add_js_btn').click( function() {
+
+  $('#add_js_btn').on('click', function() {
     addImageField();
+  });
+
+  $('.delete-btn').on('click', function() {
+    $(this).parent().remove();
+  });
+
+  $('#filePhoto').change(function() {
+    readURL(this);
   });
 });
 
@@ -37,19 +46,30 @@ function addImageField() {
 
   button.type = 'button';
   button.id = 'remove_js_btn_' + length;
-  button.className = 'btn btn-default btn-circle';
-  button.onclick = button.onclick = () => {
-    button.parentElement.parentElement.removeChild(button.parentElement);
-  };
+  button.className = 'btn btn-default btn-circle delete-btn';
+  button.onclick = () => {
+    $(button).parent().remove();
+  }
 
   i.className = 'fa fa-trash';
 
   button.appendChild(i);
-
-
   div.appendChild(input);
   div.appendChild(button);
   $('.image-container').append(div);
+}
+
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      $('#previewHolder').attr('src', e.target.result);
+    }
+    reader.readAsDataURL(input.files[0]);
+  } else {
+    alert('select a file to see preview');
+    $('#previewHolder').attr('src', '');
+  }
 }
 
 const TIME_OUT = 3000;

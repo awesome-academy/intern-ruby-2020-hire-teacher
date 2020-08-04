@@ -1,5 +1,5 @@
 <tr>
-  <td><%= room.id %></td>
+  <td><%= room_counter + 1 %></td>
   <td>
     <%= link_to room.name, managers_room_path(id: room.id) %>
   </td>
@@ -9,11 +9,15 @@
   <td><%= l room.created_at, format: :long %></td>
   <td><%= l room.updated_at, format: :long %></td>
   <td align="center">
-    <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true">
-    </i>
+    <%= link_to edit_managers_room_path(id: room.id) do %>
+      <i style="cursor: pointer;"
+        class="fa fa-pencil-square-o fa-lg" aria-hidden="true">
+      </i>
+    <% end %>
   </td>
   <td align="center">
-    <i class="fa fa-trash fa-lg" aria-hidden="true">
+    <i style="cursor: pointer;"
+      class="fa fa-trash fa-lg" aria-hidden="true">
     </i>
   </td>
 </tr>

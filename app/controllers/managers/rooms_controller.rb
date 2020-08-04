@@ -1,12 +1,13 @@
 class Managers::RoomsController < ManagersController
   before_action :correct_manager
+  before_action :load_room, only: %i(show edit update)
+  before_action :get_location, except: :index
 
   def index; end
 
   def new
     @room = Room.new
     @room.images.build
-    @locations = Location.pluck :name, :id
   end
 
   def create
@@ -20,7 +21,31 @@ class Managers::RoomsController < ManagersController
     end
   end
 
-  def show
+  def show; end
+
+  def edit
+    return if @images
+
+    @room.images.build
+  end
+
+  def update
+    if @room.update room_params
+      flash[:success] = t "managers.success.update_room"
+      redirect_to managers_room_path(@room)
+    else
+      flash[:danger] = "managers.danger.update_room"
+      render :edit
+    end
+  end
+
+  private
+
+  def room_params
+    params.require(:room).permit Room::CREATE_ROOM_PARAMS
+  end
+
+  def load_room
     @room = Room.find_by id: params[:id]
     if @room
       @images = @room.images
@@ -30,9 +55,7 @@ class Managers::RoomsController < ManagersController
     end
   end
 
-  private
-
-  def room_params
-    params.require(:room).permit Room::CREATE_ROOM_PARAMS
+  def get_location
+    @locations = Location.pluck :name, :id
   end
 end

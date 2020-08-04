@@ -9,20 +9,19 @@
         <% if @images.present? %>
           <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
-            <% @images.size.times do |i| %>
-              <li data-target="#myCarousel" data-slide-to="<%= i %>"
-                class="<%= "active" if i.eql? 0 %>"></li>
-            <% end %>
+              <% @images.size.times do |i| %>
+                <li data-target="#myCarousel" data-slide-to="<%= i %>"
+                  class="<%= "active" if i==0 %>"></li>
+              <% end %>
             </ol>
             <div class="carousel-inner" id="image-carousel">
               <% @images.each do |img| %>
                 <div class="item <%= "active" if @images.first.id == img.id %>">
-                  <%= image_tag(img.image.url, alt: "Image #{img.id}",
-                    class: "image_carousel") if img.image %>
+                  <%= image_tag(img.image.thumb.url, alt: "Image #{img.id}",
+                    class: "image_carousel") if img.image? %>
                 </div>
               <% end %>
             </div>
-
             <%= link_to "#myCarousel", {class: "left carousel-control",
               "data-slide": "prev"} do %>
               <span class="glyphicon-chevron-left fa fa-chevron-left fa-lg">

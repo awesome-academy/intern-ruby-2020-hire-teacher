@@ -5,6 +5,8 @@ en:
   log_in: Log in
   profile: Profile
   base_title: Welcome to the BookRoom Website
+  image:
+    length: "Image size should be less than 1 MB"
   date:
     formats:
       default: "%Y-%m-%d"
@@ -82,11 +84,13 @@ en:
   managers:
     success:
       create_room: "Create %{name} room successfuly!"
+      update_room: "Update %{name} room successfuly!"
     warning:
       not_correct: "Please login as manager"
       show_room: "Room not exist with id %{id}"
     danger:
       create_room: "Can not create room!"
+      update_room: "Can not update room!"
     header:
       home: "Book Room"
       english: "English"
@@ -148,13 +152,17 @@ en:
       new:
         title: "Manager new room"
         header: "New room"
+      edit:
+        title: "Manager edit room"
+        header: "Edit %{name} room"
+      form:
         name: "Name"
         address:  "Address"
         location: "Location"
         no_location: "No location to display"
         create: "Submit create"
+      image_fields:
         image: "Upload image"
-  image:
-    length: "Image should be less than 1MB"
-    room:
-      error_load_room: Can't find room!
+  errors:
+    messages:
+      extension_whitelist_error: "File upload must be image."
