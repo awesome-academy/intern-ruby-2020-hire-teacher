@@ -96,15 +96,7 @@
   <div class="navbar-default sidebar" role="navigation">
     <div class="sidebar-nav navbar-collapse">
       <ul class="nav" id="side-menu">
-        <li class="sidebar-search">
-          <div class="input-group custom-search-form">
-            <input type="text" class="form-control" placeholder="Search...">
-            <span class="input-group-btn">
-              <button class="btn btn-primary" type="button">
-                <i class="fa fa-search"></i>
-              </button>
-          </span>
-          </div>
+        <li class="sidebar-head first">
         </li>
         <li>
           <%= link_to managers_root_path, class: "active" do %>
@@ -128,7 +120,7 @@
           <% end %>
           <ul class="nav nav-second-level">
             <li>
-              <%= link_to t(".book_rooms"), "#" %>
+              <%= link_to t(".book_rooms"), managers_events_path %>
             </li>
             <li>
               <%= link_to t(".comments"), "#" %>

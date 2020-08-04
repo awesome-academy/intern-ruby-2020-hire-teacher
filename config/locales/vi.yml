@@ -12,6 +12,10 @@ vi:
       default: "%Y-%m-%d"
       short: "%b %d"
       long: "%B %d, %Y"
+  time:
+    formats:
+      date: "%m/%d/%Y"
+      time: "%I:%M %p"
   views:
     pagination:
       first: "« Đầu"
@@ -89,6 +93,7 @@ vi:
     warning:
       not_correct: "Hãy đăng nhập với tư cách là quản trị viên"
       show_room: "Không tồn tại phòng có id = %{id}"
+      no_event: "Chưa có sự kiện"
     danger:
       create_room: "Không thể tạo phòng!"
       update_room: "Không thể sửa phòng!"
@@ -169,6 +174,22 @@ vi:
         image: "Tải ảnh lên"
       room:
         confirm: "Bạn có chắc muốn xóa phòng %{name}?"
+    events:
+      table:
+        table_name: "Sự kiện"
+        title: "Tiêu đề"
+        description: "Mô tả"
+        message: "Lời nhắn"
+        author: "Người tạo"
+        date_envent: "Ngày"
+        time_start: "Giờ bắt đầu"
+        time_end: "Giờ kết thúc"
+        status: "Trạng thái"
+        no_event: "Chưa có sự kiện"
+      index:
+        title: "Danh sách các sự kiện"
+      search:
+        search: "Tìm kiếm..."
   errors:
     messages:
       extension_whitelist_error: "Tệp tải lên phải là ảnh."

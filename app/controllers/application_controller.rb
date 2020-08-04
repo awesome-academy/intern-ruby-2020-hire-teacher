@@ -28,4 +28,15 @@ class ApplicationController < ActionController::Base
     flash[:warning] = t "managers.warning.not_correct"
     redirect_to business_home_path
   end
+
+  def load_room
+    @room = Room.find_by id: params[:id]
+    if @room
+      @images = @room.images
+      return
+    else
+      flash[:warning] = t "managers.warning.show_room", id: params[:id]
+      redirect_to managers_root_path
+    end
+  end
 end

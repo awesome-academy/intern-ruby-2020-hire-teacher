@@ -21,7 +21,9 @@ class Managers::RoomsController < ManagersController
     end
   end
 
-  def show; end
+  def show
+    @events = @room.events.page(params[:page]).per Settings.page.size
+  end
 
   def edit
     return if @images
@@ -30,7 +32,6 @@ class Managers::RoomsController < ManagersController
   end
 
   def update
-  debugger
     if @room.update room_params
       flash[:success] = t "managers.success.update_room", name: @room.name
       redirect_to managers_room_path @room
@@ -56,17 +57,6 @@ class Managers::RoomsController < ManagersController
 
   def room_params
     params.require(:room).permit Room::CREATE_ROOM_PARAMS
-  end
-
-  def load_room
-    @room = Room.find_by id: params[:id]
-    if @room
-      @images = @room.images
-      return
-    else
-      flash[:danger] = t "managers.danger.update_room"
-      render :edit
-    end
   end
 
   def get_location

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     namespace :managers do
       root to: "homes#index"
       resources :rooms
+      resources :events
     end
   end
 end
