@@ -13,7 +13,8 @@ class ManagersController < ApplicationController
 
   def load_room
     @room = Room.find_by id: params[:id]
-    return @image = @room.images if @room.present?
+    @images = @room&.images
+    return if @room.present?
 
     flash[:warning] = t "managers.warning.show_room", id: params[:id]
     redirect_to managers_rooms_path

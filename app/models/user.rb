@@ -22,6 +22,7 @@ class User < ApplicationRecord
   validates :role, presence: true
 
   before_save :downcase_email
+  after_update :send_email
 
   scope :get_user_booking, ->(room_id){where "events.room_id = ?", room_id}
   scope :desc_user_created_at, ->{order created_at: :desc}
@@ -32,5 +33,9 @@ class User < ApplicationRecord
 
   def downcase_email
     email.downcase!
+  end
+
+  def send_email
+    UserMailer.account_activation(self).deliver_now
   end
 end

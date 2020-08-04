@@ -1,14 +1,14 @@
 $('.active-locking').bind("ajax:success", function() {
   $(this).closest('td').html(`
-  <%= link_to managers_room_active_path(@room), method: :patch,
-    data: {confirm: t(@room.locked? ? ".open" : ".lock", name: @room.name)},
-    remote: true,
-    class: "btn btn-default btn-circle animation-resize active-locking" do %>
-    <% if @room.locked? %>
-      <i class="fa fa-lock fa-lg trash-icon"></i>
-    <% else %>
-      <i class="fa fa-unlock fa-lg unlock-icon"></i>
+    <%= link_to managers_room_active_path(@room), method: :patch,
+      data: {confirm: t(@room.locked? ? ".open" : ".lock", name: @room.name)},
+      remote: true,
+      class: "btn btn-default btn-circle animation-resize active-locking" do %>
+      <% if @room.locked? %>
+        <i class="fa fa-lock fa-lg trash-icon"></i>
+      <% else %>
+        <i class="fa fa-unlock fa-lg unlock-icon"></i>
+      <% end %>
     <% end %>
-  <% end %>
-`)
+  `)
 });

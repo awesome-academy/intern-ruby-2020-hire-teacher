@@ -147,6 +147,7 @@ en:
       show_room: "Room not exist with id %{id}"
       no_event: "No event yet"
       locking: "Can not change status room"
+      is_manager: "You can not to change manager!"
     danger:
       create_room: "Can not create room!"
       update_room: "Can not update room!"
@@ -277,6 +278,17 @@ en:
         activated: "Account status"
         activated_at: "Activated at"
         no_user: "No user to display"
+      user:
+        not_activated: "none"
+        activate: "Are you sure want to activate user account %{name}?"
+        lock: "Are you sure want to inactivate user account %{name}?"
+      update:
+        not_activated: "none"
+        activate: "Are you sure want to activate user account %{name}?"
+        lock: "Are you sure want to inactivate user account %{name}?"
+    account_mailer:
+      subject_activate: "Activate account"
+      subject_lock: "Lock account"
   errors:
     messages:
       extension_whitelist_error: "File upload must be image."
@@ -308,5 +320,9 @@ en:
   user_mailer:
     room_locking: "Hi, manager already locked %{name} room, you need to book another room!"
     link: "Book new room"
-    room:
-      error_load_room: Can't find room!
+    greeting: "Hi, %{name}"
+    activate: "Your account has been activated"
+    inactivate: "Your account has been locked"
+    link_profile: "Welcome to out website"
+  room:
+    error_load_room: Can't find room!
