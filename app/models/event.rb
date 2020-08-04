@@ -31,11 +31,12 @@ class Event < ApplicationRecord
     message: I18n.t("business.model.event.on_or_after")
 
   before_save :update_previous_status
-  after_update :send_email
+  after_update :send_email, if: :check_send_mail?
 
   scope :in_day, ->(date_event, room_id){where(date_event: date_event, room_id: room_id)}
   scope :check_event_time_with_calendar, (lambda do |start_time, end_time|
-    where("? BETWEEN start_time AND end_time OR ? BETWEEN start_time AND end_time", start_time, end_time)
+    where ":start_time BETWEEN start_time AND end_time
+      OR end_time BETWEEN start_time AND end_time", start_time: start_time, end_time: end_time
   end)
   scope :user_room_join, ->{includes :user, :room}
   scope :join_multi_table, ->{eager_load :user, room: [location: :country]}
@@ -83,19 +84,24 @@ class Event < ApplicationRecord
   end
 
   def send_email
-    return if previous_status == status
-
-    return if activate? || room_active == "opened"
-
-    return if date_event < Time.zone.now
-
-    @users = User.includes(guests: :event).where events: {id: id}
-    @users.each do |user|
-      GuestMailer.cancel_invitation(user, self).deliver_now
+    users = User.includes(guests: :event).where event: {id: id}
+    if activate? && room_active == Settings.room_options.option.open
+      GuestMailer.invitation_guest(user, self).deliver_now
+      users.each do |user|
+        GuestMailer.invitation_guest(user, self).deliver_now
+      end
+    elsif inactivate? && room_active == Settings.room_options.option.lock
+      users.each do |user|
+        GuestMailer.cancel_invitation(user, self).deliver_now
+      end
     end
   end
 
   def update_previous_status
     self.previous_status = status_was
+  end
+
+  def check_send_mail?
+    return false if end_time.blank? || start_time.blank? || end_time >= start_time
   end
 end

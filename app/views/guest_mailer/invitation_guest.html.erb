@@ -1,0 +1,6 @@
+<h2><%= t ".hi" %>, <%= @user.name %></h2>
+<h3><%= t ".title" %>: <%= @event.title %></h3>
+<p><%= t ".day" %>: <%= l @event.date_event, format: :date %></p>
+<p><%= t ".start_time" %>: <%= l @event.start_time, format: :time %></p>
+<p><%= t ".end_time" %>: <%= l @event.end_time, format: :time %></p>
+<p><%= @event.description %></p>

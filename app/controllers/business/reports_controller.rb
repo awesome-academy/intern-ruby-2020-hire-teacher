@@ -34,7 +34,7 @@ class Business::ReportsController < BusinessController
 
   def load_room
     @room = Room.find_by id: params[:report][:room_id]
-    return if @room.present?
+    return if @room
 
     flash[:error] = t "business.room.error_load_room"
     redirect_to business_home_path
@@ -46,7 +46,7 @@ class Business::ReportsController < BusinessController
 
   def set_report
     @report = Report.find_by id: params[:id]
-    return if @report.present?
+    return if @report
 
     flash[:error] = t "business.room.error_load_room"
     redirect_to business_home_path

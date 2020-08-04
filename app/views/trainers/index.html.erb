@@ -1,14 +1,18 @@
 <%= provide :title, t(".title") %>
 <div class="row">
   <div class="col-lg-12">
-    <h1 class="page-header"><%= t ".title" %></h1>
-    <h2>
-      <%= t ".group", name: current_user.group_name %>
-    </h2>
+    <h1 class="page-header">
+      <%= t ".title" %> - <%= t ".group", name: current_user.group_name %>
+    </h1>
   </div>
 </div>
 <div class="row">
   <div class="col-lg-12">
     <%= render "trainers/table" %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <%= render "trainers/trainee/table" %>
   </div>
 </div>

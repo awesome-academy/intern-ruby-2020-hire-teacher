@@ -4,7 +4,6 @@ Rails.application.configure do
   config.consider_all_requests_local = true
   if Rails.root.join("tmp", "caching-dev.txt").exist?
     config.action_controller.perform_caching = true
-    config.action_controller.enable_fragment_cache_logging = true
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
@@ -17,6 +16,11 @@ Rails.application.configure do
   end
   config.active_storage.service = :local
   config.action_mailer.raise_delivery_errors = true
+
+  host = ENV["host"]
+
+  config.action_mailer.default_url_options = {host: host, protocol: "http"}
+
   config.action_mailer.perform_caching = false
   config.active_support.deprecation = :log
   config.active_record.migration_error = :page_load
@@ -24,14 +28,14 @@ Rails.application.configure do
   config.assets.debug = true
   config.assets.quiet = true
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = {host: ENV["host"]}
   config.action_mailer.smtp_settings = {
-    user_name: ENV["mail_user_name"],
-    password: ENV["mail_user_password"],
-    address: ENV["address"],
-    domain: ENV["domain"],
-    port: ENV["post"],
-    authentication: :cram_md5
+    :user_name => ENV["user_name"],
+    :password => ENV["password"],
+    :address => ENV["address"],
+    :domain => ENV["domain"],
+    :port => ENV["port"],
+    :authentication => :cram_md5
   }
 end

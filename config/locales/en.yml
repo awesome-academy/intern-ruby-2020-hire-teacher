@@ -369,11 +369,18 @@ en:
     inactivate: "Your account has been locked"
     link_profile: "Welcome to out website"
     cancel_title: "Cancel event"
+    accept_title: "Invite to Event"
   room:
     error_load_room: Can't find room!
   guest_mailer:
     cancel_invitation:
       cancel_guest: "Admin announced that the booking event %{name} has been canceled."
+      hi: "Hi"
+      title: "Title event"
+      start_time: "Start time"
+      end_time: "End time"
+      day: "Date"
+    invitation_guest:
       hi: "Hi"
       title: "Title event"
       start_time: "Start time"
@@ -410,3 +417,24 @@ en:
       total_record: "Total record"
     room:
       error_load_room: Can't find room!
+    trainee:
+      table:
+        table_name: "List user"
+        total_record: "Total record"
+        name: "Name"
+        email: "Email"
+        group_name: "Group"
+        role: "Role"
+        created_at: "Created at"
+        updated_at: "Updated at"
+        activated: "Account status"
+        activated_at: "Activated at"
+        no_user: "No user to display"
+    events:
+      event:
+        open: "Are you sure want to open %{name} event?"
+        lock: "Are you sure want to lock %{name} event?"
+    update_events:
+      update:
+        open: "Are you sure want to open %{name} event?"
+        lock: "Are you sure want to lock %{name} event?"

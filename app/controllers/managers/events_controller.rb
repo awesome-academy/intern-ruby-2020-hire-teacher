@@ -3,7 +3,7 @@ class Managers::EventsController < ManagersController
 
   def index
     @events = Event.search_events(params[:search], params[:option])
-                   .desc_date_event
+                   .sort_by_date_event(:desc)
                    .page(params[:page]).per Settings.page.size
   end
 end
