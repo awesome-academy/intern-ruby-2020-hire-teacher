@@ -28,3 +28,10 @@ pagination: 12
 pagination_commit: 20
 format_date: "%d-%m-%Y"
 many_day: 2
+options:
+  option.event_title: "event_title"
+  option.room_name: "room_name"
+  option.room_address: "room_address"
+  option.location_name: "location_name"
+  option.country_name: "country_name"
+  option.user_name: "user_name"

@@ -1,24 +1,18 @@
+<%= form_tag managers_events_path, method: :get, remote: true do %>
 <div class="sidebar-search col-md-5">
   <div class="input-group custom-search-form">
-    <input type="text" class="form-control"
-      placeholder="<%= t ".search" %>">
+    <%= text_field_tag :search, "", class: "form-control", placeholder: t(".search") %>
     <span class="input-group-btn">
-      <button class="btn btn-primary" type="button">
+      <%= button_tag type: "submit",  class: "btn btn-primary" do %>
         <i class="fa fa-search"></i>
-      </button>
+      <% end %>
     </span>
   </div>
 </div>
 <div class="form-group col-md-3">
   <div class="flex-box">
-  <!-- phần select em tạm thời chưa xử lý ở pull này. -->
-    <label>By:&ensp;</label>
-    <select class="form-control">
-      <option>--select option--</option>
-      <option>Room name</option>
-      <option>User name</option>
-      <option>Date event</option>
-      <option>Status</option>
-    </select>
+    <label><%= t ".by" %>:&ensp;</label>
+    <%= select_tag :option, options_for_select(@options, params[:option]), class: "form-control" %>
   </div>
 </div>
+<% end %>

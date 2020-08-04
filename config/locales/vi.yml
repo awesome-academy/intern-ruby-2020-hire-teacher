@@ -142,7 +142,7 @@ vi:
         edit: "Sửa"
         delete: "Xóa"
         name: "Tên"
-        location: "Vị trí"
+        location: "Khu vực"
         address: "Địa chỉ"
         created_at: "Ngày tạo"
         updated_at: "Ngày cập nhật"
@@ -154,7 +154,7 @@ vi:
         next: "Sau"
         no_img: "Không có ảnh"
         address:  "Địa chỉ"
-        location: "Vị trí"
+        location: "Khu vực"
         country: "Nước"
         created_at: "Ngày tạo"
         updated_at: "Ngày cập nhật"
@@ -169,8 +169,8 @@ vi:
       form:
         name: "Tên"
         address:  "Địa chỉ"
-        location: "Vị trí"
-        no_location: "Chưa có vị trí để hiển thị"
+        location: "Khu vực"
+        no_location: "Chưa có khu vực để hiển thị"
         create: "Tạo"
       image_fields:
         image: "Tải ảnh lên"
@@ -188,10 +188,12 @@ vi:
         time_end: "Giờ kết thúc"
         status: "Trạng thái"
         no_event: "Chưa có sự kiện"
+        room: "Phòng"
       index:
         title: "Danh sách các sự kiện"
       search:
         search: "Tìm kiếm..."
+        by: "Theo"
   errors:
     messages:
       extension_whitelist_error: "Tệp tải lên phải là ảnh."
@@ -206,3 +208,10 @@ vi:
     length: "Kích thước ảnh phải nhỏ hơn 1MB"
     room:
       error_load_room: Không tìm thấy phòng!
+  option:
+    event_title: "Tiêu đề sự kiện"
+    room_name: "Tên phòng"
+    room_address: "Địa chỉ"
+    location_name: "Khu vực"
+    country_name: "Nước"
+    user_name: "Người tạo"

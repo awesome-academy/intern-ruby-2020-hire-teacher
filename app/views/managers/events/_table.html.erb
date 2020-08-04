@@ -1,30 +1,33 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <%= t ".table_name" %>
-    </div>
-    <div class="panel-body">
+    <%= link_to managers_events_path do %>
+      <%= t ".table_name" %>
+    <% end %>
+  </div>
+  <div class="panel-body">
     <% if events.present? %>
-    <div class="table-responsive">
-      <table class="table table-bordered table-hover">
-        <thead>
-          <tr>
-            <th class="text-center">#</th>
-            <th class="text-center"><%= t ".title" %></th>
-            <th class="text-center"><%= t ".description" %></th>
-            <th class="text-center"><%= t ".message" %></th>
-            <th class="text-center"><%= t ".author" %></th>
-            <th class="text-center"><%= t ".date_event" %></th>
-            <th class="text-center"><%= t ".time_start" %></th>
-            <th class="text-center"><%= t ".time_end" %></th>
-            <th class="text-center"><%= t ".status" %></th>
-          </tr>
-        </thead>
-        <tbody>
-          <%= render events %>
-        </tbody>
-      </table>
-      <%= paginate events, theme: "twitter-bootstrap-3"%>
-    </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover" id="table-event">
+          <thead>
+            <tr>
+              <th class="text-center">#</th>
+              <th class="text-center"><%= t ".title" %></th>
+              <th class="text-center"><%= t ".description" %></th>
+              <th class="text-center"><%= t ".message" %></th>
+              <th class="text-center"><%= t ".author" %></th>
+              <th class="text-center"><%= t ".room" %></th>
+              <th class="text-center"><%= t ".date_event" %></th>
+              <th class="text-center"><%= t ".time_start" %></th>
+              <th class="text-center"><%= t ".time_end" %></th>
+              <th class="text-center"><%= t ".status" %></th>
+            </tr>
+          </thead>
+          <tbody id="ajax-table">
+            <%= render events %>
+          </tbody>
+        </table>
+        <%= paginate events, theme: "twitter-bootstrap-3"%>
+      </div>
     <% else %>
       <p class="help-block"><%= t ".no_event" %></p>
     <% end %>
