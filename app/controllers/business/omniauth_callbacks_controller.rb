@@ -7,6 +7,10 @@ class Business::OmniauthCallbacksController < Devise::OmniauthCallbacksControlle
     generic_callback Settings.omniauth.google
   end
 
+  def github
+    generic_callback :github
+  end
+
   protected
 
   def after_sign_in_path_for _user

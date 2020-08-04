@@ -20,4 +20,5 @@ Devise.setup do |config|
   config.last_attempt_warning = true
   config.omniauth :google_oauth2, ENV["GOOGLE_OAUTH2_APP_ID"], ENV["GOOGLE_OAUTH2_APP_SECRET"], { scope: "email" }
   config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"], { scope: "email" }
+  config.omniauth :github, ENV["GITHUB_KEY"], ENV["GITHUB_SECRET"], scope: "user:emails, read:org"
 end

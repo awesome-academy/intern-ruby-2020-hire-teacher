@@ -89,10 +89,10 @@ rspec:
   end_time: "10:30"
   redirect_status: 302
   update:
-    valid_date: "2020-09-16"
+    valid_date: "2021-09-16"
     invalid_date: "2020-09-06"
   create:
-    valid_date: "2020-09-30"
+    valid_date: "2021-09-30"
     valid_date_params: "2020-10-09"
   date_created_room_at: "2020-09-04"
   room_controller:

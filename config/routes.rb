@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   require "sidekiq/web"
 
-  mount Sidekiq::Web, at: "/sidekiq"
   devise_for :users, only: :omniauth_callbacks,
     controllers: {omniauth_callbacks: "business/omniauth_callbacks"}
+
+  mount Sidekiq::Web, at: "/sidekiq"
 
   scope "(:locale)", locale: /en|vi/ do
     namespace :business do
@@ -18,7 +19,7 @@ Rails.application.routes.draw do
       end
     end
 
-    devise_for :users,skip: :omniauth_callbacks, controllers: {
+    devise_for :users, skip: :omniauth_callbacks, controllers: {
       sessions: "business/sessions",
       registrations: "business/registrations",
       passwords: "business/passwords"

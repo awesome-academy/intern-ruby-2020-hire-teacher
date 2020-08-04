@@ -62,6 +62,7 @@ vi:
     logout: Đăng xuất
     room: Phòng
   business:
+    omniauth_callback: "có thể bạn chưa để chế độ công khai email!"
     static_pages:
       home:
         read_more: Xem thêm
@@ -77,6 +78,7 @@ vi:
         email: Email
         password: Mật khẩu
         login_with_social: Có thể đăng nhập qua
+        tooltip: Đăng nhập bằng %{name}
     registrations:
       new:
         name: Họ và tên
