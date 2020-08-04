@@ -14,18 +14,6 @@ class Business::RoomsController < BusinessController
     filter
   end
 
-  def show
-    @event_load = Event.where room_id: params[:id]
-    @monday = DateTime.now - DateTime.now.cwday + 1
-    @event_new = Event.new
-    @event_load = Event.by_room_id params[:id]
-    if params[:status] == Settings.prev
-      @monday = Date.parse(params[:day]) - Settings.week_day
-    elsif params[:status] == Settings.next
-      @monday = Date.parse(params[:day]) + Settings.week_day
-    end
-  end
-
   private
 
   def check_week_create_event

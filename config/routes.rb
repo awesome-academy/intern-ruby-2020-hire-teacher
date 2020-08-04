@@ -27,5 +27,9 @@ Rails.application.routes.draw do
       resources :room_actives, only: :update
       resources :users
     end
+
+    namespace :trainers do
+      root to: "homes#index"
+    end
   end
 end

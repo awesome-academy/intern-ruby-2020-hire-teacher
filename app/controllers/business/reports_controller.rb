@@ -45,7 +45,7 @@ class Business::ReportsController < BusinessController
 
   def set_report
     @report = Report.find_by id: params[:id]
-    return if @report
+    return if @report.present?
 
     flash[:error] = t "error_load_report"
     redirect_to business_home_path

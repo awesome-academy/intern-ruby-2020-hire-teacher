@@ -55,6 +55,15 @@
         <% end %>
       <% end %>
     </div>
+    <div class="form_next">
+      <%= form_tag business_room_path(@room), method: :get do %>
+        <%= hidden_field_tag :day, @monday %>
+        <%= hidden_field_tag :status, :next %>
+        <%= button_tag type: :submit, class: "btn_week" do %>
+          <%= t ".next" %> <i class="fas fa-angle-double-right"></i>
+        <% end %>
+      <% end %>
+    </div>
     <% if params[:day].present? %>
       <div class="today">
         <%= link_to t("today"), business_room_path(@room.id), class: "btn_week" %>

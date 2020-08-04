@@ -298,6 +298,7 @@ vi:
         status: "Trạng thái"
         no_event: "Chưa có sự kiện"
         room: "Phòng"
+        total_record: "Tổng số bản ghi"
       index:
         title: "Danh sách các sự kiện"
       search:
@@ -390,3 +391,32 @@ vi:
       start_time: "Thời gian bắt đầu"
       end_time: "Thời gian kết thúc"
       day: "Ngày"
+  trainers:
+    warning:
+      not_correct: "Hãy đăng nhập với tư cách là trainer"
+    header:
+      home: "Đặt phòng"
+      english: "Tiếng Anh"
+      vietnamese: "Tiếng Việt"
+      toggle_nav: "Thay đổi điều hướng"
+      website: "Trang web"
+      test: "Demo"
+      profile: "Thông tin cá nhân"
+      settings: "Cài đặt"
+      logout: "Đăng xuất"
+    index:
+      title: "Quản lý Trainee"
+      group: "Nhóm %{name}"
+    table:
+      table_name: "Sự kiện"
+      title: "Tiêu đề"
+      description: "Mô tả"
+      message: "Lời nhắn"
+      author: "Người tạo"
+      date_envent: "Ngày"
+      time_start: "Giờ bắt đầu"
+      time_end: "Giờ kết thúc"
+      status: "Trạng thái"
+      no_event: "Chưa có sự kiện"
+      room: "Phòng"
+      total_record: "Tổng số bản ghi"

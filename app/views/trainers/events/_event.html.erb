@@ -1,0 +1,22 @@
+<tr>
+  <td><%= event_counter + indexing_page(@events) %></td>
+  <td><%= event.title %></td>
+  <td><%= event.description %></td>
+  <td><%= event.message %></td>
+  <td><%= event.user_name %></td>
+  <td>
+    <%= link_to managers_room_path(event.room) do %>
+      <%= event.room_name %>
+    <% end %>
+  </td>
+  <td><%= l event.date_event, format: :date %></td>
+  <td><%= l event.start_time, format: :time %></td>
+  <td><%= l event.end_time, format: :time %></td>
+  <td align="center">
+    <% if event.activate? %>
+      <i class="fa fa-unlock fa-lg unlock-icon"></i>
+    <% else %>
+      <i class="fa fa-lock fa-lg trash-icon"></i>
+    <% end %>
+  </td>
+</tr>

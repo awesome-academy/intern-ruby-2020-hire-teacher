@@ -40,8 +40,11 @@ class Event < ApplicationRecord
   scope :by_location_name, ->(name){where "locations.name LIKE ?", "%#{name}%"}
   scope :by_country_name, ->(name){where "countries.name LIKE ?", "%#{name}%"}
   scope :by_user_name, ->(name){where "users.name LIKE ?", "%#{name}%"}
-  scope :desc_date_event, ->{order "events.date_event DESC"}
+  scope :sort_by_date_event, ->(type){order date_event: type}
   scope :by_room_id, ->(room_id){where room_id: room_id if room_id.present?}
+  scope :by_trainee, (lambda do |group_id|
+    joins(:user).where(users: {group_id: group_id, role: :trainee})
+  end)
 
   private
 

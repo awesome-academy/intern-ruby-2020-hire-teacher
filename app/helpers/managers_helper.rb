@@ -12,10 +12,12 @@ module ManagersHelper
   end
 
   def load_group
-    {"#{t "option.all"}": ""}.merge! Group.pluck(:name, :id).to_h
+    @groups = {"#{t "option.all"}": ""}
+    @groups.merge! Group.pluck(:name, :id).to_h
   end
 
   def load_role
-    {"#{t "option.all"}": ""}.merge! Settings.model.user.roles.to_h
+    @roles = {"#{t "option.all"}": ""}
+    @roles.merge! Settings.model.user.roles.to_h
   end
 end
