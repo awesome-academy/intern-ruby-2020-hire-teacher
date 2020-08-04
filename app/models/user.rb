@@ -32,7 +32,7 @@ class User < ApplicationRecord
   validates :role, presence: true
   validate :password_complexity, :duplicate_password
 
-  before_save :downcase_email
+  before_save :downcase_email, :update_previous_activate
   after_update :send_email, if: ->{(previous_activate != activated)}
 
   scope :get_user_now_booking, ->(room_id){where "events.room_id = ? AND events.date_event > NOW()", room_id}
@@ -44,6 +44,7 @@ class User < ApplicationRecord
   scope :by_status, ->(status){where(activated: status) if status.present?}
   scope :includes_group, ->{includes(:group).references :group}
   scope :get_trainer, ->(group_id){where(group_id: group_id, role: :trainer) if group_id.present?}
+  scope :by_event_id, ->(id){where("events.id = ?", id).references :event}
 
   class << self
     def from_omniauth access_token
