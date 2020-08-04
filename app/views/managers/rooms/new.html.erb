@@ -1,0 +1,42 @@
+<%= provide :title, t(".title") %>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h1 class="page-header"><%= t ".header" %></h1>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-10">
+            <%= form_for @room, url: managers_rooms_path do |f| %>
+              <%= render "shared/error_messages", object: f.object %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <div class="form-group">
+                <label><%= t ".name" %></label>
+                <%= f.text_field :name, class: "form-control" %>
+              </div>
+              <div class="form-group">
+                <label><%= t ".address" %></label>
+                <%= f.text_field :address, class: "form-control",
+                  rows: "#{Settings.textarea.row}" %>
+              </div>
+              <div class="form-group">
+                <label><%= t ".location" %></label>
+                <% if @locations.present? %>
+                  <%= f.select :location_id, options_for_select(@locations),
+                    {}, {class: "form-control"} %>
+                <% else %>
+                  <p class="help-block"><%= t ".no_location" %></p>
+                <% end %>
+              </div>
+
+              <%= render "managers/rooms/image_fields", f: f %>
+
+              <%= f.submit t(".create"), class: "btn btn-success" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div>
+</div>

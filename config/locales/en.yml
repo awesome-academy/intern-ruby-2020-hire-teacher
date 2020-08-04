@@ -5,6 +5,28 @@ en:
   log_in: Log in
   profile: Profile
   base_title: Welcome to the BookRoom Website
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
+  views:
+    pagination:
+      first: "« FIRST"
+      last: "LAST »"
+      previous: "‹ PREV"
+      next: "NEXT ›"
+      truncate: "…"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "No %{entry_name} found"
+          one: "Displaying <b>1</b> %{entry_name}"
+          other: "Displaying <b>all %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Displaying %{entry_name} <b>%{first} - %{last}
+          </b> of <b>%{total}</b> in total"
   header:
     home: Home
     about: About
@@ -53,9 +75,14 @@ en:
       group: Group
       create_new_account: Create New Account
   managers:
+    success:
+      create_room: "Create %{name} room successfuly!"
     warning:
       not_correct: "Please login as manager"
-    _header:
+      show_room: "Room not exist with id %{id}"
+    danger:
+      create_room: "Can not create room!"
+    header:
       home: "Book Room"
       english: "English"
       vietnamese: "Vietnamese"
@@ -101,3 +128,26 @@ en:
         address: "Address"
         created_at: "Created at"
         updated_at: "Updated at"
+        no_room: "No new rooms to display"
+      show:
+        title: "%{name} room"
+        room: "Room"
+        prev: "Previous"
+        next: "Next"
+        no_img: "No image"
+        address:  "Address"
+        location: "Location"
+        country: "Country"
+        created_at: "Created at"
+        updated_at: "Updated at"
+      new:
+        title: "Manager new room"
+        header: "New room"
+        name: "Name"
+        address:  "Address"
+        location: "Location"
+        no_location: "No location to display"
+        create: "Submit create"
+        image: "Upload image"
+  image:
+    length: "Image should be less than 1MB"

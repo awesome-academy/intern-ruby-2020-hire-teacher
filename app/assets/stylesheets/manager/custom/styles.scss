@@ -1,0 +1,10 @@
+.carousel-size {
+  width: 500px;
+  height: 300px;
+}
+
+div#image-carousel div.item img {
+  object-fit: contain;
+  height: 300px;
+  margin: 0 auto;
+}

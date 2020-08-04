@@ -6,14 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Group.create!(name: "administration")
+
+User.create!(name: "Manager",
+             email: "manager@demo.com",
+             password: "foobar",
+             password_confirmation: "foobar",
+             activated: true,
+             group_id: 1,
+             role: 1,
+             activated_at: Time.zone.now)
+
 5.times do |n|
   name = Faker::Name.name
   Group.create!(name: name)
-end
-
-3.times do
-  role = Faker::Job.unique.field
-  Role.create!(name: role)
 end
 
 5.times do
@@ -36,7 +42,7 @@ User.create!(name: "Hoang Anh",
              activated: true,
              activated_at: Time.zone.now,
              group_id: 1,
-             role_id: 1)
+             role: 1)
 
 locations = Location.all
 

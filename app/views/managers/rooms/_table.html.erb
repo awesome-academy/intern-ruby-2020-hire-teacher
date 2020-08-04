@@ -10,7 +10,7 @@
         </button>
         <ul class="dropdown-menu pull-right" role="menu">
           <li>
-            <%= link_to "#" do %>
+            <%= link_to new_managers_room_path do %>
               <i class="fa fa-plus"></i> <%= t ".add_new" %>
             <% end %>
           </li>
@@ -22,42 +22,29 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="table-responsive">
-          <table class="table table-bordered table-hover table-striped">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th><%= t ".name" %></th>
-                <th><%= t ".location" %></th>
-                <th><%= t ".address" %></th>
-                <th><%= t ".created_at" %></th>
-                <th><%= t ".updated_at" %></th>
-                <th><%= t ".edit" %></th>
-                <th><%= t ".delete" %></th>
-              </tr>
+          <% if @rooms.present? %>
+            <table class="table table-bordered table-hover table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th><%= t ".name" %></th>
+                  <th><%= t ".address" %></th>
+                  <th><%= t ".location" %></th>
+                  <th><%= t ".country" %></th>
+                  <th><%= t ".created_at" %></th>
+                  <th><%= t ".updated_at" %></th>
+                  <th><%= t ".edit" %></th>
+                  <th><%= t ".delete" %></th>
+                </tr>
               </thead>
               <tbody>
-              <% @rooms.each do |room| %>
-                <tr>
-                  <td><%= room[:id] %></td>
-                  <td><%= room[:name] %></td>
-                  <td><%= room[:location] %></td>
-                  <td><%= room[:address] %></td>
-                  <td><%= room[:created_at] %></td>
-                  <td><%= room[:updated_at] %></td>
-                  <td align="center">
-                    <i style="cursor: pointer;"
-                      class="fa fa-pencil-square-o fa-lg" aria-hidden="true">
-                    </i>
-                  </td>
-                  <td align="center">
-                    <i style="cursor: pointer;"
-                      class="fa fa-trash fa-lg" aria-hidden="true">
-                    </i>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
+                <%= render @rooms %>
+              </tbody>
+            </table>
+            <%= paginate @rooms, theme: "twitter-bootstrap-3" %>
+          <% else %>
+            <p class="help-block"><%= t ".no_room" %></p>
+          <% end %>
         </div>
       </div>
     </div>
