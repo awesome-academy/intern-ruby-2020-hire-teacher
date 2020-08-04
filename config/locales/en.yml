@@ -50,3 +50,52 @@ en:
       role: Role
       group: Group
       create_new_account: Create New Account
+  managers:
+    warning:
+      not_correct: "Please login as manager"
+    _header:
+      home: "Book Room"
+      english: "English"
+      vietnamese: "Vietnamese"
+      toggle_nav: "Toggle navigation"
+      website: "Website"
+      test: "Test"
+      profile: "User Profile"
+      settings: "Settings"
+      logout: "Logout"
+      dashboard: "Dashboard"
+      rooms: "Rooms"
+      employees: "Employees"
+      manager: "Manager"
+      comments: "Comments about rooms"
+      active_account: "Require active account"
+      book_rooms: "List book rooms"
+    index:
+      title: "Manager Home page"
+      dashboard: "Dashboard"
+      new_comment: "New Comments!"
+      view_detail: "View Details"
+      new_task: "New Tasks!"
+      new_book: "New Booking!"
+      active_account: "New Account!"
+    notification_panel:
+      notification: "Notifications Panel"
+      view_all_alert: "View All Alerts"
+      new_comment: "New Comment"
+      minutes_demo: "4 minutes ago"
+      message_sent: "Message Sent"
+      new_task: "New Task"
+      new_book: "New Booking"
+      time_demo: "9:49 AM"
+    rooms:
+      table:
+        table_name: "List Rooms"
+        action: "Actions"
+        add_new: "Add new"
+        edit: "Edit"
+        delete: "Delete"
+        name: "Name"
+        location: "Location"
+        address: "Address"
+        created_at: "Created at"
+        updated_at: "Updated at"
