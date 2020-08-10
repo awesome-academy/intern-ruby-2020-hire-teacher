@@ -2,12 +2,12 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = Settings.model.user.email_validate_regex
   USER_PARAMS = Settings.user_params
 
-  belongs_to :role
-  belongs_to :group
   has_many :book_rooms, dependent: :destroy
   has_many :guests, dependent: :destroy
   has_many :rooms, dependent: :destroy
   has_many :reports, dependent: :destroy
+  belongs_to :role
+  belongs_to :group
 
   validates :name, presence: true
   validates :email, presence: true,

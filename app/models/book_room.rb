@@ -1,5 +1,5 @@
 class BookRoom < ApplicationRecord
+  has_many :guests, dependent: :destroy
   belongs_to :user
   belongs_to :room
-  has_many :guests, dependent: :destroy
 end

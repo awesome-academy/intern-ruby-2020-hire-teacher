@@ -11,8 +11,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
-Rails.application.config.assets.precompile += %w(bootstrap.bundle.min.js)
-Rails.application.config.assets.precompile += %w(custom.js)
-Rails.application.config.assets.precompile += %w(owl.js)
-Rails.application.config.assets.precompile += %w(manager/managers.scss)
+Rails.application.config.assets.precompile += %w(/managers.scss)
 Rails.application.config.assets.paths << Rails.root.join('node_modules/font-awesome/fonts')
+Rails.application.config.assets.precompile += %w(business/business.scss)
+Rails.application.config.assets.precompile += %w(business/business.js)

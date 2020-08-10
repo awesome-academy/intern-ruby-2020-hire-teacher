@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title yield(:title) %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link href="<%= Settings.link_font_awesome %>" rel="stylesheet">
+    <%= stylesheet_link_tag "business/business", media: "all", "data-turbolinks-track": "reload" %>
+  </head>
+  <body>
+    <%= render "business/layouts/header"%>
+    <div class="banner">
+      <div class="container">
+        <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <% end %>
+      </div>
+    </div>
+    <%= yield %>
+    <%= render "business/layouts/footer"%>
+    <%= javascript_pack_tag "business/business", "data-turbolinks-track": "reload" %>
+  </body>
+</html>

@@ -747,3 +747,7 @@ Rails/ScopeArgs:
 Rails/Validation:
   Description: "Use sexy validations."
   Enabled: true
+
+Rails/HelperInstanceVariable:
+  Description: "Do not use instance variables in helpers."
+  Enabled: false
