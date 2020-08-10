@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_03_035501) do
+ActiveRecord::Schema.define(version: 2020_08_10_020418) do
 
   create_table "book_rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "title"
@@ -27,6 +27,12 @@ ActiveRecord::Schema.define(version: 2020_08_03_035501) do
     t.index ["user_id"], name: "index_book_rooms_on_user_id"
   end
 
+  create_table "countries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -40,6 +46,22 @@ ActiveRecord::Schema.define(version: 2020_08_03_035501) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["book_room_id"], name: "index_guests_on_book_room_id"
     t.index ["user_id"], name: "index_guests_on_user_id"
+  end
+
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "link"
+    t.bigint "room_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_images_on_room_id"
+  end
+
+  create_table "locations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.bigint "country_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_locations_on_country_id"
   end
 
   create_table "reports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -60,11 +82,12 @@ ActiveRecord::Schema.define(version: 2020_08_03_035501) do
 
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
-    t.string "location"
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
+    t.bigint "location_id", null: false
+    t.index ["location_id"], name: "index_rooms_on_location_id"
     t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 
@@ -88,8 +111,11 @@ ActiveRecord::Schema.define(version: 2020_08_03_035501) do
   add_foreign_key "book_rooms", "users"
   add_foreign_key "guests", "book_rooms"
   add_foreign_key "guests", "users"
+  add_foreign_key "images", "rooms"
+  add_foreign_key "locations", "countries"
   add_foreign_key "reports", "rooms"
   add_foreign_key "reports", "users"
+  add_foreign_key "rooms", "locations"
   add_foreign_key "rooms", "users"
   add_foreign_key "users", "groups"
   add_foreign_key "users", "roles"
