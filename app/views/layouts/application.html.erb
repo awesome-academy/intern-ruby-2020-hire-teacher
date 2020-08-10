@@ -6,17 +6,18 @@
     <%= csp_meta_tag %>
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
-
   </head>
   <body>
-
-    <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %>"><%= message %></div>
-    <% end %>
     <%= render "layouts/header"%>
+    <div class="banner">
+      <div class="container">
+        <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <% end %>
+      </div>
+    </div>
     <%= yield %>
     <%= render "layouts/footer"%>
     <%= javascript_pack_tag "application", "data-turbolinks-track": "reload" %>
-
   </body>
 </html>
