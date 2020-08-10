@@ -9,7 +9,7 @@ class Managers::HomesController < ManagersController
 
   def correct_user
     @user = User.get_manager
-    return if @user && @user == current_user
+    return if @user.include? current_user
 
     flash[:warning] = t "managers.warning.not_correct"
     redirect_to home_path
