@@ -22,17 +22,6 @@ class User < ApplicationRecord
 
   scope :get_manager, ->{where "role_id = 1"}
 
-  class << self
-    def digest string
-      cost = if ActiveModel::SecurePassword.min_cost
-               BCrypt::Engine::MIN_COST
-             else
-               BCrypt::Engine.cost
-             end
-      BCrypt::Password.create string, cost: cost
-    end
-  end
-
   has_secure_password
 
   private

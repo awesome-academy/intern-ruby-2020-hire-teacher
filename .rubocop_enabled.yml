@@ -262,7 +262,7 @@ Style/LineEndConcatenation:
   Enabled: true
 
 Metrics/LineLength:
-  Description: "Limit lines to 120 characters."
+  Description: "Limit lines to 80 characters."
   Enabled: true
 
 Style/MethodCallWithoutArgsParentheses:
@@ -747,7 +747,3 @@ Rails/ScopeArgs:
 Rails/Validation:
   Description: "Use sexy validations."
   Enabled: true
-
-Rails/HelperInstanceVariable:
-  Description: "Do not use instance variables in helpers."
-  Enabled: false
