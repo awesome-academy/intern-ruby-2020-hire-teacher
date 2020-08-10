@@ -17,9 +17,9 @@ require('./vendor/bootstrap.bundle')
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-
+//= require_tree ./manager
 
 require('./custom')
 require('./owl')
 
-import "@fortawesome/fontawesome-free/js/all";
+import '@fortawesome/fontawesome-free/js/all'
