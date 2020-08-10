@@ -50,3 +50,52 @@ vi:
       role: Chức vụ
       group: Nhóm
       create_new_account: Tạo mới tài khoản
+  managers:
+    warning:
+      not_correct: "Hãy đăng nhập với tư cách là quản lý"
+    header:
+      home: "Đặt phòng"
+      english: "Tiếng Anh"
+      vietnamese: "Tiếng Việt"
+      toggle_nav: "Thay đổi điều hướng"
+      website: "Trang web"
+      test: "Demo"
+      profile: "Thông tin cá nhân"
+      settings: "Cài đặt"
+      logout: "Đăng xuất"
+      dashboard: "Bảng điều khiển"
+      rooms: "Danh sách phòng"
+      employees: "Danh sách nhân viên"
+      manager: "Quản lý"
+      comments: "Bình luận về phòng"
+      active_account: "Yêu cầu mở tài khoản"
+      book_rooms: "Danh sách đặt phòng"
+    index:
+      title: "Trang chủ Manager"
+      dashboard: "Bảng điều khiển"
+      new_comment: "Bình luận mới!"
+      view_detail: "Xem chi tiết"
+      new_task: "Nhiệm vụ mới!"
+      new_book: "Đặt phòng mới!"
+      active_account: "Tài khoản mới!"
+    notification_panel:
+      notification: "Bảng thông báo"
+      view_all_alert: "Xem tất cả"
+      new_comment: "Bình luận mới"
+      minutes_demo: "4 phút trước"
+      message_sent: "Tin nhắn đã gửi"
+      new_task: "Nhiệm vụ mới"
+      new_book: "Đặt phòng mới"
+      time_demo: "9:49 AM"
+    rooms:
+      table:
+        table_name: "Danh sách phòng"
+        action: "Hành động"
+        add_new: "Thêm mới"
+        edit: "Sửa"
+        delete: "Xóa"
+        name: "Tên"
+        location: "Vị trí"
+        address: "Địa chỉ"
+        created_at: "Ngày tạo"
+        updated_at: "Ngày cập nhật"

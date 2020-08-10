@@ -1,0 +1,116 @@
+<%= provide :title, t(".title") %>
+<div id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header"><%= t ".dashboard" %></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3 col-md-6">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-xs-3">
+                <i class="fa fa-comments fa-5x"></i>
+              </div>
+              <div class="col-xs-9 text-right">
+                <div class="huge">26</div>
+                <div><%= t ".new_comment" %></div>
+              </div>
+            </div>
+          </div>
+          <%= link_to "#" do %>
+            <div class="panel-footer">
+              <span class="pull-left"><%= t ".view_detail" %></span>
+              <span class="pull-right">
+                <i class="fa fa-arrow-circle-right"></i>
+              </span>
+              <div class="clearfix"></div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="panel panel-green">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-xs-3">
+                <i class="fa fa-tasks fa-5x"></i>
+              </div>
+              <div class="col-xs-9 text-right">
+                <div class="huge">12</div>
+                <div><%= t ".new_task" %></div>
+              </div>
+            </div>
+          </div>
+          <%= link_to "#" do %>
+            <div class="panel-footer">
+              <span class="pull-left"><%= t ".view_detail" %></span>
+              <span class="pull-right">
+                <i class="fa fa-arrow-circle-right"></i>
+              </span>
+              <div class="clearfix"></div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="panel panel-yellow">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-xs-3">
+                <i class="fa fa-shopping-cart fa-5x"></i>
+              </div>
+              <div class="col-xs-9 text-right">
+                <div class="huge">124</div>
+                <div><%= t ".new_book" %></div>
+              </div>
+            </div>
+          </div>
+          <%= link_to "#" do %>
+            <div class="panel-footer">
+              <span class="pull-left"><%= t ".view_detail" %></span>
+              <span class="pull-right">
+                <i class="fa fa-arrow-circle-right"></i>
+              </span>
+              <div class="clearfix"></div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="panel panel-red">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-xs-3">
+                <i class="fa fa-user-plus fa-5x"></i>
+              </div>
+              <div class="col-xs-9 text-right">
+                <div class="huge">13</div>
+                <div><%= t ".active_account" %></div>
+              </div>
+            </div>
+          </div>
+          <%= link_to "#" do %>
+            <div class="panel-footer">
+              <span class="pull-left"><%= t ".view_detail" %></span>
+              <span class="pull-right">
+                <i class="fa fa-arrow-circle-right"></i>
+              </span>
+              <div class="clearfix"></div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-8">
+        <%= render "managers/rooms/table" %>
+      </div>
+      <div class="col-lg-4">
+        <%= render "managers/notification_panel" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -19,6 +19,8 @@ class User < ApplicationRecord
 
   before_save :downcase_email
 
+  scope :get_manager, ->{where "role_id = 1"}
+
   class << self
     def digest string
       cost = if ActiveModel::SecurePassword.min_cost
