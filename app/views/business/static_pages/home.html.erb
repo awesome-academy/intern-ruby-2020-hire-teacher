@@ -1,5 +1,4 @@
 <% provide :title, t("header.home") %>
-<% provide :id_page, "home" %>
 <!-- Banner Starts Here -->
 <div class="page-heading about-heading header-text heading_about_page">
   <div class="container">
@@ -20,15 +19,18 @@
       <div class="col-md-12">
         <div class="section-heading">
           <h2><%= t ".list_room" %></h2>
-          <a href="#"><%= t ".read_more" %><i class="fa fa-angle-right"></i></a>
+          <%= link_to business_rooms_path do %>
+            <%= t ".read_more" %><i class="fa fa-angle-right"></i>
+          <% end %>
         </div>
       </div>
-      <div class="col-md-4">
-      </div>
-      <div class="col-md-4">
-      </div>
-      <div class="col-md-4">
-      </div>
+      <% if @rooms.any? %>
+        <% (0..2).each do |i| %>
+          <div class="col-md-4">
+            <%= render @rooms[i] %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -11,6 +11,7 @@ vi:
     history_book_room: Lịch sử đặt phòng
     update_profile: Cập nhật thông tin
     logout: Đăng xuất
+    room: Phòng
   business:
     static_pages:
       home:

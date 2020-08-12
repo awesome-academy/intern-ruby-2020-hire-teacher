@@ -1,0 +1,28 @@
+<% provide :title, t("header.room") %>
+<div class="latest-products">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-heading">
+          <h2><%= t ".list_room" %></h2>
+        </div>
+      </div>
+    </div>
+    <% if @rooms.any? %>
+      <% (0..@rooms.size - 1).step(3).each do |i| %>
+        <div class ="row">
+          <div class="col-md-4">
+            <%= render @rooms[i] if @rooms[i].present? %>
+          </div>
+          <div class="col-md-4">
+            <%= render @rooms[i+1] if @rooms[i+1].present? %>
+          </div>
+          <div class="col-md-4">
+            <%= render @rooms[i+2] if @rooms[i+2].present? %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <%= paginate @rooms, theme: Settings.theme_pagiantion %>
+  </div>
+</div>
