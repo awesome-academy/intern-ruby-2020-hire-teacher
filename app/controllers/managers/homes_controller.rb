@@ -1,17 +1,8 @@
 class Managers::HomesController < ManagersController
-  before_action :correct_user, only: :index
+  before_action :correct_manager, only: :index
 
   def index
-    @rooms = @user.rooms
-  end
-
-  private
-
-  def correct_user
-    @user = User.get_manager
-    return if @user.include? current_user
-
-    flash[:warning] = t "managers.warning.not_correct"
-    redirect_to home_path
+    @rooms = current_user.rooms.includes(location: :country)
+      .page(params[:page]).per Settings.page.size
   end
 end

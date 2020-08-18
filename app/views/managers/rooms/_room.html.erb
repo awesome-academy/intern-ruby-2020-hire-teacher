@@ -1,0 +1,19 @@
+<tr>
+  <td><%= room.id %></td>
+  <td>
+    <%= link_to room.name, managers_room_path(id: room.id) %>
+  </td>
+  <td><%= room.address %></td>
+  <td><%= room.location_name %></td>
+  <td><%= room.location.country_name %></td>
+  <td><%= l room.created_at, format: :long %></td>
+  <td><%= l room.updated_at, format: :long %></td>
+  <td align="center">
+    <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true">
+    </i>
+  </td>
+  <td align="center">
+    <i class="fa fa-trash fa-lg" aria-hidden="true">
+    </i>
+  </td>
+</tr>

@@ -20,4 +20,11 @@ class ApplicationController < ActionController::Base
     flash[:danger] = t "controller.application.logged_in"
     redirect_to login_url
   end
+
+  def correct_manager
+    return if current_user&.manager?
+
+    flash[:warning] = t "managers.warning.not_correct"
+    redirect_to business_home_path
+  end
 end

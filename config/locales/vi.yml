@@ -5,6 +5,28 @@ vi:
   log_in: Đăng nhập
   profile: Thông tin cá nhân
   base_title: Chào mừng bạn đến với web đặt phòng
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
+  views:
+    pagination:
+      first: "« Đầu"
+      last: "Cuối »"
+      previous: "‹ Trước"
+      next: "Sau ›"
+      truncate: "…"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "Không tìm thấy %{entry_name}"
+          one: "Hiển thị <b>1</b> %{entry_name}"
+          other: "Hiển thị <b>tất cả %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Hiển thị %{entry_name} <b>%{first} - %{last}
+          </b> trong <b>%{total}</b>"
   header:
     home: Trang chủ
     about: Giới thiệu
@@ -53,8 +75,13 @@ vi:
       group: Nhóm
       create_new_account: Tạo mới tài khoản
   managers:
+    success:
+      create_room: "Tạo phòng %{name} thành công!"
     warning:
-      not_correct: "Hãy đăng nhập với tư cách là quản lý"
+      not_correct: "Hãy đăng nhập với tư cách là quản trị viên"
+      show_room: "Không tồn tại phòng có id = %{id}"
+    danger:
+      create_room: "Không thể tạo phòng!"
     header:
       home: "Đặt phòng"
       english: "Tiếng Anh"
@@ -101,3 +128,26 @@ vi:
         address: "Địa chỉ"
         created_at: "Ngày tạo"
         updated_at: "Ngày cập nhật"
+        no_room: "Chưa có phòng mới để hiển thị."
+      show:
+        title: "%{name} room"
+        room: "Phòng"
+        prev: "Trước"
+        next: "Sau"
+        no_img: "Không có ảnh"
+        address:  "Địa chỉ"
+        location: "Vị trí"
+        country: "Nước"
+        created_at: "Ngày tạo"
+        updated_at: "Ngày cập nhật"
+      new:
+        title: "Quản lý thêm phòng mới"
+        header: "Phòng mới"
+        name: "Tên"
+        address:  "Địa chỉ"
+        location: "Vị trí"
+        no_location: "Chưa có vị trí để hiển thị"
+        create: "Tạo"
+        image: "Tải ảnh lên"
+  image:
+    length: "Kích thước ảnh phải nhỏ hơn 1MB"
