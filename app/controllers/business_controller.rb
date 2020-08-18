@@ -29,6 +29,6 @@ class BusinessController < ActionController::Base
   end
 
   def load_room_pagination
-    @rooms = Room.page(params[:page]).per Settings.paginationl
+    @rooms = Room.page(params[:page]).per Settings.pagination
   end
 end

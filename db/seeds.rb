@@ -17,9 +17,9 @@ User.create!(name: "Manager",
              role: 1,
              activated_at: Time.zone.now)
 
-5.times do |n|
-  name = Faker::Name.name
-  Group.create!(name: name)
+3.times do
+  role = Faker::Job.unique.field
+  Role.create!(name: role)
 end
 
 5.times do
@@ -29,10 +29,8 @@ end
   Country.create!(name: country)
 end
 
-countries = Country.all
-
 5.times do
-  countries.each{|country| country.locations.create!(name: Faker::Address.unique.city)}
+  Country.all.each{|country| country.locations.create!(name: Faker::Address.unique.city)}
 end
 
 User.create!(name: "Hoang Anh",
@@ -44,10 +42,8 @@ User.create!(name: "Hoang Anh",
              group_id: 1,
              role: 1)
 
-locations = Location.all
-
 5.times do
-  locations.each do |location|
+  Location.all.each do |location|
     name = Faker::Address.state
     address = Faker::Address.street_address
     location.rooms.create!(

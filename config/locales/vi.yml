@@ -57,6 +57,11 @@ vi:
         role: Chức vụ
         group: Nhóm
         create_new_account: Tạo mới tài khoản
+    rooms:
+      index:
+        choose_coutry: Chọn Quốc Gia
+        choose_location: Chọn Địa Điểm
+        search: Tìm kiếm
   controller:
     application:
       logged_in: Hãy đăng nhập để sử dụng tính năng
@@ -151,3 +156,5 @@ vi:
         image: "Tải ảnh lên"
   image:
     length: "Kích thước ảnh phải nhỏ hơn 1MB"
+    room:
+      error_load_room: Không tìm thấy phòng!

@@ -57,6 +57,11 @@ en:
         role: Role
         group: Group
         create_new_account: Create New Account
+    rooms:
+      index:
+          choose_coutry: Choose Country
+          choose_location: Choose Location
+          search: Search
   controller:
     application:
       logged_in: Please log in to use the feature
@@ -151,3 +156,5 @@ en:
         image: "Upload image"
   image:
     length: "Image should be less than 1MB"
+    room:
+      error_load_room: Can't find room!

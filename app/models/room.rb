@@ -17,5 +17,8 @@ class Room < ApplicationRecord
 
   accepts_nested_attributes_for :images, allow_destroy: true, reject_if: :all_blank
 
+  scope :by_name, ->(name){where("rooms.name like ?", "#{name}%")}
+  scope :by_location, ->(id){includes(:location).where(locations: {id: id})}
+  scope :by_country, ->(id){includes(location: :country).where(countries: {id: id})}
   delegate :name, to: :location, prefix: :location, allow_nil: true
 end
