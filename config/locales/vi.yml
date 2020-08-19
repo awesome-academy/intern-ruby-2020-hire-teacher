@@ -5,6 +5,8 @@ vi:
   log_in: Đăng nhập
   profile: Thông tin cá nhân
   base_title: Chào mừng bạn đến với web đặt phòng
+  image:
+    length: "Kích thước ảnh nên dưới 1 MB"
   date:
     formats:
       default: "%Y-%m-%d"
@@ -82,11 +84,13 @@ vi:
   managers:
     success:
       create_room: "Tạo phòng %{name} thành công!"
+      update_room: "Cập nhật phòng %{name} thành công!"
     warning:
       not_correct: "Hãy đăng nhập với tư cách là quản trị viên"
       show_room: "Không tồn tại phòng có id = %{id}"
     danger:
       create_room: "Không thể tạo phòng!"
+      update_room: "Không thể sửa phòng!"
     header:
       home: "Đặt phòng"
       english: "Tiếng Anh"
@@ -148,13 +152,17 @@ vi:
       new:
         title: "Quản lý thêm phòng mới"
         header: "Phòng mới"
+      edit:
+        title: "Quản lý sửa phòng"
+        header: "Sửa phỏng %{name}"
+      form:
         name: "Tên"
         address:  "Địa chỉ"
         location: "Vị trí"
         no_location: "Chưa có vị trí để hiển thị"
         create: "Tạo"
+      image_fields:
         image: "Tải ảnh lên"
-  image:
-    length: "Kích thước ảnh phải nhỏ hơn 1MB"
-    room:
-      error_load_room: Không tìm thấy phòng!
+  errors:
+    messages:
+      extension_whitelist_error: "Tệp tải lên phải là ảnh."

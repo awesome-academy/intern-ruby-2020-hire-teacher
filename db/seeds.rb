@@ -17,11 +17,6 @@ User.create!(name: "Manager",
              role: 1,
              activated_at: Time.zone.now)
 
-3.times do
-  role = Faker::Job.unique.field
-  Role.create!(name: role)
-end
-
 5.times do
   country = Faker::Address.country
   group = Faker::Ancient.hero
@@ -42,6 +37,8 @@ User.create!(name: "Hoang Anh",
              group_id: 1,
              role: 1)
 
+locations = Location.all
+
 5.times do
   Location.all.each do |location|
     name = Faker::Address.state
@@ -51,4 +48,3 @@ User.create!(name: "Hoang Anh",
       address: address,
       user_id: 1)
   end
-end

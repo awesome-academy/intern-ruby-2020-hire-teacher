@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   enum role: {manager: 1, employee: 2, trainer: 3, trainee: 4}
 
-  has_many :book_rooms, dependent: :destroy
+  has_many :events, dependent: :destroy
   has_many :guests, dependent: :destroy
   has_many :rooms, dependent: :destroy
   has_many :reports, dependent: :destroy
@@ -12,9 +12,9 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true,
+    uniqueness: true,
     length: {maximum: Settings.model.user.email_max_length},
     format: {with: VALID_EMAIL_REGEX}
-  validates :email, uniqueness: true
   validates :password, presence: true,
     length: {minimum: Settings.model.user.password_length}, allow_nil: true
   validates :role, presence: true

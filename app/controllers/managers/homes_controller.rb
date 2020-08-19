@@ -3,6 +3,6 @@ class Managers::HomesController < ManagersController
 
   def index
     @rooms = current_user.rooms.includes(location: :country)
-      .page(params[:page]).per Settings.page.size
+                         .page(params[:page]).per Settings.page.size
   end
 end

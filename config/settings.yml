@@ -13,6 +13,14 @@ page:
   size: 5
 image:
   length: <%= 1.megabytes %>
-  thumb: [50, 50]
+  thumb: [200, 200]
+  small_thumb: [50, 50]
 textarea:
   row: 3
+textarea:
+  row: 3
+room:
+  name:
+    maximum: 50
+  address:
+    maximum: 100

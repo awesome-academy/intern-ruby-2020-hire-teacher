@@ -1,9 +1,18 @@
 <div class="form-group image-container">
   <label><%= t ".image" %></label>
   <%= f.fields_for :images do |i| %>
-    <div class="flex-box first">
-      <%= i.file_field :image, class: "form-control-file"%>
+    <div class="flex-box">
+      <% if i.object.image? %>
+        <%= i.label :image do %>
+          <%= image_tag i.object.image.small_thumb.url %>
+        <% end %>
+      <% end %>
+      <%= i.file_field :image, class: "form-control-file" %>
+      <button type = "button" class="btn btn-default btn-circle delete-btn">
+        <i class="fa fa-trash"></i>
+      </button>
     </div>
+
   <% end %>
 </div>
 <div class="form-group">
