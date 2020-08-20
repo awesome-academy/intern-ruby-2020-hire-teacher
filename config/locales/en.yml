@@ -12,6 +12,10 @@ en:
       default: "%Y-%m-%d"
       short: "%b %d"
       long: "%B %d, %Y"
+  time:
+    formats:
+      date: "%m/%d/%Y"
+      time: "%I:%M %p"
   views:
     pagination:
       first: "« FIRST"
@@ -89,6 +93,7 @@ en:
     warning:
       not_correct: "Please login as manager"
       show_room: "Room not exist with id %{id}"
+      no_event: "No event yet"
     danger:
       create_room: "Can not create room!"
       update_room: "Can not update room!"
@@ -169,6 +174,22 @@ en:
         image: "Upload image"
       room:
         confirm: "Are you sure want to delete %{name} room?"
+    events:
+      table:
+        table_name: "Events"
+        title: "Title"
+        description: "Description"
+        message: "Message"
+        author: "Author"
+        date_envent: "Date event"
+        time_start: "Time start"
+        time_end: "Time end"
+        status: "Status"
+        no_event: "No event yet"
+      index:
+        title: "List Events"
+      search:
+        search: "Search..."
   errors:
     messages:
       extension_whitelist_error: "File upload must be image."

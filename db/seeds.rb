@@ -18,8 +18,6 @@ User.create!(name: "Manager",
              role: 1,
              activated_at: Time.zone.now)
 
-Group.create!(name: "administration")
-
 5.times do
   country = Faker::Address.country
   group = Faker::Ancient.hero
