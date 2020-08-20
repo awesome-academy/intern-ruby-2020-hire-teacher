@@ -5,6 +5,7 @@ en:
   log_in: Log in
   profile: Profile
   base_title: Welcome to the BookRoom Website
+  success: Success
   image:
     length: "Image size should be less than 1 MB"
   date:
@@ -65,9 +66,46 @@ en:
         create_new_account: Create New Account
     rooms:
       index:
-          choose_coutry: Choose Country
-          choose_location: Choose Location
-          search: Search
+        choose_coutry: Choose Country
+        choose_location: Choose Location
+        search: Search
+      show:
+        calendar: Calendar
+        next: Next
+        prev: Prev
+        add_event: Add Event
+        report_room: Report Room
+    events:
+      form_add_event:
+        title: Title
+        date_event: Date event
+        start: Start Time
+        end: Finish Time
+        description: Description
+        color: Color
+        add_event: Add Event
+        close: Close
+      edit:
+        title: Title
+        date_event: Date event
+        start: Start Time
+        end: Finish Time
+        description: Description
+        color: Color
+        add_event: Add Event
+        close: Close
+    calendars:
+      button_calendar:
+        next: Next
+        prev: Prev
+        add_event: Add Event
+    model:
+      event:
+        on_or_after: must be on or after today
+        between_before: must be before 5:00pm
+        between_after: must be after 8:00am
+        end_time_after_start_time: must be after the start time
+        day_off: must be the day of the week
   controller:
     application:
       logged_in: Please log in to use the feature
@@ -200,3 +238,5 @@ en:
         name_length: "Please enter up to 30 characters"
         address_required: "Please enter the specific address of the room"
         address_length: "Enter up to 50 characters"
+    room:
+      error_load_room: Can't find room!

@@ -5,6 +5,7 @@ vi:
   log_in: Đăng nhập
   profile: Thông tin cá nhân
   base_title: Chào mừng bạn đến với web đặt phòng
+  success: Thành công
   image:
     length: "Kích thước ảnh nên dưới 1 MB"
   date:
@@ -68,6 +69,44 @@ vi:
         choose_coutry: Chọn Quốc Gia
         choose_location: Chọn Địa Điểm
         search: Tìm kiếm
+      show:
+        calendar: Lịch
+        next: Trước
+        prev: Sau
+        add_event: Tạo sự kiện
+        report_room: Báo cáo về phòng
+    events:
+      form_add_event:
+        title: Tiêu đề
+        date_event: Ngày diễn ra
+        start: Thời gian bắt đầu
+        end: Thời gian kết thúc
+        description: Mô tả
+        color: Màu sắc
+        add_event: Thêm sự kiện
+        close: Đóng
+      edit:
+        title: Tiêu đề
+        date_event: Ngày diễn ra
+        start: Thời gian bắt đầu
+        end: Thời gian kết thúc
+        description: Mô tả
+        color: Màu sắc
+        add_event: Thêm sự kiện
+        close: Đóng
+    calendars:
+      button_calendar:
+        next: Trước
+        prev: Sau
+        add_event: Tạo sự kiện
+    model:
+      event:
+        on_or_after: không được đặt ngày trong quá khứ
+        between_before: phải trước 5:00 chiều
+        between_after: phải sau 8:00 sáng
+        end_time_after_start_time: phải sau thời gian bắt đầu
+        invalid_date: không phải là ngày hợp lệ
+        day_off: phải là ngày trong tuần
   controller:
     application:
       logged_in: Hãy đăng nhập để sử dụng tính năng
@@ -200,3 +239,5 @@ vi:
         name_length: "Hãy nhập tối đa 30 ký tự"
         address_required: "Hãy điền địa chỉ cụ thể của phòng"
         address_length: "Nhập tối đa 50 ký tự"
+    room:
+      error_load_room: Không tìm thấy phòng!

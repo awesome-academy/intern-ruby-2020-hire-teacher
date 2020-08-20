@@ -5,7 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Role.create!(name: "manager")
 
 Group.create!(name: "administration")
 
@@ -38,8 +37,6 @@ User.create!(name: "Hoang Anh",
              group_id: 1,
              role: 1)
 
-locations = Location.all
-
 5.times do
   Location.all.each do |location|
     name = Faker::Address.state
@@ -49,3 +46,4 @@ locations = Location.all
       address: address,
       user_id: 1)
   end
+end
