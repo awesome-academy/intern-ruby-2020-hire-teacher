@@ -11,7 +11,7 @@ h2 {
   font-weight: 600;
   text-transform: uppercase;
   display:inline-block;
-  color: $purplecccccc;
+  color: #000000;
 }
 
 .wrapper {
@@ -56,7 +56,7 @@ h2.active {
   border-bottom: 2px solid $blue5fbae9;
 }
 
-input[type=button], input[type=submit], input[type=reset], input[type=select]  {
+input[type=reset], input[type=select]  {
   background-color: $orangeff4444e6;
   border: none;
   color: $whitefff;
@@ -78,7 +78,7 @@ input[type=button], input[type=submit], input[type=reset], input[type=select]  {
   transition: all 0.3s ease-in-out;
 }
 
-input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+input[type=button]:hover, input[type=reset]:hover  {
   background-color: $redac0202e6;
   cursor: pointer;
 }

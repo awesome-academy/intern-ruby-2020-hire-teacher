@@ -25,7 +25,7 @@ class BusinessController < ActionController::Base
 
   def correct_user
     @user = User.find_by id: params[:id]
-    redirect_to business_root_url unless current_user? @user
+    redirect_to business_login_url unless current_user? @user
   end
 
   def load_room_pagination
