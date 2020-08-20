@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Role.create!(name: "manager")
 
 Group.create!(name: "administration")
 
@@ -16,6 +17,8 @@ User.create!(name: "Manager",
              group_id: 1,
              role: 1,
              activated_at: Time.zone.now)
+
+Group.create!(name: "administration")
 
 5.times do
   country = Faker::Address.country

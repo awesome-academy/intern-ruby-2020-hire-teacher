@@ -3,7 +3,7 @@ model:
     email_validate_regex: !ruby/regexp '/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i'
     email_max_length: 80
     password_length: 6
-user_params: "%i(name email password password_confirmation role_id group_id)"
+user_params: "%i(name email password password_confirmation role group_id)"
 link_font_awesome: "https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
 pagination: 9
 theme_pagiantion: "twitter-bootstrap-3"

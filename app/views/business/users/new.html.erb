@@ -13,7 +13,7 @@
           <%= f.password_field :password, class: "form-feild", placeholder: t(".password") %>
           <%= f.password_field :password_confirmation, class: "form-feild", placeholder: t(".password_confirmation") %>
           <%= f.label t(".role") %>
-          <%= f.select :role_id, options_for_select(@role), class: "form-feild" %>
+          <%= f.select :role, options_for_select(@role), class: "form-feild" %>
           <%= f.label t(".group") %>
           <%= f.select :group_id, options_for_select(@group), class:"form-feild" %>
           <%= f.submit t(".create_new_account"), class: "fourth" %>

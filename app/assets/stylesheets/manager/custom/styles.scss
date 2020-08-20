@@ -1,3 +1,5 @@
+@import './color';
+
 .carousel-size {
   width: 500px;
   height: 300px;
@@ -21,4 +23,34 @@ div.img-pre-show {
 
 .first {
   margin-bottom: 4px;
+}
+
+.animation-resize {
+  transition: transform .2s;
+
+  &:hover {
+    transform: scale(1.5);
+  }
+}
+
+img.img-margin {
+  margin-right: 8px;
+}
+
+i.edit-icon {
+    color: $primary-7;
+  }
+
+i.trash-icon {
+  color: $danger-7;
+}
+
+
+form .error {
+  color: $danger-7;
+  margin-left: 5px;
+}
+
+label.error {
+  display: inline;
 }

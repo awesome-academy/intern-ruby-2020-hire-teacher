@@ -1,7 +1,7 @@
 <tr>
   <td><%= room_counter + 1 %></td>
   <td>
-    <%= link_to room.name, managers_room_path(id: room.id) %>
+    <%= link_to room.name, managers_room_path(room) %>
   </td>
   <td><%= room.address %></td>
   <td><%= room.location_name %></td>
@@ -9,15 +9,16 @@
   <td><%= l room.created_at, format: :long %></td>
   <td><%= l room.updated_at, format: :long %></td>
   <td align="center">
-    <%= link_to edit_managers_room_path(id: room.id) do %>
-      <i style="cursor: pointer;"
-        class="fa fa-pencil-square-o fa-lg" aria-hidden="true">
-      </i>
+    <%= link_to edit_managers_room_path(id: room.id),
+      class: "btn btn-outline btn-link" do %>
+      <i class="fa fa-pencil-square-o fa-lg animation-resize edit-icon"></i>
     <% end %>
   </td>
   <td align="center">
-    <i style="cursor: pointer;"
-      class="fa fa-trash fa-lg" aria-hidden="true">
-    </i>
+    <%= link_to managers_room_path(room), method: :delete,
+      data: {confirm: t(".confirm", name: room.name)}, remote: true,
+      class: "btn btn-outline btn-link btn-id destroy-room" do %>
+      <i class="fa fa-trash fa-lg animation-resize trash-icon"></i>
+    <% end %>
   </td>
 </tr>
