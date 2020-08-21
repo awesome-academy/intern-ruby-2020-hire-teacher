@@ -1,0 +1,6 @@
+<% if @report.parent_id.nil? %>
+  $('.box-report').prepend("<%= j render @report, room: @room, report_new: Report.new %>");
+<% else %>
+  $('.replies-<%= @report.parent_id %>').prepend("<%= j render @report, room: @room %>");
+<% end %>
+$('#form-report form textarea').val('');

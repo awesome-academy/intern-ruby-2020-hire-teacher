@@ -2,19 +2,27 @@
   <label><%= t ".image" %></label>
   <%= f.fields_for :images do |i| %>
     <div class="flex-box">
-      <% if i.object.image? %>
-        <%= i.label :image do %>
-          <%= image_tag i.object.image.small_thumb.url,
-            class: "animation-resize img-margin" %>
-        <% end %>
+      <%= i.label :image do %>
+        <span class="btn btn-outline btn-link mr-8 animation-resize">
+          <i class="fa fa-cloud-upload fa-2x"></i>
+        </span>
       <% end %>
-      <%= i.file_field :image, class: "form-control-file" %>
+      <div class="imgs">
+        <div hidden>
+          <%= i.file_field :image, class: "images", accept: "image/*" %>
+        </div>
+        <div class="show-img">
+          <% if i.object.image? %>
+            <%= image_tag i.object.image.thumb.url,
+              class: "mr-8" %>
+          <% end %>
+        </div>
+      </div>
       <button type = "button"
         class="btn btn-default btn-circle delete-btn animation-resize">
         <i class="fa fa-trash"></i>
       </button>
     </div>
-
   <% end %>
 </div>
 <div class="form-group">

@@ -1,6 +1,7 @@
 class Business::RoomsController < BusinessController
   before_action :load_room, only: :show
   before_action :load_room_pagination, only: :index
+  before_action :logged_in_user
 
   def index
     @countries = Country.pluck :name, :id
@@ -15,6 +16,7 @@ class Business::RoomsController < BusinessController
   end
 
   def show
+    @report = Report.new
     @reports = @room.reports.page(params[:page]).per Settings.pagination_commit
   end
 
@@ -30,8 +32,8 @@ class Business::RoomsController < BusinessController
 
   def filter
     @rooms = Room.by_name(params[:search_name])
-                  .by_location(params[:filter_location])
-                  .by_country(params[:filter_country])
-                  .page(params[:page]).per Settings.pagination
+                 .by_location(params[:filter_location])
+                 .by_country(params[:filter_country])
+                 .page(params[:page]).per Settings.pagination
   end
 end

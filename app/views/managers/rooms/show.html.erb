@@ -43,6 +43,10 @@
                 </small>
               </p>
             </address>
+            <%= link_to edit_managers_room_path(id: @room.id),
+              class: "btn btn-default btn-circle animation-resize" do %>
+              <i class="fa fa-pencil-square-o fa-lg edit-icon"></i>
+            <% end %>
           </div>
         </div>
       </div>

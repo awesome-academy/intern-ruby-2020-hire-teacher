@@ -26,7 +26,7 @@ class Managers::RoomsController < ManagersController
   end
 
   def edit
-    return if @images
+    return if @images.present?
 
     @room.images.build
   end
@@ -42,14 +42,10 @@ class Managers::RoomsController < ManagersController
   end
 
   def destroy
+    @status = @room.destroy ? Settings.status.pass : Settings.status.fail
     respond_to do |format|
-      if @room.destroy
-        format.html{redirect_to managers_root_path, notice: t("managers.success.destroy_room", name: @room.name)}
-        format.js
-      else
-        format.html
-        format.json{render json: @room.errors, status: :unprocessable_entity}
-      end
+      format.html{redirect_to managers_root_path}
+      format.js
     end
   end
 

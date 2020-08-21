@@ -7,7 +7,8 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.2.2",
-    "bootstrap": "4.3.1",
+    "bootstrap": "^4.5.2",
+    "codyhouse-framework": "^2.7.6",
     "expose-loader": "^1.0.0",
     "font-awesome": "4.7.0",
     "i18n-js": "^3.7.1",
@@ -15,6 +16,7 @@
     "jquery-validation": "^1.19.2",
     "popper.js": "^1.16.1",
     "rails-erb-loader": "^5.5.2",
+    "toastr": "^2.1.4",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
