@@ -17,7 +17,7 @@ class Room < ApplicationRecord
   validates :address, presence: true, length: {maximum: Settings.room.address.maximum}
   validates :location_id, presence: true
 
-  scope :by_name, ->(name){where("rooms.name like ?", "#{name}%")}
+  scope :by_name, ->(name){where("rooms.name like ?", "%#{name}%")}
   scope :by_location, ->(id){includes(:location).where(locations: {id: id})}
   scope :by_country, ->(id){includes(location: :country).where(countries: {id: id})}
 end

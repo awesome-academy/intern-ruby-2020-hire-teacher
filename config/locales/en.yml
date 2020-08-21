@@ -188,10 +188,12 @@ en:
         time_end: "Time end"
         status: "Status"
         no_event: "No event yet"
+        room: "Room"
       index:
         title: "List Events"
       search:
         search: "Search..."
+        by: "By"
   errors:
     messages:
       extension_whitelist_error: "File upload must be image."
@@ -206,3 +208,10 @@ en:
     length: "Image should be less than 1MB"
     room:
       error_load_room: Can't find room!
+  option:
+    event_title: "Event title"
+    room_name: "Room name"
+    room_address: "Room address"
+    location_name: "Location name"
+    country_name: "Country name"
+    user_name: "User name"

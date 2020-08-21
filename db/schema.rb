@@ -10,27 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_19_014347) do
+ActiveRecord::Schema.define(version: 2020_08_20_222730) do
 
-  create_table "book_rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "countries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.datetime "time_start"
-    t.datetime "time_end"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.boolean "status", default: true
     t.string "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
     t.bigint "room_id", null: false
-    t.index ["room_id"], name: "index_book_rooms_on_room_id"
-    t.index ["user_id"], name: "index_book_rooms_on_user_id"
-  end
-
-  create_table "countries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.integer "color"
+    t.datetime "date_event"
+    t.index ["room_id"], name: "index_events_on_room_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -41,10 +43,10 @@ ActiveRecord::Schema.define(version: 2020_08_19_014347) do
 
   create_table "guests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "book_room_id", null: false
+    t.bigint "event_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["book_room_id"], name: "index_guests_on_book_room_id"
+    t.index ["event_id"], name: "index_guests_on_event_id"
     t.index ["user_id"], name: "index_guests_on_user_id"
   end
 
@@ -76,12 +78,12 @@ ActiveRecord::Schema.define(version: 2020_08_19_014347) do
 
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
-    t.string "location"
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
     t.bigint "location_id", null: false
+    t.boolean "active", default: true
     t.index ["location_id"], name: "index_rooms_on_location_id"
     t.index ["user_id"], name: "index_rooms_on_user_id"
   end
@@ -101,9 +103,9 @@ ActiveRecord::Schema.define(version: 2020_08_19_014347) do
     t.index ["group_id"], name: "index_users_on_group_id"
   end
 
-  add_foreign_key "book_rooms", "rooms"
-  add_foreign_key "book_rooms", "users"
-  add_foreign_key "guests", "book_rooms"
+  add_foreign_key "events", "rooms"
+  add_foreign_key "events", "users"
+  add_foreign_key "guests", "events"
   add_foreign_key "guests", "users"
   add_foreign_key "images", "rooms"
   add_foreign_key "locations", "countries"
