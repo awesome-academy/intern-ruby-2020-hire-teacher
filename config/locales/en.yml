@@ -4,7 +4,9 @@ en:
   sign_up: Sign up
   log_in: Log in
   profile: Profile
+  report_room: Report Room
   base_title: Welcome to the BookRoom Website
+  ago: day ago
   image:
     length: "Image size should be less than 1 MB"
   date:
@@ -200,3 +202,7 @@ en:
         name_length: "Please enter up to 30 characters"
         address_required: "Please enter the specific address of the room"
         address_length: "Enter up to 50 characters"
+  image:
+    length: "Image should be less than 1MB"
+    room:
+      error_load_room: Can't find room!

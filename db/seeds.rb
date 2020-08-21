@@ -38,8 +38,6 @@ User.create!(name: "Hoang Anh",
              group_id: 1,
              role: 1)
 
-locations = Location.all
-
 5.times do
   Location.all.each do |location|
     name = Faker::Address.state
@@ -49,3 +47,10 @@ locations = Location.all
       address: address,
       user_id: 1)
   end
+end
+
+50.times do |n|
+  Report.create!(comment: Faker::Lorem.sentence(38),
+                 user_id: 1,
+                 room_id: 1)
+end

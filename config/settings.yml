@@ -24,3 +24,7 @@ room:
     maximum: 50
   address:
     maximum: 100
+pagination: 12
+pagination_commit: 20
+format_date: "%d-%m-%Y"
+many_day: 2

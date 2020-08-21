@@ -14,7 +14,9 @@ class Business::RoomsController < BusinessController
     filter
   end
 
-  def show; end
+  def show
+    @reports = @room.reports.page(params[:page]).per Settings.pagination_commit
+  end
 
   private
 

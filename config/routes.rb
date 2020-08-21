@@ -15,7 +15,14 @@ Rails.application.routes.draw do
     end
 
     namespace :managers do
-      root to: "homes#index"
+      root "static_pages#home"
+      get "/about", to: "static_pages#about"
+      get "/signup", to: "users#new"
+      post "/signup", to: "users#create"
+      resources :users, except: %i(new create)
+      get "/login", to: "sessions#new"
+      post "/login", to: "sessions#create"
+      delete "/logout", to: "sessions#destroy"
       resources :rooms
       resources :events
     end
