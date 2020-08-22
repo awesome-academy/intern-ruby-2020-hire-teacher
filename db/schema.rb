@@ -66,12 +66,21 @@ ActiveRecord::Schema.define(version: 2020_08_26_024112) do
     t.index ["country_id"], name: "index_locations_on_country_id"
   end
 
+  create_table "report_hierarchies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "ancestor_id", null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations", null: false
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "report_anc_desc_udx", unique: true
+    t.index ["descendant_id"], name: "report_desc_idx"
+  end
+
   create_table "reports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "room_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "comment"
+    t.integer "parent_id"
     t.index ["room_id"], name: "index_reports_on_room_id"
     t.index ["user_id"], name: "index_reports_on_user_id"
   end

@@ -8,6 +8,8 @@ en:
   base_title: Welcome to the BookRoom Website
   ago: day ago
   not_find_event: Can't find event
+  send: Send
+  sure: Sure?
   image:
     length: "Image size should be less than 1 MB"
   date:

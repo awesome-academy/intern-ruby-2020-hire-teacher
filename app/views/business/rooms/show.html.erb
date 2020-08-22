@@ -56,10 +56,11 @@
           <i class="fa fa-map-marker"></i> <%= @room.name %>
         </p>
         <br>
-        <% if @reports.present? %>
-          <%= render @reports , report: @reports%>
-        <% end %>
-        <%= paginate @reports, theme: "twitter-bootstrap-3" %>
+        <%= render "business/reports/report_form", room: @room, parent_id: nil, report_new: @report %>
+        <div class="box-report">
+          <%= reports_tree_for @room.reports.hash_tree(limit_depth: 2),
+            @room, Report.new %>
+        </div>
         <div class="col-md-3">
           <div class="section-heading">
           </div>

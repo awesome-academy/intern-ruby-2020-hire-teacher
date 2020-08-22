@@ -7,6 +7,8 @@ vi:
   base_title: Chào mừng bạn đến với web đặt phòng
   report_room: Phản hồi
   ago: ngày trước
+  send: Gửi
+  sure: Bạn chắc chứ?
   not_find_event: Không tìm thấy sự kiện tương ứng
   image:
     length: "Kích thước ảnh nên dưới 1 MB"

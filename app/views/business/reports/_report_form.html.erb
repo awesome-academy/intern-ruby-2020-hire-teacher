@@ -1,0 +1,10 @@
+<span id="form-report">
+  <%= form_for :report, url: business_room_reports_path(room.id), remote: true do |f| %>
+    <%= f.hidden_field :parent_id, value: parent_id %>
+    <%= f.hidden_field :room_id, value: room.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.text_area :comment, placeholder: place_report(parent_id),
+      required: true, class: "form-control text-report" %>
+    <%= f.submit t("send"), class: "btn-send-report" %>
+  <% end %>
+</span>

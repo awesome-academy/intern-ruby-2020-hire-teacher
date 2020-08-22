@@ -128,3 +128,31 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
 #icon {
   width:60%;
 }
+
+.image-user{
+  width: 50px;
+}
+
+.replies {
+  margin-left: 50px;
+}
+
+.btn-send-report{
+  background-color: $orangeff4444e6;
+  border: none;
+  color: $whitefff;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 13px;
+  -webkit-box-shadow: 0 10px 30px 0 $blue95186233;
+  box-shadow: 0 10px 30px 0 $blue95186233;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}

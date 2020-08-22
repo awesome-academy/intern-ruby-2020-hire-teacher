@@ -1,6 +1,6 @@
 class Business::EventsController < BusinessController
-  before_action :set_event, only: %i(show edit update destroy)
   before_action :logged_in_user
+  before_action :set_event, only: %i(show edit update destroy)
 
   def index; end
 
@@ -12,9 +12,8 @@ class Business::EventsController < BusinessController
     @event_new = Event.new event_params
     if @event_new.save
       flash[:success] = t "success"
-      # redirect_to controller: "business/rooms", action: :show,
-      #   id: params[:event_new][:room_id], day: params[:event_new][:date_event]
-      redirect_to business_room_path(id: params[:event_new][:room_id], day: params[:event_new][:date_event])
+      redirect_to business_room_path id: params[:event_new][:room_id],
+        day: params[:event_new][:date_event]
     else
       redirect_to business_room_path params[:event_new][:room_id]
       flash[:danger] = @event_new.errors.messages
@@ -31,7 +30,8 @@ class Business::EventsController < BusinessController
       redirect_to business_room_path @event.room_id
     else
       flash[:danger] = @event.errors.messages
-      redirect_to business_room_path @event.room_id
+      redirect_to business_room_path id: params[:event_new][:room_id],
+        day: params[:event_new][:date_event]
     end
   end
 
