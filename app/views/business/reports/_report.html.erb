@@ -1,5 +1,28 @@
-<div class="section-heading">
-  <p><%= report.user_name %></p>
-  <p><%= report.comment  %></p>
-  <p><%= day_report report.created_at %></p>
+<div id="form-report<%= report.id %>">
+  <div class="row">
+    <div class="col-md-1">
+      <%= image_tag "avatar.png", class: "image-user" %>
+    </div>
+    <div class="col-md-11">
+      <%= report.user.name %>:
+      <span class="timestamp">
+        <%= time_ago_in_words report.created_at %>
+      </span><br/>
+      <p><%= report.comment %></p>
+      <%= link_to "delete", business_room_report_path(room, report),
+        id: :delete, method: :delete,
+        data: {confirm: "sure"}, remote: true %>
+    </div>
+  </div>
+  <% if report.parent_id.nil?%>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-11">
+        <%= render "business/reports/report_form", room: room, parent_id: report.id,
+        report_new: report_new %>
+      </div>
+    </div>
+  <% end %>
+  <div class="replies replies-<%= report.id %>">
+  </div>
 </div>

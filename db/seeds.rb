@@ -47,7 +47,7 @@ User.create!(name: "Hoang Anh",
   end
 end
 
-50.times do |n|
+5.times do |n|
   Report.create!(comment: Faker::Lorem.sentence(38),
                  user_id: 1,
                  room_id: 1)

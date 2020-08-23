@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
       resources :users, except: %i(new create)
       resources :rooms, only: %i(index show)
+      resources :rooms do
+        resources :votes, only: [:create, :destroy]
+        resources :reports, only: [:create, :destroy]
+      end
     end
 
     namespace :managers do
