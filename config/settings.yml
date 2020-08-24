@@ -35,6 +35,11 @@ options:
   option.location_name: "location_name"
   option.country_name: "country_name"
   option.user_name: "user_name"
-status
+status:
   pass: 1
   fail: 0
+img_url: assets/images/heading-6-1920x500.jpg
+loop:
+  start: 0
+  end_19: 19
+loop_4: [0,1,2,3]

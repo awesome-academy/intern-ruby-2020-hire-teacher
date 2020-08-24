@@ -1,0 +1,6 @@
+<ul>
+  <% t = Time.parse("08 : 00") %>
+  <% (Settings.loop.start..Settings.loop.end_19).each do |i| %>
+    <li><span><%= (t + i*1800).strftime("%H : %M") %></span></li>
+  <% end %>
+</ul>
