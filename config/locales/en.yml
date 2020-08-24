@@ -173,8 +173,9 @@ en:
         location: "Location"
         no_location: "No location to display"
         create: "Submit create"
-      image_fields:
         image: "Upload image"
+      image_fields:
+        remove: "Remove"
       room:
         confirm: "Are you sure want to delete %{name} room?"
       destroy:

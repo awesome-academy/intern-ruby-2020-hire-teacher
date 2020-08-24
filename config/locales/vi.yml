@@ -173,8 +173,9 @@ vi:
         location: "Khu vực"
         no_location: "Chưa có khu vực để hiển thị"
         create: "Tạo"
-      image_fields:
         image: "Tải ảnh lên"
+      image_fields:
+        remove: "Xóa"
       room:
         confirm: "Bạn có chắc muốn xóa phòng %{name}?"
       destroy:

@@ -18,8 +18,31 @@
       <p class="help-block"><%= t ".no_location" %></p>
     <% end %>
   </div>
-
-  <%= render "managers/rooms/image_fields", f: f %>
+  <div class="form-group">
+    <div class="row">
+      <label class= "col-md-3 control-label">
+        <%= t ".image" %>
+      </label>
+      <div class="col-md-4">
+        <table id="form-images">
+          <tbody>
+            <%= f.fields_for :images do |image| %>
+              <%= render "managers/rooms/image_fields", f: image %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <%= link_to_add_association f, :images,
+        class: "btn btn-default",
+        data: {
+        association_insertion_node: "#form-images",
+        association_insertion_method: :append} do %>
+        <i class="fa fa-plus fa-lg"></i>
+      <% end %>
+    </div>
+  </div>
 
   <%= f.submit submit, class: "btn btn-#{btn}", id: "submit_room" %>
 <% end %>

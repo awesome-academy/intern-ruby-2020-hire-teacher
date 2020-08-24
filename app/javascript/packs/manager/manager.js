@@ -12,29 +12,22 @@ require('packs/manager/raphael.min')
 require('packs/manager/morris.min')
 require('packs/manager/morris-data')
 require('packs/manager/startmin')
+require('cocoon')
 
 import I18n from 'i18n-js';
 
 global.I18n = I18n;
 
 $(document).on('turbolinks:load', function () {
-  $('input[type=file]').bind('change', function (e) {
+  $('#form-images').on('change', 'input[type=file]', function (e) {
     let file_size = $(this)[0].files[0].size / 1024 / 1024;
-    let tag = $(this).parent().parent().find('.show-img');
+    let tag = $(this).closest('td').next('td');
     validate_image(file_size, tag, e);
   });
 
   setTimeout(function() {
     $('#flash').slideUp();
   }, TIME_OUT);
-
-  $('#add_js_btn').on('click', function() {
-    addImageField();
-  });
-
-  $('.delete-btn').on('click', function() {
-    $(this).parent().remove();
-  });
 
   $('form[name="form_room"]').validate({
     rules: {
@@ -63,43 +56,12 @@ $(document).on('turbolinks:load', function () {
   });
 });
 
-function addImageField() {
-  let length = document.getElementsByClassName('flex-box').length;
-  let div = document.createElement('div');
-  div.className = 'flex-box';
-  div.innerHTML =
-  ` <label for="room_images_attributes_${length}_image">
-      <span class="btn btn-outline btn-link mr-8 animation-resize">
-        <i class="fa fa-cloud-upload fa-2x"></i>
-      </span>
-    </label>
-    <div class="imgs">
-      <div hidden>
-        <input class="images" type="file" name="room[images_attributes][${length}][image]"
-          id="room_images_attributes_${length}_image" accept="image/*">
-      </div>
-      <div class="show-img">
-      </div>
-    </div>
-    <button type="button" class="btn btn-default btn-circle delete-btn animation-resize">
-      <i class="fa fa-trash"></i>
-    </button>
-    <hr>`
-  $('.image-container').append(div);
-  $(div).find('button').on('click', () => div.remove());
-  $(div).find('input').bind('change', (e) => {
-    let file_size = $(div).find('input')[0].files[0].size / 1024 / 1024;
-    let tag = $(div).find('.show-img');
-    validate_image(file_size, tag, e);
-  });
-}
-
 function validate_image(file_size, tag, e) {
   if (file_size > 1) {
     alert(I18n.t('js.validates.image.max_size'));
     $(this).val(null);
   } else {
-    tag.html(`<img src='${URL.createObjectURL(e.target.files[0])}' class='preview mr-8'>`);
+    tag.html(`<img src='${URL.createObjectURL(e.target.files[0])}' class='preview'>`);
   }
 }
 
