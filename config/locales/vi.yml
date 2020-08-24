@@ -176,9 +176,6 @@ vi:
         image: "Tải ảnh lên"
       room:
         confirm: "Bạn có chắc muốn xóa phòng %{name}?"
-      destroy:
-        success: "Phòng đã được xóa!"
-        danger: "Phòng này dường như không tồn tại!"
     events:
       table:
         table_name: "Sự kiện"
@@ -207,8 +204,6 @@ vi:
         name_length: "Hãy nhập tối đa 30 ký tự"
         address_required: "Hãy điền địa chỉ cụ thể của phòng"
         address_length: "Nhập tối đa 50 ký tự"
-      image:
-        max_size: "Kích cỡ ảnh nên nhỏ hơn 1MB"
   image:
     length: "Kích thước ảnh phải nhỏ hơn 1MB"
     room:

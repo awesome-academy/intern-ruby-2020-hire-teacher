@@ -69,9 +69,7 @@
     </li>
     <li class="dropdown">
       <%= link_to "#", {class: "dropdown-toggle", "data-toggle": "dropdown"} do %>
-        <% if logged_in? %>
-          <i class="fa fa-user fa-fw"></i> <%= current_user.name %>
-        <% end %>
+        <i class="fa fa-user fa-fw"></i> <%= t ".test" %>
         <b class="caret"></b>
       <% end %>
       <ul class="dropdown-menu dropdown-user">

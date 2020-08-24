@@ -11,12 +11,8 @@ div#image-carousel div.item img {
   margin: 0 auto;
 }
 
-div.img-pre-show, .mr-4 {
+div.img-pre-show {
   margin-right: 4px;
-}
-
-.mr-8 {
-  margin-right: 8px;
 }
 
 .flex-box {
@@ -36,10 +32,8 @@ div.img-pre-show, .mr-4 {
   }
 }
 
-img.preview {
-  width: 200px;
-  height: 150px;
-  object-fit: cover;
+img.img-margin {
+  margin-right: 8px;
 }
 
 i.edit-icon {
