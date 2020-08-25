@@ -19,18 +19,17 @@ ActiveRecord::Schema.define(version: 2020_08_20_222730) do
   end
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.boolean "status", default: true
-    t.string "message"
+    t.text "title"
+    t.bigint "room_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "description"
+    t.string "message"
     t.bigint "user_id", null: false
-    t.bigint "room_id", null: false
     t.integer "color"
     t.datetime "date_event"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.index ["room_id"], name: "index_events_on_room_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end

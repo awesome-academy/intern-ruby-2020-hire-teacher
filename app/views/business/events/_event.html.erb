@@ -7,7 +7,12 @@
           <% @event_load.each do |event_load| %>
             <% if event_load.date_event.strftime(Settings.format_date).eql? (@monday + i).strftime(Settings.format_date) %>
               <% if event_load.user_id.eql? current_user.id %>
-                <%= render "business/events/event_correct", event_load: event_load %>
+                <li class="cd-schedule__event">
+                  <a data-start="<%= event_load.start_time.to_s(:time) %>"
+                    data-end="<%= event_load.end_time.to_s(:time) %>" data-event="event-<%= check_date event_load %>" href="#0">
+                    <em class="cd-schedule__name"></em>
+                  </a>
+                </li>
               <% else %>
                 <li class="cd-schedule__event">
                   <a data-start="<%= event_load.start_time.to_s(:time) %>"

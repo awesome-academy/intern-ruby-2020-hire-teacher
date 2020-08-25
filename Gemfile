@@ -29,6 +29,7 @@ gem "rails-i18n"
 gem "sass-rails", ">= 6"
 gem "toastr-rails"
 gem "turbolinks", "~> 5"
+gem "validates_timeliness", "~> 5.0.0.beta1"
 gem "webpacker", "~> 4.0"
 
 group :development, :test do

@@ -42,4 +42,15 @@ img_url: assets/images/heading-6-1920x500.jpg
 loop:
   start: 0
   end_19: 19
-loop_4: [0,1,2,3]
+loop_4: [0,1,2,3,4]
+event:
+  desc:
+    max_length: 80
+  title:
+    max_length: 15
+  time:
+    start: "8:00am"
+    end: "5:00pm"
+event_params: "%i(title date_event start_time end_time description user_id room_id color)"
+array_color: [["Smalt Blue", 1], ["Martinique", 2], ["Edward", 3], ["Rajah", 4]]
+color_passed: 5

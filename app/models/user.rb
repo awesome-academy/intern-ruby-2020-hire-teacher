@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = Settings.model.user.email_validate_regex
-  USER_PARAMS = Settings.user_params
+  USER_PARAMS = %i(name email password password_confirmation role_id group_id).freeze
 
   enum role: {manager: 1, employee: 2, trainer: 3, trainee: 4}
 
