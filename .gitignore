@@ -46,3 +46,6 @@ config/environments/*.local.yml
 .framgia-ci-result.temp.yml
 /public/uploads/
 /public/upload/
+
+# Ignore application configuration
+/config/application.yml

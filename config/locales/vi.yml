@@ -97,6 +97,7 @@ vi:
       not_correct: "Hãy đăng nhập với tư cách là quản trị viên"
       show_room: "Không tồn tại phòng có id = %{id}"
       no_event: "Chưa có sự kiện"
+      locking: "Chưa thực hiện được action"
     danger:
       create_room: "Không thể tạo phòng!"
       update_room: "Không thể sửa phòng!"
@@ -136,12 +137,20 @@ vi:
       new_book: "Đặt phòng mới"
       time_demo: "9:49 AM"
     rooms:
+      index:
+        title: "Danh sách phòng"
+        dashboard: "Bảng điều khiển"
+        new_comment: "Bình luận mới!"
+        view_detail: "Xem chi tiết"
+        new_task: "Nhiệm vụ mới!"
+        new_book: "Đặt phòng mới!"
+        active_account: "Tài khoản mới!"
       table:
         table_name: "Danh sách phòng"
         action: "Hành động"
         add_new: "Thêm mới"
         edit: "Sửa"
-        delete: "Xóa"
+        delete: "Trạng thái"
         name: "Tên"
         location: "Khu vực"
         address: "Địa chỉ"
@@ -165,7 +174,7 @@ vi:
         submit: "Tạo"
       edit:
         title: "Quản lý sửa phòng"
-        header: "Sửa phỏng %{name}"
+        header: "Sửa phòng %{name}"
         submit: "Cập nhật"
       form:
         name: "Tên"
@@ -177,10 +186,15 @@ vi:
       image_fields:
         remove: "Xóa"
       room:
-        confirm: "Bạn có chắc muốn xóa phòng %{name}?"
+        open: "Bạn có chắc muốn mở phòng %{name}?"
+        lock: "Bạn có chắc muốn khóa phòng %{name}?"
       destroy:
         success: "Phòng đã được xóa!"
         danger: "Phòng này dường như không tồn tại!"
+    room_actives:
+      update:
+        open: "Bạn có chắc muốn mở phòng %{name}?"
+        lock: "Bạn có chắc muốn khóa phòng %{name}?"
     events:
       table:
         table_name: "Sự kiện"
@@ -224,3 +238,6 @@ vi:
     user_name: "Người tạo"
     room:
       error_load_room: Không tìm thấy phòng!
+  user_mailer:
+    room_locking: "Chào bạn, quản trị viên đã khóa phòng %{name}, bạn nên đặt một phòng khác!"
+    link: "Đặt phòng mới"

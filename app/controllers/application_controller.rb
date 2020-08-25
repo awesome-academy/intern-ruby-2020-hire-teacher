@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   include SessionsHelper
+  include RoomsHelper
 
   before_action :set_locale
 
@@ -37,7 +38,7 @@ class ApplicationController < ActionController::Base
       return
     else
       flash[:warning] = t "managers.warning.show_room", id: params[:id]
-      redirect_to managers_root_path
+      redirect_to managers_rooms_path
     end
   end
 end

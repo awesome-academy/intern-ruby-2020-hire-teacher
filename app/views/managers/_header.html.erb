@@ -1,6 +1,6 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="navbar-header">
-    <%= link_to t(".home"), "#", class: "navbar-brand" %>
+    <%= link_to t(".home"), business_home_path, class: "navbar-brand" %>
   </div>
 
   <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -13,7 +13,7 @@
 
   <ul class="nav navbar-nav navbar-left navbar-top-links">
     <li>
-      <%= link_to "#" do %>
+      <%= link_to business_home_path do %>
         <i class="fa fa-home fa-fw"></i> <%= t ".website" %>
       <% end %>
     </li>
@@ -87,7 +87,7 @@
         </li>
         <li class="divider"></li>
         <li>
-          <%= link_to "#" do %>
+          <%= link_to business_logout_path, method: :delete, class: "dropdown-item" do %>
             <i class="fa fa-sign-out fa-fw"></i> <%= t ".logout" %>
           <% end %>
         </li>
@@ -101,12 +101,12 @@
         <li class="sidebar-head first">
         </li>
         <li>
-          <%= link_to managers_root_path, class: "active" do %>
+          <%= link_to "#", class: "active" do %>
             <i class="fa fa-dashboard fa-fw"></i> <%= t ".dashboard" %>
           <% end %>
         </li>
         <li>
-          <%= link_to "#" do %>
+          <%= link_to managers_rooms_path do %>
             <i class="fa fa-table fa-fw"></i> <%= t ".rooms" %>
           <% end %>
         </li>

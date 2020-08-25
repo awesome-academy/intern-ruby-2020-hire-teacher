@@ -43,10 +43,20 @@
                 </small>
               </p>
             </address>
-            <%= link_to edit_managers_room_path(id: @room.id),
-              class: "btn btn-default btn-circle animation-resize" do %>
-              <i class="fa fa-pencil-square-o fa-lg edit-icon"></i>
-            <% end %>
+            <div>
+              <%= link_to edit_managers_room_path(@room),
+                class: "btn btn-default btn-circle animation-resize mr-8" do %>
+                <i class="fa fa-pencil-square-o fa-lg edit-icon"></i>
+              <% end %>
+              <%= link_to managers_room_active_path(@room), method: :patch, remote: true,
+                class: "btn btn-default btn-circle animation-resize active-locking" do %>
+                <% if @room.locked? %>
+                  <i class="fa fa-lock fa-lg trash-icon"></i>
+                <% else %>
+                  <i class="fa fa-unlock fa-lg unlock-icon"></i>
+                <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
