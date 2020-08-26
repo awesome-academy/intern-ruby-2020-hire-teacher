@@ -168,12 +168,6 @@ vi:
     rooms:
       index:
         title: "Danh sách phòng"
-        dashboard: "Bảng điều khiển"
-        new_comment: "Bình luận mới!"
-        view_detail: "Xem chi tiết"
-        new_task: "Nhiệm vụ mới!"
-        new_book: "Đặt phòng mới!"
-        active_account: "Tài khoản mới!"
       table:
         table_name: "Danh sách phòng"
         action: "Hành động"
@@ -186,6 +180,7 @@ vi:
         created_at: "Ngày tạo"
         updated_at: "Ngày cập nhật"
         no_room: "Chưa có phòng mới để hiển thị."
+        total_record: "Tổng số bản ghi"
       show:
         title: "%{name} room"
         room: "Phòng"
@@ -220,6 +215,11 @@ vi:
       destroy:
         success: "Phòng đã được xóa!"
         danger: "Phòng này dường như không tồn tại!"
+      filter:
+        filter: "Lọc"
+        search: "Tìm kiếm theo tên phòng"
+        label_date: "Ngày tạo"
+        search_btn: "Tìm kiếm"
     room_actives:
       update:
         open: "Bạn có chắc muốn mở phòng %{name}?"
@@ -267,6 +267,9 @@ vi:
     user_name: "Người tạo"
     room:
       error_load_room: Không tìm thấy phòng!
+    open: "Phòng đang mở"
+    lock: "Phòng bị khóa"
+    all: "Tất cả"
   user_mailer:
     room_locking: "Chào bạn, quản trị viên đã khóa phòng %{name}, bạn nên đặt một phòng khác!"
     link: "Đặt phòng mới"

@@ -5,6 +5,10 @@
     <% end %>
   </div>
   <div class="panel-body">
+    <h4 class="help-block">
+      <%= t ".total_record" %>:
+      <%= events.present? ? events.total_count : Settings.status.fail %>
+    </h4>
     <% if events.present? %>
       <div class="table-responsive">
         <table class="table table-bordered table-hover" id="table-event">

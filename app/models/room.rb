@@ -22,9 +22,13 @@ class Room < ApplicationRecord
 
   after_update :send_email
 
-  scope :by_name, ->(name){where("rooms.name like ?", "%#{name}%")}
+  scope :join_location_country, ->{includes location: :country}
+  scope :by_name, ->(name){where "rooms.name like ?", "%#{name}%"}
   scope :by_location, ->(id){includes(:location).where(locations: {id: id})}
-  scope :by_country, ->(id){includes(location: :country).where(countries: {id: id})}
+  scope :by_country, ->(id){join_location_country.where(countries: {id: id})}
+  scope :by_created_at, ->(date){where("date(created_at) = ? ", date) if date.present?}
+  scope :by_active, ->(status){where(active: status) if status.present?}
+  scope :desc_created_at, ->{order created_at: :desc}
 
   private
 

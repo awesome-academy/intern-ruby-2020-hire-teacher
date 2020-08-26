@@ -31,6 +31,7 @@ class Event < ApplicationRecord
   scope :by_location_name, ->(name){where "locations.name LIKE ?", "%#{name}%"}
   scope :by_country_name, ->(name){where "countries.name LIKE ?", "%#{name}%"}
   scope :by_user_name, ->(name){where "users.name LIKE ?", "%#{name}%"}
+  scope :desc_date_event, ->{order "events.date_event DESC"}
 
   delegate :name, :id, to: :user, prefix: :user
   delegate :name, :address, :id, to: :room, prefix: :room
