@@ -1,4 +1,5 @@
 class Business::UsersController < BusinessController
+  before_action :logged_in_user
   before_action :load_user, :logged_in_user, except: %i(new create)
   before_action :correct_user, only: :show
 

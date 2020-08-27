@@ -4,6 +4,13 @@ vi:
   sign_up: Đăng ký
   log_in: Đăng nhập
   profile: Thông tin cá nhân
+  date_event: Ngày diễn ra
+  title: Tiêu đề
+  system: Hệ thống
+  start_time: Thời gian bắt đầu
+  end_time: Thời gian kết thúc
+  description: Mô tả
+  color: Màu sắc
   base_title: Chào mừng bạn đến với web đặt phòng
   report_room: Phản hồi
   ago: ngày trước
@@ -14,6 +21,7 @@ vi:
   add_event: Tạo sự kiện
   update: Cập nhật
   destroy: Xóa
+  today: Hôm nay
   image:
     length: "Kích thước ảnh nên dưới 1 MB"
   date:
@@ -114,14 +122,34 @@ vi:
         next: Trước
         prev: Sau
         add_event: Tạo sự kiện
+        add_event: Tạo sự kiện
+        close: Đóng
     model:
       event:
         on_or_after: không được đặt ngày trong quá khứ
+      edit:
+        title: Tiêu đề
+        date_event: Ngày diễn ra
+        start: Thời gian bắt đầu
+        end: Thời gian kết thúc
+        description: Mô tả
+        color: Màu sắc
+        add_event: Thêm sự kiện
+        close: Đóng
+    calendars:
+      button_calendar:
+        next: Trước
+        prev: Sau
+        add_event: Tạo sự kiện
+    model:
+      event:
+        on_or_after: không thể đặt ngày trong quá khứ
         between_before: phải trước 5:00 chiều
         between_after: phải sau 8:00 sáng
         end_time_after_start_time: phải sau thời gian bắt đầu
         invalid_date: không phải là ngày hợp lệ
         day_off: phải là ngày trong tuần
+        room_ready: phòng đã được đặt
   controller:
     application:
       logged_in: Hãy đăng nhập để sử dụng tính năng
@@ -131,6 +159,13 @@ vi:
       success_signup: Đăng ký thành công!
       error_signup: Đăng ký thất bại!
       load_user_error: Không tìm thấy người dùng!
+    events:
+      success_create: Tạo sự kiện thành công!
+      error_create: Tạo sự kiện thất bại!
+      success_update: Cập nhật sự kiện thành công!
+      error_update: Cập nhật thất bại!
+      success_destroy: Xóa sự kiện thành công!
+      error_destroy: Xóa sự kiện thất bại!
   shared:
     form:
       name: Họ và tên

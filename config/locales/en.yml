@@ -5,6 +5,14 @@ en:
   log_in: Log in
   profile: Profile
   report_room: Report Room
+  date_event: Date event
+  system: System
+  title: Title
+  date_event: Date event
+  start_time: Start Time
+  end_time: Finish Time
+  description: Description
+  color: Color
   base_title: Welcome to the BookRoom Website
   ago: day ago
   not_find_event: Can't find event
@@ -14,6 +22,7 @@ en:
   add_event: Add Event
   update: Update
   destroy: Destroy
+  today: Today
   image:
     length: "Image size should be less than 1 MB"
   date:
@@ -120,6 +129,7 @@ en:
         between_after: must be after 8:00am
         end_time_after_start_time: must be after the start time
         day_off: must be the day of the week
+        room_ready: room has been booked
   controller:
     application:
       logged_in: Please log in to use the feature
@@ -129,6 +139,14 @@ en:
       success_signup: Sign up succsess!
       error_signup: Sign up error!
       load_user_error: Can't find in User!
+    events:
+      success_create: Create Event Success!
+      error_create: Create Failed!
+      success_update: Update Event Success!
+      error_update: Update Failed!
+      success_destroy: Destroy Event Success!
+      error_destroy: Destroy Failed!
+
   shared:
     form:
       name: Name

@@ -7,7 +7,7 @@
           <%= image_tag("login.png", id: "icon", alt: "User Icon") %>
         </div>
         <%= form_for @user, url: business_signup_path do |f| %>
-          <%= render "business/shared/error_messages"%>
+          <%= render "business/shared/error_messages", object: f.object %>
           <%= f.text_field :name, class: "form-feild", placeholder: t(".name") %>
           <%= f.email_field :email, class: "form-feild", placeholder: "Email" %>
           <%= f.password_field :password, class: "form-feild", placeholder: t(".password") %>
