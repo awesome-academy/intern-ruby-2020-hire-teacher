@@ -58,3 +58,5 @@ room_options:
   option.all: ""
   option.open: "opened"
   option.lock: "locked"
+report:
+  max_length: 20

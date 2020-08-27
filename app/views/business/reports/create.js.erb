@@ -1,0 +1,11 @@
+<% if @report.errors.messages.present? %>
+  $('#report_comment').css("border", "1px solid #ba000d");
+  $('#report_comment').addClass('your-class');
+<% else %>
+  <% if @report.parent_id.present? %>
+    $('.replies-<%= @report.parent_id %>').prepend("<%= j render @report, room: @room %>");
+  <% else %>
+    $('.box-report').prepend("<%= j render @report, room: @room, report_new: Report.new %>");
+  <% end %>
+<% end %>
+$('#form-report form textarea').val('');

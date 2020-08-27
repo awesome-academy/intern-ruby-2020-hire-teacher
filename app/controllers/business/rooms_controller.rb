@@ -1,7 +1,7 @@
 class Business::RoomsController < BusinessController
+  before_action :logged_in_user
   before_action :load_room, only: :show
   before_action :load_room_pagination, only: :index
-  before_action :logged_in_user
 
   def index
     @countries = Country.pluck :name, :id
@@ -15,6 +15,7 @@ class Business::RoomsController < BusinessController
   end
 
   def show
+    @report = Report.new
     @reports = @room.reports.page(params[:page]).per Settings.pagination_commit
     @event_load = Event.where room_id: params[:id]
     @monday = DateTime.now -DateTime.now.cwday + 1
