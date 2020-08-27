@@ -20,7 +20,7 @@
     </div>
     <div class="form-group col-md-4">
       <%= f.label t(".color"), class: "form-group" %>
-      <%= f.select :color, options_for_select([["Smalt Blue", 1], ["Martinique", 2], ["Edward", 3], ["Rajah", 4]]), class: "form-feild", required: :required %>
+      <%= f.select :color, options_for_select(Settings.array_color), class: "form-feild", required: :required %>
     </div>
   </div>
   <div class="form-row">

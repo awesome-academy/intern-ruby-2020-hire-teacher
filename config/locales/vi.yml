@@ -11,6 +11,8 @@ vi:
   end_time: Thời gian kết thúc
   description: Mô tả
   color: Màu sắc
+  error_load_room: Không tìm thấy phòng!
+  error_load_report: Không tìm thấy báo cáo!
   base_title: Chào mừng bạn đến với web đặt phòng
   report_room: Phản hồi
   ago: ngày trước

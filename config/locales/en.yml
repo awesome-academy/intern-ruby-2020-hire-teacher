@@ -8,6 +8,8 @@ en:
   date_event: Date event
   system: System
   title: Title
+  error_load_room: Error load room
+  error_load_report: Error load report
   date_event: Date event
   start_time: Start Time
   end_time: Finish Time

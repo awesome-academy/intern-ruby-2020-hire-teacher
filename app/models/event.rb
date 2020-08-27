@@ -29,9 +29,9 @@ class Event < ApplicationRecord
   after_update :send_email
 
   scope :in_day, ->(date_event, room_id){where(date_event: date_event, room_id: room_id)}
-  scope :check_event_time_with_calendar, ->(start_time, end_time) do
+  scope :check_event_time_with_calendar, (lambda do |start_time, end_time|
     where("? BETWEEN start_time AND end_time OR ? BETWEEN start_time AND end_time", start_time, end_time)
-  end
+  end)
   scope :user_room_join, ->{includes :user, :room}
   scope :join_multi_table, ->{eager_load :user, room: [location: :country]}
   scope :by_event_title, ->(name){where "events.title LIKE ?", "%#{name}%"}

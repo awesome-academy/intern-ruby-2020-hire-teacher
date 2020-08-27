@@ -4,7 +4,7 @@ module RoomsHelper
   end
 
   def total_result_filter size
-    size.present? ? size : Settings.zero
+    size.presence || Settings.zero
   end
 
   def page_sum object
