@@ -377,5 +377,14 @@ vi:
     activate: "Tài khoản của bạn đã được kích hoạt"
     inactivate: "Tài khoản của bạn đã bị khóa"
     link_profile: "Chào mừng tới ứng dụng của chúng tôi"
+    cancel_title: "Sự kiện bị hủy"
     room:
       error_load_room: Không tìm thấy phòng!
+  guest_mailer:
+    cancel_invitation:
+      cancel_guest: "Quản trị viên đã khóa phòng %{name}."
+      hi: "Chào"
+      title: "Tiêu đề sự kiện"
+      start_time: "Thời gian bắt đầu"
+      end_time: "Thời gian kết thúc"
+      day: "Ngày"

@@ -24,7 +24,7 @@ class User < ApplicationRecord
   before_save :downcase_email
   after_update :send_email
 
-  scope :get_user_booking, ->(room_id){where "events.room_id = ?", room_id}
+  scope :get_user_now_booking, ->(room_id){where "events.room_id = ? AND DAY(events.date_event) > DAY(NOW())", room_id}
   scope :desc_user_created_at, ->{order created_at: :desc}
   scope :by_name, ->(name){where "users.name LIKE ?", "%#{name}%"}
   scope :by_email, ->(email){where "users.email LIKE ?", "%#{email}%"}

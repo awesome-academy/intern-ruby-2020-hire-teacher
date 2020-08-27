@@ -20,7 +20,7 @@ class Room < ApplicationRecord
   validates :address, presence: true, length: {maximum: Settings.room.address.maximum}
   validates :location_id, presence: true
 
-  after_update :send_email
+  after_update :send_email, :update_event
 
   scope :join_location_country, ->{includes location: :country}
   scope :by_name, ->(name){where "rooms.name like ?", "%#{name}%"}
@@ -35,9 +35,15 @@ class Room < ApplicationRecord
   def send_email
     return unless locked?
 
-    @users = User.joins(events: :room).get_user_booking id
-    @users.each do |user|
+    @users = User.joins(events: :room).get_user_now_booking(id).references :events
+    @users.uniq.each do |user|
       RoomMailer.room_locking(user, name).deliver_now
     end
+  end
+
+  def update_event
+    return if opened?
+
+    Event.where(room_id: id).update status: :inactivate
   end
 end

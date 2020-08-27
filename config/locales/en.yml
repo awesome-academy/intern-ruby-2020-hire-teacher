@@ -359,5 +359,14 @@ en:
     activate: "Your account has been activated"
     inactivate: "Your account has been locked"
     link_profile: "Welcome to out website"
+    cancel_title: "Cancel event"
   room:
     error_load_room: Can't find room!
+  guest_mailer:
+    cancel_invitation:
+      cancel_guest: "Admin announced that the booking event %{name} has been canceled."
+      hi: "Hi"
+      title: "Title event"
+      start_time: "Start time"
+      end_time: "End time"
+      day: "Date"
