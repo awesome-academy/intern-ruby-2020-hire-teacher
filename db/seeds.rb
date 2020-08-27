@@ -18,7 +18,7 @@ User.create!(name: "Manager",
 
 5.times do
   country = Faker::Address.country
-  group = Faker::Ancient.hero
+  group = Faker::Ancient.unique.hero
   Group.create!(name: group)
   Country.create!(name: country)
 end
@@ -26,15 +26,26 @@ end
 5.times do
   Country.all.each{|country| country.locations.create!(name: Faker::Address.unique.city)}
 end
+
+User.create!(name: "Hoang Anh",
+             email: "nguyen.@gmail.com",
+             password: "hoanganh",
+             password_confirmation: "hoanganh",
+             activated: true,
+             activated_at: Time.zone.now,
+             group_id: 1,
+             role: 1)
 10.times do
-  User.create!(name: Faker::Name.unique.name,
-               email: Faker::Internet.unique.email,
+  name = Faker::Name.unique.name
+  email = Faker::Internet.unique.email
+  User.create!(name: name,
+               email: email,
                password: "123456",
                password_confirmation: "123456",
-               activated: true,
-               activated_at: Time.zone.now,
-               group_id: Faker::Number.between(1, 5),
-               role: Faker::Number.between(2, 4))
+               activated: false,
+               activated_at: nil,
+               group_id: 2,
+               role: 2)
 end
 
 5.times do
@@ -58,27 +69,25 @@ Room.all.each do |room|
   description = Faker::Company.catch_phrase
   message = Faker::Company.catch_phrase
   user_id = room.user_id
-  start_time = Faker::Time.between(DateTime.now, DateTime.now + 1, :morning)
-  end_time = Faker::Time.between(DateTime.now, DateTime.now + 1, :morning)
+  start_time = Faker::Time.between(DateTime.now, DateTime.now+30,)
+  end_time = Faker::Time.between(DateTime.now+30, DateTime.now + 50)
   status = true
   if (User.find_by(id: user_id).trainee?)
     status = false
   end
   date_event = Faker::Date.forward(23)
   color = Faker::Number.between(1, 5)
-  if start_time < end_time
-    room.events.create!(
-      title: title,
-      description: description,
-      message: message,
-      user_id: user_id,
-      start_time: start_time,
-      end_time: end_time,
-      status: status,
-      date_event: date_event,
-      color: color
-    )
-  end
+  room.events.create!(
+    title: title,
+    description: description,
+    message: message,
+    user_id: user_id,
+    start_time: start_time,
+    end_time: end_time,
+    status: status,
+    date_event: date_event,
+    color: color
+  )
 end
 
 Room.all.each do |room|

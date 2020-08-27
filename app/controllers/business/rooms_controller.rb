@@ -16,6 +16,8 @@ class Business::RoomsController < BusinessController
 
   def show
     @reports = @room.reports.page(params[:page]).per Settings.pagination_commit
+    @event_load = Event.where room_id: params[:id]
+    @monday = DateTime.now - DateTime.now.cwday + 1
     @event_new = Event.new
     @event_load = Event.by_room_id params[:id]
     if params[:status] == Settings.prev

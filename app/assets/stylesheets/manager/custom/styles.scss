@@ -27,18 +27,13 @@ div.none-img-show {
   margin-right: 8px;
 }
 
+.mb-8 {
+  margin-bottom: 8px;
+}
+
 .px-8 {
   padding-left: 8px;
   padding-right: 8px;
-}
-
-.mr-8 {
-  margin-right: 8px;
-}
-
-.flex-box {
-  display: flex;
-  align-items: center;
 }
 
 .first {
@@ -104,4 +99,14 @@ input {
   color: $input-color;
   border-radius: 4px;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15;
+}
+
+.flex-box {
+  display: flex;
+  align-items: center;
+}
+
+button.btn-search {
+  width: 100%;
+  margin-top: 2.5rem;
 }

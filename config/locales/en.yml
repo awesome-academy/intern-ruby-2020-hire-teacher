@@ -255,7 +255,8 @@ en:
         success: "Room have been deleted!"
         danger: "Room may by not exist!"
       filter:
-        filter: "Filter"
+        status: "Status"
+        room_name: "Room name"
         search: "Search by room name"
         label_date: "Created at"
         search_btn: "Search"
@@ -279,8 +280,10 @@ en:
       index:
         title: "List Events"
       search:
+        label_search: "Search"
         search: "Search..."
         by: "By"
+        btn_search: "Search"
     users:
       index:
         title: "List user"
@@ -304,9 +307,21 @@ en:
         not_activated: "none"
         activate: "Are you sure want to activate user account %{name}?"
         lock: "Are you sure want to inactivate user account %{name}?"
+      filter:
+        search: "Search..."
+        name: "Name"
+        email: "Email"
+        group: "Group"
+        role: "Role"
+        status: "Status"
+        search_btn: "Search"
     account_mailer:
       subject_activate: "Activate account"
       subject_lock: "Lock account"
+    page:
+      current_page: "Page number"
+      record_sum: "About"
+      record: "record"
   errors:
     messages:
       extension_whitelist_error: "File upload must be image."
@@ -335,6 +350,8 @@ en:
     open: "Opening room"
     lock: "Locking room"
     all: "All"
+    activated: "Activated Account"
+    inactivated: "Locked Account"
   user_mailer:
     room_locking: "Hi, manager already locked %{name} room, you need to book another room!"
     link: "Book new room"

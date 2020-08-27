@@ -5,10 +5,6 @@
     <% end %>
   </div>
   <div class="panel-body">
-    <h4 class="help-block">
-      <%= t ".total_record" %>:
-      <%= events.present? ? events.total_count : Settings.status.fail %>
-    </h4>
     <% if events.present? %>
       <div class="table-responsive">
         <table class="table table-bordered table-hover" id="table-event">
@@ -31,6 +27,11 @@
           </tbody>
         </table>
         <%= paginate events, theme: "twitter-bootstrap-3"%>
+        <p class="help-block">
+          <%= t(".total_record") %>: <%= @events.total_count %> -
+          <%= page_sum @events %>
+        </p>
+        <p class="help-block"><%= record_sum @events %></p>
       </div>
     <% else %>
       <p class="help-block"><%= t ".no_event" %></p>
