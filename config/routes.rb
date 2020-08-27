@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       resources :rooms
       resources :events
       resources :room_actives, only: :update
+      resources :users
     end
   end
 end

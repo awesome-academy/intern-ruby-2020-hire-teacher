@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :reports, dependent: :destroy
   belongs_to :group
 
+  delegate :name, to: :group, prefix: :group
+
   validates :name, presence: true
   validates :email, presence: true,
     uniqueness: true,
@@ -22,6 +24,7 @@ class User < ApplicationRecord
   before_save :downcase_email
 
   scope :get_user_booking, ->(room_id){where "events.room_id = ?", room_id}
+  scope :desc_user_created_at, ->{order created_at: :desc}
 
   has_secure_password
 
