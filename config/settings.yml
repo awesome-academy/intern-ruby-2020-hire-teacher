@@ -27,6 +27,7 @@ room:
 pagination: 12
 pagination_commit: 20
 format_date: "%d-%m-%Y"
+format_year_month_date: "%Y-%m-%d"
 many_day: 2
 options:
   option.event_title: "event_title"
@@ -60,3 +61,9 @@ room_options:
   option.lock: "locked"
 report:
   max_length: 20
+event_params: "%i(title date_event start_time end_time description color user_id room_id)"
+week_day: 7
+one: 1
+zero: 0
+next: next
+prev: prev

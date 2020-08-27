@@ -32,12 +32,28 @@
       <h1><%= t ".calendar" %></h1>
     </div>
     <hr>
+    <div class="form_prev">
+      <%= form_tag business_room_path(@room.id), method: :get do %>
+        <%= hidden_field_tag :day, @monday %>
+        <%= hidden_field_tag :status, :prev %>
+        <%= button_tag type: "submit", class: "btn_week" do %>
+          <i class="fas fa-angle-double-left"></i> <%= t ".prev" %>
+        <% end %>
+      <% end %>
+    </div>
     <div class="button_week">
-      <button type="button" class="btn_week"> <i class="fas fa-angle-double-left"></i> <%= t ".prev" %> </button>
       <button type="button" class="btn_modal" data-toggle="modal" data-target="#exampleModal">
         <%= t ".add_event" %>
       </button>
-      <button type="button" class="btn_week"> <%= t ".next" %> <i class="fas fa-angle-double-right"></i> </button>
+    </div>
+    <div class="form_next">
+      <%= form_tag business_room_path(@room.id), method: :get do %>
+        <%= hidden_field_tag :day, @monday %>
+        <%= hidden_field_tag :status, :next %>
+        <%= button_tag type: "submit", class: "btn_week" do %>
+          <%= t ".next" %> <i class="fas fa-angle-double-right"></i>
+        <% end %>
+      <% end %>
     </div>
     <hr>
   </div>
@@ -69,12 +85,11 @@
     </div>
   </div>
 </div>
-<!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel"><%= t "add_event" %></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

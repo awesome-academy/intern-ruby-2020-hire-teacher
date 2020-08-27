@@ -2,11 +2,16 @@
 <% provide :id_page, "room" %>
 <div class="products">
   <div class="container">
+    <div class="row justify-content-center">
+      <div class="">
+        <h3><%= t ".result_filter" %> : <%= total_result_filter @rooms.total_count %></h3>
+      </div>
+    </div>
     <div class="row">
       <div class="col-md-3">
         <div class="contact-form">
           <%= form_tag business_rooms_path, method: :get do %>
-            <%= text_field_tag :search_name %>
+            <%= text_field_tag :search_name, params[:search_name] %>
             <%= select_tag :filter_country, options_for_select(@countries, params[:filter_country]), include_blank: t(".choose_country"), onchange: "this.form.submit()" %>
             <% if params[:filter_country].present? %>
               <%= select_tag :filter_location, options_for_select(@locations, params[:filter_location]), include_blank: t(".choose_location"), onchange: "this.form.submit()" %>

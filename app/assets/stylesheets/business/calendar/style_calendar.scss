@@ -574,7 +574,7 @@ a {
 }
 
 .label_end{
-  margin-top: -86px;
+  margin-top: -80px;
   margin-left: 250px;
 }
 
@@ -646,8 +646,8 @@ a {
 
 .button_week{
   position: absolute;
-  top: 81%;
-  left: 18%;
+  top: 85%;
+  left: 25%;
   display: inline;
 }
 
@@ -729,5 +729,67 @@ a {
 }
 
 .your-class::-webkit-input-placeholder {
-  color: #ba000d
+  color: $redac0202e6;
+}
+
+.infomartion_event{
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+}
+
+.text_event_box{
+  font-weight: 600;
+  font-size: 20px;
+  margin: 20px;
+}
+
+.update_event{
+  padding: 15px 50px 15px 50px;
+  background-color: $blue1a237e;
+}
+
+.update_event:hover{
+  background-color: $blue304ffe;
+}
+
+.destroy_event{
+  padding: 15px 50px 15px 50px;
+  background-color: $redb71c1c;
+}
+
+.destroy_event:hover{
+  background-color: $redb71c1c;
+}
+
+.create_event{
+  background-color: $green2e7d32;
+}
+
+.create_event:hover{
+  background-color: $green388e3c;
+}
+
+.btn_close{
+  background-color: $gray424242;
+}
+
+.btn_close:hover{
+  background-color: $gray616161;
+}
+
+.section_calendar{
+  display: inline;
+}
+
+.form_prev{
+  position: absolute;
+  top: 85%;
+  left: 20%;
+}
+
+.form_next{
+  position: absolute;
+  top: 85%;
+  left: 40%;
 }

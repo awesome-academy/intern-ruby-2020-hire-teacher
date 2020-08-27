@@ -10,6 +10,10 @@ vi:
   send: Gửi
   sure: Bạn chắc chứ?
   not_find_event: Không tìm thấy sự kiện tương ứng
+  success: Thành công
+  add_event: Tạo sự kiện
+  update: Cập nhật
+  destroy: Xóa
   image:
     length: "Kích thước ảnh nên dưới 1 MB"
   date:
@@ -73,11 +77,13 @@ vi:
         choose_coutry: Chọn Quốc Gia
         choose_location: Chọn Địa Điểm
         search: Tìm kiếm
+        result_filter: Kết quả tìm kiếm
       show:
         calendar: Lịch
         next: Trước
         prev: Sau
         add_event: Tạo
+        add_event: Tạo sự kiện
         report_room: Báo cáo về phòng
     events:
       form_add_event:
@@ -94,6 +100,20 @@ vi:
         description: Mô tả
         room : Phòng
         time: Thời gian
+      edit:
+        title: Tiêu đề
+        date_event: Ngày diễn ra
+        start: Thời gian bắt đầu
+        end: Thời gian kết thúc
+        description: Mô tả
+        color: Màu sắc
+        add_event: Thêm sự kiện
+        close: Đóng
+    calendars:
+      button_calendar:
+        next: Trước
+        prev: Sau
+        add_event: Tạo sự kiện
     model:
       event:
         on_or_after: không được đặt ngày trong quá khứ
@@ -290,3 +310,5 @@ vi:
   user_mailer:
     room_locking: "Chào bạn, quản trị viên đã khóa phòng %{name}, bạn nên đặt một phòng khác!"
     link: "Đặt phòng mới"
+    room:
+      error_load_room: Không tìm thấy phòng!

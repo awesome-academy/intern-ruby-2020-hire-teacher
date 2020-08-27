@@ -27,11 +27,11 @@ class Business::EventsController < BusinessController
   def update
     if @event.update event_params
       flash[:success] = t "success"
-      redirect_to business_room_path @event.room_id
-    else
-      flash[:danger] = @event.errors.messages
       redirect_to business_room_path id: params[:event_new][:room_id],
         day: params[:event_new][:date_event]
+    else
+      flash[:danger] = @event.errors.messages
+      redirect_to business_room_path @event.room_id
     end
   end
 
@@ -40,7 +40,7 @@ class Business::EventsController < BusinessController
       flash[:success] = t "success"
       redirect_to business_room_path @event.room_id
     else
-      redirect_to business_room_path @event.room_id
+      redirect_to store_location
       flash[:danger] = @event.errors.messages
     end
   end
@@ -51,7 +51,7 @@ class Business::EventsController < BusinessController
     return if @event
 
     flash[:danger] = t "error_load_event"
-    redirect_to business_room_path @event.room_id
+    redirect_to business_home_path
   end
 
   def event_params

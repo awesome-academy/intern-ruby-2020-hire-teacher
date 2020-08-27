@@ -10,6 +10,10 @@ en:
   not_find_event: Can't find event
   send: Send
   sure: Sure?
+  success: Success
+  add_event: Add Event
+  update: Update
+  destroy: Destroy
   image:
     length: "Image size should be less than 1 MB"
   date:
@@ -73,6 +77,7 @@ en:
         choose_coutry: Choose Country
         choose_location: Choose Location
         search: Search
+        result_filter: Result Filter
       show:
         calendar: Calendar
         next: Next
@@ -94,6 +99,20 @@ en:
         description: Description
         room : Room
         time: Time
+      edit:
+        title: Title
+        date_event: Date event
+        start: Start Time
+        end: Finish Time
+        description: Description
+        color: Color
+        add_event: Add Event
+        close: Close
+    calendars:
+      button_calendar:
+        next: Next
+        prev: Prev
+        add_event: Add Event
     model:
       event:
         on_or_after: must be on or after today
@@ -289,3 +308,5 @@ en:
   user_mailer:
     room_locking: "Hi, manager already locked %{name} room, you need to book another room!"
     link: "Book new room"
+    room:
+      error_load_room: Can't find room!

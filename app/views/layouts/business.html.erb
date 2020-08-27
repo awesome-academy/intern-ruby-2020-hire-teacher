@@ -2,11 +2,14 @@
 <html>
   <head>
     <title><%= full_title yield(:title) %></title>
+    <link href="<%= Settings.link_font_awesome %>" rel="stylesheet">
+    <script>
+      document.getElementsByTagName("html")[0].className += " js";
+    </script>
+    <%= stylesheet_link_tag "business/business", media: "all" %>
+    <%= javascript_pack_tag "business/business" %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <link href="<%= Settings.link_font_awesome %>" rel="stylesheet">
-    <script>document.getElementsByTagName("html")[0].className += " js";</script>
-    <%= stylesheet_link_tag "business/business", media: "all", "data-turbolinks-track": "reload" %>
   </head>
   <body>
     <%= render "business/layouts/header"%>
@@ -19,7 +22,6 @@
     </div>
     <%= yield %>
     <%= render "business/layouts/footer"%>
-    <script src="https://unpkg.com/codyhouse-framework/main/assets/js/util.js"></script>
-    <%= javascript_pack_tag "business/business", "data-turbolinks-track": "reload" %>
+    <%= javascript_pack_tag "business/calendar/main" %>
   </body>
 </html>
