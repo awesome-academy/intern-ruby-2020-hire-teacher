@@ -1,0 +1,7 @@
+<%= t "user_mailer.greeting", name: @user.name %>
+<% if @user.activated? %>
+  <%= t "user_mailer.activate" %>.
+  <%= business_user_url id: @user.id %>
+<% else %>
+  <%= t "user_mailer.inactivate" %>
+<% end %>

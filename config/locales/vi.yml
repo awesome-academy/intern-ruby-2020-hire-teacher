@@ -149,6 +149,7 @@ vi:
       show_room: "Không tồn tại phòng có id = %{id}"
       no_event: "Chưa có sự kiện"
       locking: "Chưa thực hiện được action"
+      is_manager: "Bạn không thể thay đổi quản trị viên!"
     danger:
       create_room: "Không thể tạo phòng!"
       update_room: "Không thể sửa phòng!"
@@ -279,6 +280,17 @@ vi:
         activated: "Trạng thái"
         activated_at: "Ngày kích hoạt"
         no_user: "Không có người dùng để hiển thị"
+      user:
+        not_activated: "chưa có"
+        activate: "bạn chắc chắn muốn mở tài khoản người dùng %{name}?"
+        lock: "Bạn chắc chắn muốn khóa tài khoản người dùng %{name}?"
+      update:
+        not_activated: "chưa có"
+        activate: "bạn chắc chắn muốn mở tài khoản người dùng %{name}?"
+        lock: "Bạn chắc chắn muốn khóa tài khoản người dùng %{name}?"
+    account_mailer:
+      subject_activate: "Mở tài khoản"
+      subject_lock: "Khóa tài khoản"
   errors:
     messages:
       extension_whitelist_error: "Tệp tải lên phải là ảnh."
@@ -310,5 +322,9 @@ vi:
   user_mailer:
     room_locking: "Chào bạn, quản trị viên đã khóa phòng %{name}, bạn nên đặt một phòng khác!"
     link: "Đặt phòng mới"
+    greeting: "Xin chào, %{name}"
+    activate: "Tài khoản của bạn đã được kích hoạt"
+    inactivate: "Tài khoản của bạn đã bị khóa"
+    link_profile: "Chào mừng tới ứng dụng của chúng tôi"
     room:
       error_load_room: Không tìm thấy phòng!

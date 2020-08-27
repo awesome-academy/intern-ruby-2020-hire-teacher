@@ -1,0 +1,28 @@
+$('.user-activate').bind("ajax:success", function() {
+  $(this).closest('td').html(`
+    <% if none_manager? @user %>
+      <%= link_to managers_user_path(@user), method: :patch, remote: true,
+        data: {confirm: t(@user.activated? ? ".lock" : ".activate", name: @user.name)},
+        class: "btn btn-default btn-circle animation-resize user-activate" do %>
+        <% if @user.activated? %>
+          <i class="fa fa-unlock fa-lg unlock-icon"></i>
+        <% else %>
+          <i class="fa fa-lock fa-lg trash-icon"></i>
+        <% end %>
+      <% end %>
+    <% else %>
+      <% if @user.activated? %>
+        <i class="fa fa-unlock fa-lg unlock-icon"></i>
+      <% else %>
+        <i class="fa fa-lock fa-lg trash-icon"></i>
+      <% end %>
+    <% end %>
+  `);
+  $(this).closest('td').next('td').html(`
+    <% if @user.activated_at? %>
+      <%= l @user.activated_at, format: :date %>
+    <% else %>
+      <%= t ".not_activated" %>
+    <% end %>
+  `);
+});
