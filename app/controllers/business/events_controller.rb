@@ -29,7 +29,7 @@ class Business::EventsController < BusinessController
       redirect_to business_room_path id: params[:event][:room_id],
         day: params[:event][:date_event]
     else
-      flash[:danger] = @event.errors.messages
+      flash[:error] = t "controller.events.error_update"
       redirect_to business_room_path @event.room_id
     end
   end
@@ -39,8 +39,8 @@ class Business::EventsController < BusinessController
       flash[:success] = t "controller.events.success_destroy"
       redirect_to business_room_path @event.room_id
     else
+      flash[:error] = t "controller.events.error_destroy"
       redirect_to store_location
-      flash[:danger] = @event.errors.messages
     end
   end
 
@@ -50,7 +50,7 @@ class Business::EventsController < BusinessController
     @event = Event.find_by id: params[:id]
     return if @event.present?
 
-    flash[:danger] = t "error_load_event"
+    flash[:error] = t "controller.events.error_load_event"
     redirect_to business_home_path
   end
 
