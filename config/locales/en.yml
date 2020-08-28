@@ -279,6 +279,7 @@ en:
         status: "Status"
         no_event: "No event yet"
         room: "Room"
+        total_record: "Total record"
       index:
         title: "List Events"
       search:
@@ -372,3 +373,32 @@ en:
       start_time: "Start time"
       end_time: "End time"
       day: "Date"
+  trainers:
+    warning:
+      not_correct: "Please login as trainer"
+    header:
+      home: "Book Room"
+      english: "English"
+      vietnamese: "Vietnamese"
+      toggle_nav: "Toggle navigation"
+      website: "Website"
+      test: "Test"
+      profile: "User Profile"
+      settings: "Settings"
+      logout: "Logout"
+    index:
+      title: "Manage Trainee"
+      group: "Group %{name}"
+    table:
+      table_name: "Events"
+      title: "Title"
+      description: "Description"
+      message: "Message"
+      author: "Author"
+      date_envent: "Date event"
+      time_start: "Time start"
+      time_end: "Time end"
+      status: "Status"
+      no_event: "No event yet"
+      room: "Room"
+      total_record: "Total record"
