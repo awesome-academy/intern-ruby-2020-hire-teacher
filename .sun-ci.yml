@@ -21,7 +21,7 @@ jobs:
   image: sunci/ruby:2.7.0
   services:
   - image: mysql:5.7.22
-    name: mysql
+    name: mysql_test
     environment:
       MYSQL_DATABASE: db_test
       MYSQL_USER: user_test
@@ -30,6 +30,7 @@ jobs:
   before_script:
   - bundle _2.1.2_ install --path vendor/bundle
   script:
+  - RAILS_ENV=test bundle exec rails db:drop db:create db:migrate
   - bundle _2.1.2_ exec rspec
 
 - name: test:rubocop

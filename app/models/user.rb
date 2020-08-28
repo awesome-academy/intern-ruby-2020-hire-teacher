@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = Settings.model.user.email_validate_regex
-  USER_PARAMS = %i(name email password password_confirmation role_id group_id).freeze
+  USER_PARAMS = %i(name email password password_confirmation group_id).freeze
 
   enum role: Settings.model.user.roles.to_h
 
@@ -10,14 +10,14 @@ class User < ApplicationRecord
   has_many :reports, dependent: :destroy
   belongs_to :group
 
-  delegate :name, to: :group, prefix: :group
+  delegate :name, to: :group, prefix: true
 
   accepts_nested_attributes_for :guests, reject_if: :all_blank,
     allow_destroy: true
 
   validates :name, presence: true
   validates :email, presence: true,
-    uniqueness: true,
+    uniqueness: {case_sensitive: true},
     length: {maximum: Settings.model.user.email_max_length},
     format: {with: VALID_EMAIL_REGEX}
   validates :password, presence: true,

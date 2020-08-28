@@ -36,6 +36,8 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  config.active_record.maintain_test_schema = false
+
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
