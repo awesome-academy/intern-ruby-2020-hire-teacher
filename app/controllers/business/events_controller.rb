@@ -1,6 +1,6 @@
 class Business::EventsController < BusinessController
   before_action :logged_in_user
-  before_action :set_event, except: %i(index new create)
+  before_action :set_event, except: :create
   before_action :load_room, only: %i(create update)
 
   def show; end

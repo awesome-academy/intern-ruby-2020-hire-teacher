@@ -1,6 +1,6 @@
 class Business::RoomsController < BusinessController
   before_action :logged_in_user
-  before_action :load_room, :check_week_create_event, only: :show
+  before_action :load_room, :check_week_create_event, :load_report, only: :show
   before_action :load_room_pagination, only: :index
 
   def index
@@ -15,7 +15,6 @@ class Business::RoomsController < BusinessController
   end
 
   def show
-    @reports = @room.reports.page(params[:page]).per Settings.pagination_commit
     @event_load = Event.where room_id: params[:id]
     @monday = DateTime.now - DateTime.now.cwday + 1
     @event_new = Event.new
@@ -35,6 +34,14 @@ class Business::RoomsController < BusinessController
               else
                 DateTime.now - DateTime.now.cwday + Settings.one
               end
+  end
+
+  def load_report
+    @reports = @room.reports.page(params[:page]).per Settings.pagination_commit
+    return if reports
+
+    flash[:error] = t "error_load_report"
+    redirect_to business_home_path
   end
 
   def load_room
