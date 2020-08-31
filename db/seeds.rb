@@ -57,37 +57,6 @@ end
       address: address,
       user_id: 1)
   end
-
-5.times do |n|
-  Report.create!(comment: Faker::Lorem.sentence(38),
-                 user_id: 1,
-                 room_id: 1)
-end
-
-Room.all.each do |room|
-  title = Faker::Company.industry
-  description = Faker::Company.catch_phrase
-  message = Faker::Company.catch_phrase
-  user_id = room.user_id
-  start_time = Faker::Time.between(DateTime.now, DateTime.now+30,)
-  end_time = Faker::Time.between(DateTime.now+30, DateTime.now + 50)
-  status = true
-  if (User.find_by(id: user_id).trainee?)
-    status = false
-  end
-  date_event = Faker::Date.forward(23)
-  color = Faker::Number.between(1, 5)
-  room.events.create!(
-    title: title,
-    description: description,
-    message: message,
-    user_id: user_id,
-    start_time: start_time,
-    end_time: end_time,
-    status: status,
-    date_event: date_event,
-    color: color
-  )
 end
 
 Room.all.each do |room|

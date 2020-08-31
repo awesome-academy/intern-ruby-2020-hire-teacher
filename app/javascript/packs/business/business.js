@@ -4,6 +4,8 @@ require('jquery')
 require('channels')
 require('./vendor/bootstrap.bundle')
 require('./custom')
+require('./calendar/filter_select')
+require('cocoon')
 import "@fortawesome/fontawesome-free/js/all";
 
 window.jQuery = $;

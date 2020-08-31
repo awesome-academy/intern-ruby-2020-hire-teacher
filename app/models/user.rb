@@ -12,6 +12,9 @@ class User < ApplicationRecord
 
   delegate :name, to: :group, prefix: :group
 
+  accepts_nested_attributes_for :guests, reject_if: :all_blank,
+    allow_destroy: true
+
   validates :name, presence: true
   validates :email, presence: true,
     uniqueness: true,

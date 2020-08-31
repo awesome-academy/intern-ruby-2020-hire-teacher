@@ -31,11 +31,12 @@ class Business::ReportsController < BusinessController
   end
 
   private
+
   def load_room
     @room = Room.find_by id: params[:report][:room_id]
-    return if @room
+    return if @room.present?
 
-    flash[:error] = t "error_load_room"
+    flash[:error] = t "business.room.error_load_room"
     redirect_to business_home_path
   end
 
@@ -47,7 +48,7 @@ class Business::ReportsController < BusinessController
     @report = Report.find_by id: params[:id]
     return if @report.present?
 
-    flash[:error] = t "error_load_report"
+    flash[:error] = t "business.room.error_load_room"
     redirect_to business_home_path
   end
 end

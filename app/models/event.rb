@@ -1,11 +1,16 @@
 class Event < ApplicationRecord
-  EVENT_PARAMS = %i(title start_time end_time user_id
-                    room_id color description date_event).freeze
+  EVENT_PARAMS = [:title, :start_time, :end_time,
+                  :user_id, :room_id, :color, :description,
+                  :date_event,
+                  guests_attributes: [:user_id, :_destroy].freeze].freeze
   attr_accessor :previous_status
 
   enum status: {inactivate: false, activate: true}
 
   has_many :guests, dependent: :destroy
+  accepts_nested_attributes_for :guests, reject_if: :all_blank,
+    allow_destroy: true
+  belongs_to :user
   belongs_to :room
   belongs_to :user
 

@@ -1,0 +1,8 @@
+<h1><%= t "invite_event" %></h1>
+<p><%= t "hello" %> <%= @guest.user.name %></p>
+<p>
+  <%= t "you_have_an_invitation_from" %> <%= @guest.event.user.name %> <%= @guest.event.title %>
+</p>
+<p><%= t "date" %> : <%= @guest.event.date_event %></p>
+<p><%= t "time" %> : <%= @guest.event.start_time %> - <%= @guest.event.start_time %></p>
+<p><%= t "description" %> : <%= @guest.event.description %></p>
