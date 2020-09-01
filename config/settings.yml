@@ -66,6 +66,8 @@ report:
 event_params: "%i(title date_event start_time end_time description color user_id room_id)"
 week_day: 7
 one: 1
+role_final: 4
+color_final: 4
 zero: 0
 next: next
 prev: prev
@@ -77,3 +79,8 @@ activated_user_options:
   option.activated: true
   option.inactivated: false
 size_avatar: 35
+password_default : password
+rspec:
+  date_event: "2020-10-01"
+  start_time: "08:30"
+  end_time: "10:30"
