@@ -76,6 +76,7 @@ en:
         you_haven't_account: You haven't account
         email: Email
         password: Password
+        login_with_social: Login with Social
     registrations:
       new:
         name: Name
@@ -115,6 +116,10 @@ en:
         color: Color
         add_event: Add Event
         close: Close
+        search: Search
+        invite_guest: Invite Guest
+        list_guest: List Guest
+        description_placeholder: Write description for event ...
       show:
         orderer: Orderer
         description: Description

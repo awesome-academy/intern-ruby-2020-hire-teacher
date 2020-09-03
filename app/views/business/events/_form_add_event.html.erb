@@ -27,21 +27,21 @@
   <div class="form-row">
     <div class="form-group">
       <%= f.label t(".description"), class: "form-group" %>
-      <%= f.text_area :description, class: "form-group",cols: "37", rows: "5", placeholder: "Write description for event ...", required: :required %>
+      <%= f.text_area :description, class: "form-group",cols: "37", rows: "5", placeholder: t(".description_placeholder"), required: :required %>
     </div>
   </div>
   <div class="form-group">
     <div class="form-group col-md-6">
       <div class="dropdown">
-        <button class="btn btn-invite dropdown-toggle" type="button" data-toggle="dropdown"> Invite guest
+        <button class="btn btn-invite dropdown-toggle" type="button" data-toggle="dropdown"><%= t ".invite_guest" %>
           <span class="caret"></span></button>
         <ul class="dropdown-menu scrollBox">
-          <input class="form-control" id="myInput" type="text" placeholder="Search..">
-          <p><strong>Co tat ca : <%= @users.size %> nhan vien</strong></p>
+          <input class="form-control" id="myInput" type="text" placeholder="<%= t ".search" %>">
+          <p><strong><%= @users.size %></strong></p>
           <% @users.each do |user| %>
               <li>
                 <%= link_to_add_association f, :guests, render_options: {locals: { user_profile: user.name, user_id: user.id }} do %>
-                  <%= image_tag "avatar.png", class: "avatar-box-invite", size: "35" %>
+                  <%= image_tag "avatar.png", class: "avatar-box-invite", size: Settings.size_avatar %>
                   <%= user.name %>
                 <% end %>
               </li>
@@ -50,10 +50,10 @@
       </div>
     </div>
     <div class="form-group col-md-6">
-      <div id="list-invite" data-placeholder="  List invited . . . "></div>
+      <div id="list-invite" data-placeholder="<%= t ".list_guest" %>"></div>
     </div>
   </div>
-  <%= f.hidden_field :user_id, value: session[:user_id] %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.hidden_field :room_id, value: @room.id %>
   <%= f.hidden_field :day, value: @monday %>
   <div class="modal-footer">

@@ -1,5 +1,14 @@
 Group.create!(name: "administration")
 
+User.create!(name: "Manager",
+             email: "manager@demo.com",
+             password: "foobar",
+             password_confirmation: "foobar",
+             activated: true,
+             group_id: Group.first.id,
+             role: :manager,
+             activated_at: Time.zone.now)
+
 5.times do
   country = Faker::Address.country
   group = Faker::Ancient.unique.hero
@@ -14,16 +23,15 @@ User.create!(name: "Manager",
              activated: true,
              activated_at: Time.zone.now,
              group_id: Group.first.id,
-             role: 1)
+             role: :manager)
 
 User.create!(name: "Hoang Anh",
              email: "nguyen.@gmail.com",
-             password: "hoanganh",
-             password_confirmation: "hoanganh",
+             password: "Ho@nganh1",
              activated: true,
              activated_at: Time.zone.now,
-             group_id: Group.first.id,
-             role: 1)
+             group_id: Group.second.id,
+             role: :employee)
 
 10.times do
   name = Faker::Name.unique.name
@@ -65,9 +73,9 @@ Room.all.each do |room|
   user_id = User.ids.sample
   start_time = Faker::Time.between(DateTime.now, DateTime.now + 1, :morning)
   end_time = Faker::Time.between(DateTime.now, DateTime.now + 1, :morning)
-  status = "activate"
+  status = :activate
   if (User.find_by(id: user_id).trainee?)
-    status = "inactivate"
+    status = :inactivate
   end
   date_event = Faker::Date.forward(23)
   color = Faker::Number.between(1, 5)

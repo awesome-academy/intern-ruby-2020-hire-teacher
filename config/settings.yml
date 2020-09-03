@@ -104,3 +104,6 @@ image_name: "login.png"
 worker:
   mail_delay: 30
   mail_room_delay: 10
+omniauth:
+  facebook: "facebook"
+  google: "google_oauth2"

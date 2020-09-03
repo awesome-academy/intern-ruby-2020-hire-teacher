@@ -76,6 +76,7 @@ vi:
         you_haven't_account: Bạn chưa có tài khoản
         email: Email
         password: Mật khẩu
+        login_with_social: Có thể đăng nhập qua
     registrations:
       new:
         name: Họ và tên
@@ -116,6 +117,10 @@ vi:
         color: Màu sắc
         add_event: Thêm sự kiện
         close: Đóng
+        search: Tìm kiếm
+        invite_guest: Mời khách
+        list_guest: Danh sách khách mời
+        description_placeholder: Viết mô tả cho sự kiện ...
       show:
         orderer: Người tạo sự kiện
         description: Mô tả

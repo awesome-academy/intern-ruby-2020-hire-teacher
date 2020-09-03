@@ -25,3 +25,28 @@
   width: 60%;
   margin-left: 300px;
 }
+
+.bnt-social {
+  font-size: 40px;
+  margin: 10px;
+}
+
+.btn-facebook {
+  color: $blue1e88e5;
+}
+
+.btn-google {
+  color: $redd84315;
+}
+
+.btn-google:hover {
+  color:  $redbf360c;
+}
+
+.link_login {
+  color: $orangeff4444e6;
+
+  &:hover {
+    color: $redbf360c;
+  }
+}
