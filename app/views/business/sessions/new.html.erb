@@ -6,14 +6,22 @@
         <div class="first">
           <%= image_tag("login.png", id: "icon", alt: "User Icon") %>
         </div>
-        <%= form_for :session, url: business_login_path do |f| %>
-          <%= f.email_field :email, class: "form-feild", placeholder: t(".email"), required: :required %>
-          <%= f.password_field :password, class: "form-feild", placeholder: t(".password"), required: :required %>
-          <%= f.submit t("log_in"), class: "btn_week destroy_event" %>
+        <%= form_for resource, as: resource_name, url: session_path(resource_name) do |f| %>
+          <div class="field">
+            <%= f.email_field :email, class: "form-feild", placeholder: t(".email"), required: :required, autofocus: true, autocomplete: "email" %>
+          </div>
+
+          <div class="field">
+            <%= f.password_field :password, class: "form-feild", placeholder: t(".password"), required: :required, autocomplete: "current-password" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit t("log_in"), class: "btn_week destroy_event" %>
+          </div>
         <% end %>
         <%= link_to t(".forgot_password"), "#" %>
         <div id="formFooter">
-          <p><%= t ".you_haven't_account" %><%= link_to t("sign_up"), business_signup_path, class: "underlineHover" %></p>
+          <p><%= t ".you_haven't_account" %> <%= link_to t("sign_up"), new_user_registration_path, class: "underlineHover" %></p>
         </div>
       </div>
     </div>

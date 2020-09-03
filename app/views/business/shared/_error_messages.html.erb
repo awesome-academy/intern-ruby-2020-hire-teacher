@@ -1,12 +1,15 @@
-<% if @event.errors.any? %>
+<% if resource.errors.any? %>
   <div id="error_explanation">
-    <div class="alert alert-danger">
-      <%= pluralize @event.errors.size, t("error") %>.
-      <ul>
-        <% @event.errors.messages.each do |key, value| %>
-          <li><%= [t(key), value].join(" ") %></li>
-        <% end %>
-      </ul>
-    </div>
+    <h2>
+      <%= t("errors.messages.not_saved",
+                 count: resource.errors.count,
+                 resource: resource.class.model_name.human.downcase)
+       %>
+    </h2>
+    <ul>
+      <% resource.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
   </div>
 <% end %>

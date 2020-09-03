@@ -1,9 +1,7 @@
 module SpecTestHelper
   def login user
-    request.session[:user_id] = user.id
-  end
-
-  def current_user
-    User.find_by id: request.session[:user_id]
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    user ||= FactoryBot.create(:user)
+    sign_in user
   end
 end

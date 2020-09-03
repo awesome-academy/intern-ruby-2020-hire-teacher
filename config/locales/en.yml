@@ -76,7 +76,7 @@ en:
         you_haven't_account: You haven't account
         email: Email
         password: Password
-    users:
+    registrations:
       new:
         name: Name
         password: Password
@@ -84,6 +84,7 @@ en:
         role: Role
         group: Group
         create_new_account: Create New Account
+        you_have_account: You have account
     rooms:
       index:
         choose_coutry: Choose Country

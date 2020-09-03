@@ -1,8 +1,7 @@
 class Business::RoomsController < BusinessController
-  before_action :logged_in_user
+  before_action :authenticate_user!
   before_action :load_room, :check_week_create_event, :load_report, :load_event, only: :show
   before_action :load_room_pagination, only: :index
-  before_action :logged_in_user
 
   def index
     @countries = Country.pluck :name, :id
@@ -38,7 +37,7 @@ class Business::RoomsController < BusinessController
 
   def load_room
     @room = Room.find_by id: params[:id]
-    return if @room.present?
+    return if @room
 
     render :index
     flash.now[:danger] = t "business.room.error_load_room"
@@ -46,7 +45,7 @@ class Business::RoomsController < BusinessController
 
   def load_event
     @event_load = Event.by_room_id params[:id]
-    return if @event_load.present?
+    return if @event_load
 
     flash[:error] = t "controller.room.error_load_event"
     redirect_to store_location
@@ -54,7 +53,7 @@ class Business::RoomsController < BusinessController
 
   def load_report
     @reports = @room.reports.page(params[:page]).per Settings.pagination_commit
-    return if @reports.present?
+    return if @reports
 
     flash[:error] = t "controller.room.error_load_report"
     redirect_to store_location

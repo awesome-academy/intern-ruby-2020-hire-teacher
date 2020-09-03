@@ -1,0 +1,46 @@
+<% provide :title, t("sign_up") %>
+<div class="banner">
+  <div class="container">
+    <div class="wrapper">
+      <div id="formContent">
+        <div class="first">
+          <%= image_tag("login.png", id: "icon", alt: "User Icon") %>
+        </div>
+        <%= form_for resource, as: resource_name, url: registration_path(resource_name) do |f| %>
+          <%= render "business/shared/error_messages", resource: resource %>
+
+          <div class="field">
+            <%= f.text_field :name, class: "form-feild", placeholder: t(".name"), autofocus: true, autocomplete: "email", required: :required %>
+          </div>
+
+          <div class="field">
+            <%= f.email_field :email, class: "form-feild", placeholder: "Email", required: :required %>
+          </div>
+
+          <div class="field">
+            <%= f.password_field :password, class: "form-feild", placeholder: t(".password"), autocomplete: "new-password", required: :required %>
+            <br>
+            <span id="result" class="result"></span>
+            <div id="bar-strong-password" class="bar-strong-password"></div>
+          </div>
+
+          <div class="field">
+            <%= f.password_field :password_confirmation, class: "form-feild", placeholder: t(".password_confirmation"), autocomplete: "new-password", required: :required %>
+          </div>
+
+          <div class="field">
+            <%= f.select :role, options_for_select(Settings.array_role), include_blank: t(".role"), class:"form-feild", required: :required %>
+            <%= f.select :group_id, options_for_select(@group), include_blank: t(".group"), class:"form-feild", required: :required %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit t(".create_new_account"), class: "btn_week sign_up_btn" %>
+          </div>
+        <% end %>
+        <div id="formFooter">
+          <p><%= t ".you_have_account" %> <%= link_to t("log_in"), new_user_session_path, class: "underlineHover" %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

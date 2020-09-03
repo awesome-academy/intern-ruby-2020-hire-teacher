@@ -75,7 +75,7 @@ vi:
         you_haven't_account: Bạn chưa có tài khoản
         email: Email
         password: Mật khẩu
-    users:
+    registrations:
       new:
         name: Họ và tên
         password: Mật khẩu
@@ -83,6 +83,7 @@ vi:
         role: Chức vụ
         group: Nhóm
         create_new_account: Tạo mới tài khoản
+        you_have_account: Bạn đã có tài khoản
     rooms:
       index:
         choose_coutry: Chọn Quốc Gia
@@ -456,3 +457,10 @@ vi:
       update:
         activate: "bạn chắc chắn muốn mở sự kiện %{name}?"
         lock: "Bạn chắc chắn muốn khóa sự kiện %{name}?"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            group:
+              required: "Không được để trống"
