@@ -4,7 +4,7 @@
     <div class="wrapper">
       <div id="formContent">
         <div class="first">
-          <%= image_tag("login.png", id: "icon", alt: "User Icon") %>
+          <%= image_tag Settings.image_name, id: "icon", alt: t("user_icon") %>
         </div>
         <%= form_for resource, as: resource_name, url: registration_path(resource_name) do |f| %>
           <%= render "business/shared/error_messages", resource: resource %>
@@ -31,6 +31,11 @@
           <div class="field">
             <%= f.select :role, options_for_select(Settings.array_role), include_blank: t(".role"), class:"form-feild", required: :required %>
             <%= f.select :group_id, options_for_select(@group), include_blank: t(".group"), class:"form-feild", required: :required %>
+          </div>
+
+          <div class="field captcha-content">
+            <%= recaptcha_tags %>
+            <%= flash[:recaptcha_error] %>
           </div>
 
           <div class="actions">

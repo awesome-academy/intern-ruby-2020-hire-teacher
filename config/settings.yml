@@ -80,7 +80,7 @@ activated_user_options:
   option.activated: true
   option.inactivated: false
 size_avatar: 35
-password_default : password
+password_default : Ho@nganh1
 rspec:
   date_event: "2020-10-01"
   start_date: "2020-09-21"
@@ -95,3 +95,5 @@ rspec:
     valid_date: "2020-09-30"
     valid_date_params: "2020-10-09"
   date_created_room_at: "2020-09-04"
+password_regex: !ruby/regexp /^(?=.*[a-zA-Z])(?=.*[0-9])/i
+image_name: "login.png"

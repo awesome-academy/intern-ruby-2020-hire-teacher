@@ -1,9 +1,10 @@
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = Settings.model.user.email_validate_regex
+  PASSWORD_REGEX = Settings.password_regex
   USER_PARAMS = %i(name email password password_confirmation role group_id).freeze
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :lockable
 
   attr_accessor :previous_activate
 
@@ -28,6 +29,7 @@ class User < ApplicationRecord
   validates :password, presence: true,
     length: {minimum: Settings.model.user.password_length}, allow_nil: true
   validates :role, presence: true
+  validate :password_complexity, :duplicate_password
 
   before_save :downcase_email
   # after_update :send_email
@@ -55,5 +57,18 @@ class User < ApplicationRecord
 
   def update_previous_activate
     self.previous_activate = activated_was
+  end
+
+  def password_complexity
+    return unless password.present? && !password.match(PASSWORD_REGEX)
+
+    errors.add :password, I18n.t("errors.password_regex")
+  end
+
+  def duplicate_password
+    user = User.find_by email: email
+    return if user.blank?
+
+    errors.add :password, I18n.t("errors.duplicate_password") if user.valid_password?(password)
   end
 end

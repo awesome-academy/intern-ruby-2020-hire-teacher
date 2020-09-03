@@ -84,6 +84,14 @@ vi:
         group: Nhóm
         create_new_account: Tạo mới tài khoản
         you_have_account: Bạn đã có tài khoản
+    passwords:
+      new:
+        reset_password: Đặt lại mật khẩu
+      edit:
+        change_password: Đổi mật khẩu
+        new_password: Mật khẩu mới
+        current_password: Mật khẩu hiện tại
+        new_password_confirmation: Nhập lại mật khẩu
     rooms:
       index:
         choose_coutry: Chọn Quốc Gia
@@ -354,6 +362,8 @@ vi:
   errors:
     messages:
       extension_whitelist_error: "Tệp tải lên phải là ảnh."
+    password_regex: "Phải có ít nhất một ký tự thường, một ký tự in hoa và một ký tự số"
+    duplicate_password: "Mật khẩu mới không được trùng với mật khẩu cũ!"
   js:
     validates:
       room:

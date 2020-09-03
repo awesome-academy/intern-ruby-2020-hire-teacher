@@ -85,6 +85,14 @@ en:
         group: Group
         create_new_account: Create New Account
         you_have_account: You have account
+    passwords:
+      new:
+        reset_password: Reset Password
+      edit:
+        change_password: Change Password
+        new_password: New Password
+        current_password: Current Password
+        new_password_confirmation: New Password Confirmation
     rooms:
       index:
         choose_coutry: Choose Country
@@ -335,6 +343,8 @@ en:
   errors:
     messages:
       extension_whitelist_error: "File upload must be image."
+    password_regex: "must include at least one lowercase letter, one uppercase letter, and one digit"
+    duplicate_password: "Password not dulicate"
   js:
     validates:
       room:

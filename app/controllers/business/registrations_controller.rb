@@ -13,7 +13,9 @@ class Business::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  def after_sign_up_path_for _user
+  def after_sign_up_path_for user
+    manager_root_path if user.manager?
+
     business_home_path
   end
 
@@ -25,5 +27,14 @@ class Business::RegistrationsController < Devise::RegistrationsController
 
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: User::USER_PARAMS)
+  end
+
+  def check_captcha
+    return if verify_recaptcha
+
+    self.resource = resource_class.new sign_up_params
+    resource.validate
+    set_minimum_password_length
+    respond_with_navigational(resource){render :new}
   end
 end
