@@ -6,7 +6,7 @@
         <% if @event_load.any? %>
           <% @event_load.each do |event_load| %>
             <% if event_load.date_event.strftime(Settings.format_date).eql? (@monday + i).strftime(Settings.format_date) %>
-              <% if event_load.user_id.eql? current_user.id %>
+              <% if can? :read, event_load %>
                 <%= render "business/events/event_correct", event_load: event_load %>
               <% else %>
                 <li class="cd-schedule__event">

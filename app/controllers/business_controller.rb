@@ -6,7 +6,10 @@ class BusinessController < ActionController::Base
 
   include SessionsHelper
 
-  before_action :set_locale
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to business_rooms_url
+    flash[:error] = exception.message
+  end
 
   private
   def set_locale

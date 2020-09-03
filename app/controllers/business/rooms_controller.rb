@@ -3,6 +3,8 @@ class Business::RoomsController < BusinessController
   before_action :load_room, :check_week_create_event, :load_report, :load_event, only: :show
   before_action :load_room_pagination, only: :index
 
+  load_and_authorize_resource
+
   def index
     @countries = Country.pluck :name, :id
     if params[:filter_country].present?
