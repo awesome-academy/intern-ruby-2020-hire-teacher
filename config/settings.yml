@@ -62,7 +62,7 @@ room_options:
   option.open: "opened"
   option.lock: "locked"
 report:
-  max_length: 20
+  max_length: 255
 event_params: "%i(title date_event start_time end_time description color user_id room_id)"
 week_day: 7
 one: 1
@@ -82,5 +82,14 @@ size_avatar: 35
 password_default : password
 rspec:
   date_event: "2020-10-01"
+  start_date: "2020-09-21"
+  end_date: "2020-09-25"
   start_time: "08:30"
   end_time: "10:30"
+  redirect_status: 302
+  update:
+    valid_date: "2020-09-16"
+    invalid_date: "2020-09-06"
+  create:
+    valid_date: "2020-09-30"
+    valid_date_params: "2020-10-09"

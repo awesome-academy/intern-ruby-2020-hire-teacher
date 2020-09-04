@@ -149,6 +149,7 @@ en:
       success_update: Update Event Success!
       error_update: Update Failed!
       success_destroy: Destroy Event Success!
+      error_load_event: Can't find event!
       error_destroy: Destroy Failed!
     rooms:
       error_load_report: Error load report!

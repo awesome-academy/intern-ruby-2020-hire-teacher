@@ -168,6 +168,7 @@ vi:
       error_create: Tạo sự kiện thất bại!
       success_update: Cập nhật sự kiện thành công!
       error_update: Cập nhật thất bại!
+      error_load_event: Không tìm thấy sự kiện!
       success_destroy: Xóa sự kiện thành công!
       error_destroy: Xóa sự kiện thất bại!
     rooms:
