@@ -4,7 +4,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="">
-        <h3><%= t ".result_filter" %> : <%= total_result_filter @rooms.total_count %></h3>
+        <h3><%= t ".result_filter" %> : <%= total_result_filter @rooms.total_count if @room.present? %></h3>
       </div>
     </div>
     <div class="row">

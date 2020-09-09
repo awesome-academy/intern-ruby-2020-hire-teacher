@@ -1,5 +1,5 @@
 class Business::EventsController < BusinessController
-  before_action :logged_in_user
+  before_action :authenticate_user!
   before_action :set_event, except: :create
   before_action :load_room, only: %i(create update)
 
@@ -39,8 +39,8 @@ class Business::EventsController < BusinessController
       flash[:success] = t "controller.events.success_destroy"
       redirect_to business_room_path @event.room_id
     else
-      flash[:error] = t "controller.events.error_destroy"
       redirect_to store_location
+      flash[:error] = @event.errors.messages
     end
   end
 
@@ -48,7 +48,7 @@ class Business::EventsController < BusinessController
 
   def set_event
     @event = Event.find_by id: params[:id]
-    return if @event.present?
+    return if @event
 
     flash[:error] = t "controller.events.error_load_event"
     redirect_to business_home_path

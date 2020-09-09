@@ -13,10 +13,10 @@ RSpec.describe Business::EventsController, type: :controller do
 
   context "when user not login" do
     describe "POST #create" do
-      before {post :create, params: {event: valid_params}}
+      before {post :create, params: {event: valid_params, locale: "vi"}}
 
       it "redirect to business_home_path" do
-        expect(response).to redirect_to business_login_path
+        expect(response).to redirect_to new_user_session_url
       end
 
       it "should found" do
@@ -25,10 +25,10 @@ RSpec.describe Business::EventsController, type: :controller do
     end
 
     describe "GET #edit" do
-      before {get :edit, params: {id: event.id}}
+      before {get :edit, params: {id: event.id, locale: "vi"}}
 
       it "redirect to business_home_path" do
-        expect(response).to redirect_to business_login_path
+        expect(response).to redirect_to new_user_session_url
       end
 
       it "should found" do
@@ -40,6 +40,7 @@ RSpec.describe Business::EventsController, type: :controller do
       before {
         patch :update, params: {
           id: event.id,
+          locale: "vi",
           event: {
             title: "test",
             date_event: Settings.rspec.update.valid_date,
@@ -49,7 +50,7 @@ RSpec.describe Business::EventsController, type: :controller do
       }
 
       it "redirect to business_home_path" do
-        expect(response).to redirect_to business_login_path
+        expect(response).to redirect_to new_user_session_url
       end
 
       it "should found" do
@@ -58,10 +59,10 @@ RSpec.describe Business::EventsController, type: :controller do
     end
 
     describe "DELETE #destroy" do
-      before{delete :destroy, params: {id: event.id}}
+      before{delete :destroy, params: {id: event.id, locale: "vi"}}
 
       it "redirect to business_home_path" do
-        expect(response).to redirect_to business_login_path
+        expect(response).to redirect_to new_user_session_url
       end
 
       it "should found" do

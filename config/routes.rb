@@ -4,21 +4,20 @@ Rails.application.routes.draw do
     namespace :business do
       get "/home", to: "static_pages#home"
       get "/about", to: "static_pages#about"
-      get "/signup", to: "users#new"
-      post "/signup", to: "users#create"
-      get "/login", to: "sessions#new"
-      post "/login", to: "sessions#create"
-      delete "/logout", to: "sessions#destroy"
       get "next/:id/:day", to: "calendars#next", as: "next"
       get "prev/:id/:day", to: "calendars#prev", as: "prev"
-
-      resources :users, except: %i(new create)
       resources :rooms, only: %i(index show)
       resources :events, except: :new
       resources :rooms do
         resources :reports, only: %i(create destroy)
       end
     end
+
+    devise_for :users, controllers: {
+      sessions: "business/sessions",
+      registrations: "business/registrations",
+      passwords: "business/passwords"
+    }
 
     namespace :managers do
       root to: "homes#index"

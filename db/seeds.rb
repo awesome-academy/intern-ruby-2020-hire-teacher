@@ -7,15 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Group.create!(name: "administration")
 
-User.create!(name: "Manager",
-             email: "manager@demo.com",
-             password: "foobar",
-             password_confirmation: "foobar",
-             activated: true,
-             group_id: 1,
-             role: 1,
-             activated_at: Time.zone.now)
-
 5.times do
   country = Faker::Address.country
   group = Faker::Ancient.unique.hero
@@ -30,6 +21,7 @@ end
 User.create!(name: "Hoang Anh",
              email: "nguyen.@gmail.com",
              password: "hoanganh",
+             encrypted_password: "taawktljasktlw4aaglj",
              password_confirmation: "hoanganh",
              activated: true,
              activated_at: Time.zone.now,
@@ -37,14 +29,17 @@ User.create!(name: "Hoang Anh",
              role: 1)
 
 10.times do
-  User.create!(name: Faker::Name.unique.name,
-               email: Faker::Internet.unique.email,
+  name = Faker::Name.unique.name
+  email = Faker::Internet.unique.email
+  User.create!(name: name,
+               email: email,
                password: "123456",
+               encrypted_password: '#$taawktljasktlw4aaglj',
                password_confirmation: "123456",
-               activated: true,
-               activated_at: Time.zone.now,
-               group_id: Faker::Number.between(1, 5),
-               role: Faker::Number.between(2, 4))
+               activated: false,
+               activated_at: nil,
+               group_id: 2,
+               role: 2)
 end
 
 5.times do

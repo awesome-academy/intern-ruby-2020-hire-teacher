@@ -128,3 +128,52 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
 #icon {
   width:60%;
 }
+
+select{
+  background-color: $whitef6f6f6;
+  border: none;
+  color: $black0d0d0d;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 40%;
+  border: 2px solid $whitef6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+select:focus {
+  background-color: $whitefff;
+  border-bottom: 2px solid $orangeff4444e6;
+}
+
+#result
+ {
+  text-shadow:#666;
+ }
+
+ a{
+  color:#000;
+ }
+.result{color:#F00;}
+.red{color:red;}
+.orange{color:orange;}
+.green{color:green;}
+
+.bar-strong-password{
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}

@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = Settings.model.user.email_validate_regex
-  USER_PARAMS = %i(name email password password_confirmation group_id).freeze
+  USER_PARAMS = %i(name email password password_confirmation role group_id).freeze
+
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
 
   attr_accessor :previous_activate
 
@@ -27,7 +30,7 @@ class User < ApplicationRecord
   validates :role, presence: true
 
   before_save :downcase_email
-  after_update :send_email
+  # after_update :send_email
 
   scope :get_user_now_booking, ->(room_id){where "events.room_id = ? AND DAY(events.date_event) > DAY(NOW())", room_id}
   scope :sort_by_created_at, ->(type){order created_at: type}
@@ -37,8 +40,6 @@ class User < ApplicationRecord
   scope :by_role, ->(role){where(role: role) if role.present?}
   scope :by_status, ->(status){where(activated: status) if status.present?}
   scope :includes_group, ->{includes(:group).references :group}
-
-  has_secure_password
 
   private
 

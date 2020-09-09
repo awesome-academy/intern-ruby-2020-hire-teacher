@@ -6,6 +6,7 @@ require('./vendor/bootstrap.bundle')
 require('./custom')
 require('./calendar/filter_select')
 require('cocoon')
+require('./password/password')
 import "@fortawesome/fontawesome-free/js/all";
 
 window.jQuery = $;

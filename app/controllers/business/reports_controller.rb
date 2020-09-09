@@ -1,5 +1,5 @@
 class Business::ReportsController < BusinessController
-  before_action :logged_in_user
+  before_action :authenticate_user!
   before_action :set_report, only: :destroy
   before_action :load_room, only: :create
 

@@ -2,6 +2,8 @@ class BusinessController < ActionController::Base
   layout "business"
 
   protect_from_forgery with: :exception
+  before_action :authenticate_user!
+
   include SessionsHelper
 
   before_action :set_locale
@@ -20,7 +22,7 @@ class BusinessController < ActionController::Base
 
     store_location
     flash[:danger] = t "controller.application.logged_in"
-    redirect_to business_login_url
+    redirect_to new_user_session_path
   end
 
   def correct_user
