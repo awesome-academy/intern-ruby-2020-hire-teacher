@@ -8,7 +8,7 @@ class Managers::UsersController < ManagersController
                  .by_group(params[:group])
                  .by_role(params[:role])
                  .by_status(params[:status])
-                 .desc_user_created_at
+                 .sort_by_created_at(:desc)
                  .page(params[:page]).per Settings.page.size
   end
 

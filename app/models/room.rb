@@ -28,7 +28,7 @@ class Room < ApplicationRecord
   scope :by_country, ->(id_country){join_location_country.where(countries: {id: id_country}) if id_country.present?}
   scope :by_created_at, ->(date){where("date(created_at) = ? ", date) if date.present?}
   scope :by_active, ->(status){where(active: status) if status.present?}
-  scope :desc_created_at, ->{order created_at: :desc}
+  scope :sort_by_created_at, ->(type){order created_at: type}
 
   private
 

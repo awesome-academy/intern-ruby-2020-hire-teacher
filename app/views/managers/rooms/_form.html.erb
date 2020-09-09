@@ -2,11 +2,17 @@
   <%= render "shared/error_messages", object: f.object %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <div class="form-group">
-    <label><%= t ".name" %></label>
+    <label>
+      <%= t ".name" %>
+      <span class="require">(*)</span>
+    </label>
     <%= f.text_field :name, class: "form-control" %>
   </div>
   <div class="form-group">
-    <label><%= t ".address" %></label>
+    <label>
+      <%= t ".address" %>
+      <span class="require">(*)</span>
+    </label>
     <%= f.text_field :address, {class: "form-control", rows: "3"} %>
   </div>
   <div class="form-group">

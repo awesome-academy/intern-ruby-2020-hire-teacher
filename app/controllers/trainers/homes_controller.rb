@@ -7,5 +7,10 @@ class Trainers::HomesController < TrainersController
                    .includes(:user)
                    .sort_by_date_event(:desc)
                    .page(params[:page]).per Settings.page.size
+    @users = User.includes_group
+                 .by_group(current_user.group_id)
+                 .by_role(:trainee)
+                 .sort_by_created_at(:desc)
+                 .page(params[:page]).per Settings.page.size
   end
 end

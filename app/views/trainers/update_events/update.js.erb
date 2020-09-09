@@ -1,0 +1,13 @@
+$('.event-activate').bind("ajax:success", function() {
+  $(this).closest('td').html(`
+    <% if @event.activate? %>
+      <i class="fa fa-unlock fa-lg unlock-icon"></i>
+    <% else %>
+      <%= link_to trainers_update_event_path(@event), method: :patch, remote: true,
+        data: {confirm: t(@event.activate? ? ".lock" : ".activate", name: @event.title)},
+        class: "btn btn-default btn-circle animation-resize event-activate" do %>
+        <i class="fa fa-lock fa-lg trash-icon"></i>
+      <% end %>
+    <% end %>
+  `)
+});

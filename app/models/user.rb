@@ -2,6 +2,8 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = Settings.model.user.email_validate_regex
   USER_PARAMS = %i(name email password password_confirmation group_id).freeze
 
+  attr_accessor :previous_activate
+
   enum role: Settings.model.user.roles.to_h
 
   has_many :events, dependent: :destroy
@@ -28,12 +30,13 @@ class User < ApplicationRecord
   after_update :send_email
 
   scope :get_user_now_booking, ->(room_id){where "events.room_id = ? AND DAY(events.date_event) > DAY(NOW())", room_id}
-  scope :desc_user_created_at, ->{order created_at: :desc}
+  scope :sort_by_created_at, ->(type){order created_at: type}
   scope :by_name, ->(name){where "users.name LIKE ?", "%#{name}%"}
   scope :by_email, ->(email){where "users.email LIKE ?", "%#{email}%"}
   scope :by_group, ->(group_id){where(group_id: group_id) if group_id.present?}
   scope :by_role, ->(role){where(role: role) if role.present?}
   scope :by_status, ->(status){where(activated: status) if status.present?}
+  scope :includes_group, ->{includes(:group).references :group}
 
   has_secure_password
 
@@ -44,6 +47,12 @@ class User < ApplicationRecord
   end
 
   def send_email
+    return if previous_activate == activated
+
     UserMailer.account_activation(self).deliver_now
+  end
+
+  def update_previous_activate
+    self.previous_activate = activated_was
   end
 end

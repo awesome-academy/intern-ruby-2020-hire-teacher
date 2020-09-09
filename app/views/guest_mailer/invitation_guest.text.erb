@@ -1,0 +1,6 @@
+<%= t ".hi" %>, <%= @user.name %>
+<%= t ".title" %>: <%= @event.title %>
+<%= t ".day" %>: <%= l @event.date_event, format: :date %>
+<%= t ".start_time" %>: <%= l @event.start_time, format: :time %>
+<%= t ".end_time" %>: <%= l @event.end_time, format: :time %>
+<%= @event.description %>

@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
     namespace :trainers do
       root to: "homes#index"
+      resources :update_events
     end
   end
 end

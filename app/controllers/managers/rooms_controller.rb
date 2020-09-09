@@ -9,7 +9,7 @@ class Managers::RoomsController < ManagersController
                  .by_name(params[:room_name])
                  .by_created_at(params[:search_day])
                  .by_active(params[:option])
-                 .desc_created_at
+                 .sort_by_created_at(:desc)
                  .page(params[:page]).per Settings.page.size
   end
 
