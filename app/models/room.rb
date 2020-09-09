@@ -7,7 +7,6 @@ class Room < ApplicationRecord
   has_many :events, dependent: :destroy
   has_many :reports, dependent: :destroy
   has_many :images, dependent: :destroy
-  has_many :events, dependent: :destroy
   belongs_to :user
   belongs_to :location
 
