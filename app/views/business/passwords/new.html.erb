@@ -11,7 +11,8 @@
           <%= render "business/shared/error_messages", resource: resource %>
 
           <div class="field">
-            <%= f.email_field :email, class: "form-feild", placeholder: "Email", required: :required %>
+            <%= f.email_field :email, class: "form-feild", placeholder: t(".enter_email"), required: :required %>
+            <%= display_error f.object, :email, t(".enter_email") %>
           </div>
 
           <div class="actions">

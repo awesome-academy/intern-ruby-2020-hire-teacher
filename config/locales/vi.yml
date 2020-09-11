@@ -75,22 +75,26 @@ vi:
       new:
         forgot_password: Quên mật khẩu
         you_haven't_account: Bạn chưa có tài khoản
-        email: Email
-        password: Mật khẩu
+        enter_email: Nhập email của bạn
+        enter_password: Nhập mật khẩu
         login_with_social: Có thể đăng nhập qua
         tooltip: Đăng nhập bằng %{name}
     registrations:
       new:
-        name: Họ và tên
+        name: Tên
+        enter_name: Nhập tên của bạn
         password: Mật khẩu
+        enter_email: Nhập email của bạn
+        enter_password: Nhập mật khẩu
         password_confirmation: Xác nhận mật khẩu
         role: Chức vụ
         group: Nhóm
-        create_new_account: Tạo mới tài khoản
-        you_have_account: Bạn đã có tài khoản
+        create_new_account: Tạo tài khoản
+        you_have_account: Bạn đã có tài khoản?
     passwords:
       new:
         reset_password: Đặt lại mật khẩu
+        enter_email: Nhập email của bạn
       edit:
         change_password: Đổi mật khẩu
         new_password: Mật khẩu mới
@@ -118,8 +122,8 @@ vi:
       form_add_event:
         title: Tiêu đề
         date_event: Ngày diễn ra
-        start: Thời gian bắt đầu
-        end: Thời gian kết thúc
+        start_time: Thời gian bắt đầu
+        end_time: Thời gian kết thúc
         description: Mô tả
         color: Màu sắc
         add_event: Thêm sự kiện

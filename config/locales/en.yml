@@ -82,7 +82,10 @@ en:
     registrations:
       new:
         name: Name
+        enter_name: Enter Your Name
         password: Password
+        enter_email: Enter Your Email
+        enter_password: Enter Your Password
         password_confirmation: Password Confirmation
         role: Role
         group: Group
@@ -90,6 +93,7 @@ en:
         you_have_account: You have account
     passwords:
       new:
+        enter_email: Enter Your Email
         reset_password: Reset Password
       edit:
         change_password: Change Password
@@ -117,8 +121,8 @@ en:
       form_add_event:
         title: Title
         date_event: Date event
-        start: Start Time
-        end: Finish Time
+        start_time: Start Time
+        end_time: Finish Time
         description: Description
         color: Color
         add_event: Add Event

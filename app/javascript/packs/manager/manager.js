@@ -18,7 +18,7 @@ import I18n from 'i18n-js';
 global.I18n = I18n;
 
 $(document).on('turbolinks:load', function () {
-  $('#form-images').on('change', 'input[type=file]', function (e) {
+  $('#form-images').on('change','input[type=file]', function (e) {
     let file_size = $(this)[0].files[0].size / 1024 / 1024;
     let tag = $(this).closest('td').next('td');
     validate_image(file_size, tag, e);

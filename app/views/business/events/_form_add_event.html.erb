@@ -1,23 +1,25 @@
 <%= form_for @event, url: business_events_path do |f| %>
-  <%= render "business/shared/error_messages", resource: @event %>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <%= f.label t(".title"), class: "form-group" %>
-      <%= f.text_field :title, class: "form-group", required: :required %>
+      <%= f.text_field :title, class: "form-group", placeholder: t(".title"), required: :required %>
+      <%= display_error f.object, :title, t(".title") %>
     </div>
     <div class="form-group col-md-6">
       <%= f.label t(".date_event"), class: "form-group" %>
       <%= f.text_field :date_event, type: "date", class: "form-group", required: :required %>
+      <%= display_error f.object, :date_event, t(".date_event") %>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-4">
       <%= f.label t(".start"), class: "form-group" %>
       <%= f.time_field :start_time, class: "form-group", required: :required %>
+      <%= display_error f.object, :start_time, t(".start_time") %>
     </div>
     <div class="form-group col-md-4">
       <%= f.label t(".end"), class: "form-group" %>
       <%= f.time_field :end_time, class: "form-group", required: :required %>
+      <%= display_error f.object, :end_time, t(".end_time") %>
     </div>
     <div class="form-group col-md-4">
       <%= f.label t(".color"), class: "form-group" %>
@@ -26,8 +28,8 @@
   </div>
   <div class="form-row">
     <div class="form-group">
-      <%= f.label t(".description"), class: "form-group" %>
       <%= f.text_area :description, class: "form-group",cols: "37", rows: "5", placeholder: t(".description_placeholder"), required: :required %>
+      <%= display_error f.object, :description, t(".description_placeholder") %>
     </div>
   </div>
   <div class="form-group">
