@@ -100,8 +100,13 @@ en:
       index:
         choose_coutry: Choose Country
         choose_location: Choose Location
-        search: Search
         result_filter: Result Filter
+      search:
+        search: Search
+        name: Name
+        location: Location
+        country: Country
+        sort: Sort
       show:
         calendar: Calendar
         next: Next

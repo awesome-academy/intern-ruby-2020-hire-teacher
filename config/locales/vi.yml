@@ -100,8 +100,13 @@ vi:
       index:
         choose_coutry: Chọn Quốc Gia
         choose_location: Chọn Địa Điểm
-        search: Tìm kiếm
         result_filter: Kết quả tìm kiếm
+      search:
+        search: Tìm kiếm
+        name: Tên phòng
+        location: Khu vực
+        country: Quốc gia
+        sort: "Sắp xếp theo:"
       show:
         calendar: Lịch
         next: Trước

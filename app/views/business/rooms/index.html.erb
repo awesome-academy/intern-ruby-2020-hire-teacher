@@ -4,36 +4,17 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="">
-        <h3><%= t ".result_filter" %> : <%= total_result_filter @rooms.total_count if @room.present? %></h3>
+        <h3><%= t ".result_filter" %> : <%= total_result_filter @rooms.total_count if @rooms.present? %></h3>
       </div>
     </div>
     <div class="row">
       <div class="col-md-3">
         <div class="contact-form">
-          <%= form_tag business_rooms_path, method: :get do %>
-            <%= text_field_tag :search_name, params[:search_name] %>
-            <%= select_tag :filter_country, options_for_select(@countries, params[:filter_country]), include_blank: t(".choose_country"), onchange: "this.form.submit()" %>
-            <% if params[:filter_country].present? %>
-              <%= select_tag :filter_location, options_for_select(@locations, params[:filter_location]), include_blank: t(".choose_location"), onchange: "this.form.submit()" %>
-            <% end %>
-            <%= submit_tag t(".search") %>
-            <%= link_to t(".reset"), business_rooms_path %>
-          <% end %>
+          <%= render "search", countries: @countries, locations: @locations %>
         </div>
       </div>
-      <div class="col-md-9">
-        <% if @rooms.any? %>
-          <% (0..@rooms.size - 1).step(3).each do |i| %>
-            <div class ="row">
-              <% (0..2).each do |j| %>
-                <div class="col-md-4">
-                  <%= render @rooms[i+j] if @rooms[i+j] %>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-        <% end %>
-        <%= paginate @rooms, theme: Settings.theme_pagination %>
+      <div class="col-md-9 list-room-content">
+        <%= render "list_room", rooms: @rooms %>
       </div>
     </div>
   </div>
