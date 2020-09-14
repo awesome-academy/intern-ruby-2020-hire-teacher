@@ -1,0 +1,27 @@
+<% provide :title, t("forget_password") %>
+<div class="banner">
+  <div class="container">
+    <div class="wrapper">
+      <div id="formContent">
+        <div class="first">
+          <%= image_tag Settings.image_name, id: "icon", alt: t("user_icon") %>
+        </div>
+        <h2><%= t "forgot_your_password" %></h2>
+        <%= form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :post } do |f| %>
+          <%= render "business/shared/error_messages", resource: resource %>
+
+          <div class="field">
+            <%= f.email_field :email, class: "form-feild", placeholder: "Email", required: :required %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit t(".reset_password"), class: "btn_week sign_up_btn" %>
+          </div>
+        <% end %>
+        <div id="formFooter">
+          <p><%= t ".you_have_account" %> <%= link_to t("log_in"), new_user_session_path, class: "underlineHover" %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
