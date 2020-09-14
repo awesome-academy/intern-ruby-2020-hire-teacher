@@ -95,5 +95,9 @@ rspec:
     valid_date: "2020-09-30"
     valid_date_params: "2020-10-09"
   date_created_room_at: "2020-09-04"
+  room_controller:
+    params_name: "mos"
+    invalid_id: 1000
+    room_name: "room demo"
 password_regex: !ruby/regexp /^(?=.*[a-zA-Z])(?=.*[0-9])/i
 image_name: "login.png"
