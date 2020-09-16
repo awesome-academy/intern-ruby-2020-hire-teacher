@@ -13,6 +13,12 @@
  *= require_self
  *= require_toastr
  */
+$fa-font-path: '@fortawesome/fontawesome-free/webfonts';
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/solid';
+@import '@fortawesome/fontawesome-free/scss/regular';
+@import '@fortawesome/fontawesome-free/scss/brands';
+@import '@fortawesome/fontawesome-free/scss/v4-shims';
 
 @import 'bootstrap-sprockets';
 @import './vendor/bootstrap';
@@ -20,13 +26,6 @@
 @import './layouts/header';
 @import './signup/signup';
 @import 'toastr/build/toastr.min';
-
-$fa-font-path: '@fortawesome/fontawesome-free/webfonts';
-@import '@fortawesome/fontawesome-free/scss/fontawesome';
-@import '@fortawesome/fontawesome-free/scss/solid';
-@import '@fortawesome/fontawesome-free/scss/regular';
-@import '@fortawesome/fontawesome-free/scss/brands';
-@import '@fortawesome/fontawesome-free/scss/v4-shims';
 
 @import './calendar/style_calendar';
 @import './vendor/style';

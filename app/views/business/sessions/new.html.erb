@@ -26,9 +26,16 @@
             <%= f.submit t("log_in"), class: "btn_week destroy_event" %>
           </div>
         <% end %>
-        <%= link_to t(".forgot_password"), new_user_password_path %>
+        <%= link_to t(".forgot_password"), new_user_password_path, class: "link_login" %>
         <div id="formFooter">
-          <p><%= t ".you_haven't_account" %> <%= link_to t("sign_up"), new_user_registration_path, class: "underlineHover" %></p>
+          <p><%= t ".you_haven't_account" %> <%= link_to t("sign_up"), new_user_registration_path, class: "underlineHover link_login" %></p>
+          <p><%= t ".login_with_social" %></p>
+          <%= link_to omniauth_authorize_path(resource_name, "facebook"), class: "bnt-social btn-facebook" do %>
+            <i class="fab fa-facebook-square"></i>
+          <% end %>
+          <%= link_to omniauth_authorize_path(resource_name, "google_oauth2"), class: "bnt-social btn-google" do %>
+            <i class="fab fa-google"></i>
+          <% end %>
         </div>
       </div>
     </div>

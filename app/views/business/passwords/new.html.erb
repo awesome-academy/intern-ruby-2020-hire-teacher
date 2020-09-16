@@ -19,7 +19,8 @@
           </div>
         <% end %>
         <div id="formFooter">
-          <p><%= t ".you_have_account" %> <%= link_to t("log_in"), new_user_session_path, class: "underlineHover" %></p>
+          <p><%= t ".you_have_account" %> <%= link_to t("log_in"), new_user_session_path, class: "underlineHover link_login" %></p>
+          <p><%= t ".you_haven't_account" %> <%= link_to t("sign_up"), new_user_password_path, class: "underlineHover link_login" %></p>
         </div>
       </div>
     </div>

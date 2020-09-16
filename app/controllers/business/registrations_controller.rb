@@ -1,6 +1,6 @@
 class Business::RegistrationsController < Devise::RegistrationsController
   before_action :get_group, only: %i(new create)
-  before_action :configure_sign_up_params, only: :create
+  before_action :configure_sign_up_params, :check_captcha, only: :create
   layout "business"
 
   def new
@@ -13,9 +13,7 @@ class Business::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  def after_sign_up_path_for user
-    manager_root_path if user.manager?
-
+  def after_sign_up_path_for _user
     business_home_path
   end
 

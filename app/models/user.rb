@@ -4,7 +4,8 @@ class User < ApplicationRecord
   USER_PARAMS = %i(name email password password_confirmation role group_id).freeze
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :lockable
+         :recoverable, :rememberable, :validatable, :lockable,
+         :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
   attr_accessor :previous_activate
 
@@ -42,6 +43,24 @@ class User < ApplicationRecord
   scope :by_role, ->(role){where(role: role) if role.present?}
   scope :by_status, ->(status){where(activated: status) if status.present?}
   scope :includes_group, ->{includes(:group).references :group}
+
+  class << self
+    def from_omniauth access_token
+      data = access_token.info
+      result = User.find_by email: data.email
+      return result if result
+
+      password = Devise.friendly_token[0, 20]
+      where(provider: access_token.provider, uid: access_token.uid).first_or_create do |user|
+        user.email = data.email
+        user.password = password
+        user.password_confirmation = password
+        user.name = data.name
+        user.role = "employee"
+        user.group_id = Group.first.id
+      end
+    end
+  end
 
   private
 
