@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+  acts_as_paranoid
   EVENT_PARAMS = [:title, :start_time, :end_time,
                   :user_id, :room_id, :color, :description,
                   :date_event,
