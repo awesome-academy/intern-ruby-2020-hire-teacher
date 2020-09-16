@@ -32,26 +32,26 @@ RSpec.describe Managers::RoomsController, type: :controller do
 
   context "when user not login" do
     describe "GET #index" do
-      before {get :index}
+      before {get :index, params: {locale: :vi}}
 
-      it "should render warning flash" do
-        expect(flash[:warning]).to eq I18n.t("managers.warning.not_correct")
+      it "redirect to new_user_session_path" do
+        expect(response).to redirect_to new_user_session_path
       end
 
-      it "redirect to business_home_path" do
-        expect(response).to redirect_to business_home_path
+      it "should found" do
+        expect(response).to have_http_status Settings.rspec.redirect_status
       end
     end
 
     describe "GET #new" do
-      before {get :new}
+      before {get :new, params: {locale: :vi}}
 
-      it "should render warning flash" do
-        expect(flash[:warning]).to eq I18n.t("managers.warning.not_correct")
+      it "redirect to new_user_session_path" do
+        expect(response).to redirect_to new_user_session_path
       end
 
-      it "redirect to business_home_path" do
-        expect(response).to redirect_to business_home_path
+      it "should found" do
+        expect(response).to have_http_status Settings.rspec.redirect_status
       end
     end
 
@@ -59,6 +59,7 @@ RSpec.describe Managers::RoomsController, type: :controller do
       before do
         post :create,
         params: {
+          locale: :vi,
           room: user_params,
           image: FactoryBot.attributes_for(
             :image,
@@ -67,65 +68,66 @@ RSpec.describe Managers::RoomsController, type: :controller do
         }
       end
 
-      it "should render warning flash" do
-        expect(flash[:warning]).to eq I18n.t("managers.warning.not_correct")
+      it "redirect to new_user_session_path" do
+        expect(response).to redirect_to new_user_session_path
       end
 
-      it "redirect to business_home_path" do
-        expect(response).to redirect_to business_home_path
+      it "should found" do
+        expect(response).to have_http_status Settings.rspec.redirect_status
       end
     end
 
     describe "GET #show" do
-      before {get :show, params: {id: room2.id}}
+      before {get :show, params: {id: room2.id, locale: :vi}}
 
-      it "should render warning flash" do
-        expect(flash[:warning]).to eq I18n.t("managers.warning.not_correct")
+      it "redirect to new_user_session_path" do
+        expect(response).to redirect_to new_user_session_path
       end
 
-      it "redirect to business_home_path" do
-        expect(response).to redirect_to business_home_path
+      it "should found" do
+        expect(response).to have_http_status Settings.rspec.redirect_status
       end
     end
 
     describe "GET #edit" do
-      before {get :edit, params: {id: room2.id}}
+      before {get :edit, params: {id: room2.id, locale: :vi}}
 
-      it "should render warning flash" do
-        expect(flash[:warning]).to eq I18n.t("managers.warning.not_correct")
+      it "redirect to new_user_session_path" do
+        expect(response).to redirect_to new_user_session_path
       end
 
-      it "redirect to business_home_path" do
-        expect(response).to redirect_to business_home_path
+      it "should found" do
+        expect(response).to have_http_status Settings.rspec.redirect_status
       end
     end
 
     describe "PATCH #update" do
       before do
         patch :update, params: {
+          locale: :vi,
           id: room2.id,
           name: Faker::Company.name
         }
       end
 
-      it "should render warning flash" do
-        expect(flash[:warning]).to eq I18n.t("managers.warning.not_correct")
+      it "redirect to new_user_session_path" do
+        expect(response).to redirect_to new_user_session_path
       end
 
-      it "redirect to business_home_path" do
-        expect(response).to redirect_to business_home_path
+      it "should found" do
+        expect(response).to have_http_status Settings.rspec.redirect_status
       end
     end
 
     describe "DELETE #destroy" do
-      before{delete :destroy, params: {id: room3.id}}
+      before{delete :destroy, params: {id: room3.id, locale: :vi}}
 
-      it "should render warning flash" do
-        expect(flash[:warning]).to eq I18n.t("managers.warning.not_correct")
+      it "redirect to new_user_session_path" do
+        expect(response).to redirect_to new_user_session_path
       end
 
-      it "redirect to business_home_path" do
-        expect(response).to redirect_to business_home_path
+      it "should found" do
+        expect(response).to have_http_status Settings.rspec.redirect_status
       end
     end
   end

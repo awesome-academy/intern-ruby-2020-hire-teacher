@@ -32,9 +32,9 @@ class User < ApplicationRecord
   validate :password_complexity, :duplicate_password
 
   before_save :downcase_email
-  # after_update :send_email
+  after_update :send_email, if: ->{(previous_activate != activated)}
 
-  scope :get_user_now_booking, ->(room_id){where "events.room_id = ? AND DAY(events.date_event) > DAY(NOW())", room_id}
+  scope :get_user_now_booking, ->(room_id){where "events.room_id = ? AND events.date_event > NOW()", room_id}
   scope :sort_by_created_at, ->(type){order created_at: type}
   scope :by_name, ->(name){where "users.name LIKE ?", "%#{name}%"}
   scope :by_email, ->(email){where "users.email LIKE ?", "%#{email}%"}
@@ -50,9 +50,7 @@ class User < ApplicationRecord
   end
 
   def send_email
-    return if previous_activate == activated
-
-    UserMailer.account_activation(self).deliver_now
+    ActivateUserWorker.perform_async email
   end
 
   def update_previous_activate

@@ -32,6 +32,8 @@ gem "rails-controller-testing"
 gem "rails-i18n"
 gem "recaptcha"
 gem "sass-rails", ">= 6"
+gem "sidekiq"
+gem "sinatra", ">= 1.3.0", require: nil
 gem "toastr-rails"
 gem "validates_timeliness", "~> 5.0.0.beta1"
 gem "webpacker", "~> 4.0"
