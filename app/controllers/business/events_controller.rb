@@ -11,10 +11,8 @@ class Business::EventsController < BusinessController
     @event = Event.new event_params
     if @event.save
       flash[:success] = t "controller.events.success_create"
-      @event.guests.each do |guest|
-        UserMailer.invite_event(guest).deliver_now
-        flash[:success] = t "controller.events.send_mail"
-      end
+      SendMailStatusWorker.perform_async @event.id
+      flash[:warning] = t "controller.events.success_send_mail"
       redirect_to business_room_path id: params[:event][:room_id],
         day: params[:event][:date_event]
     else

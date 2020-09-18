@@ -42,10 +42,12 @@ Rails.application.configure do
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
+  config.active_job.queue_adapter = :test
+  config.action_mailer.perform_deliveries = false
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
   # Raises error for missing translations.
-  # config.action_view.raise_on_missing_translations = true
+  # config.action_view.raise_on_missing_translations = false
 end

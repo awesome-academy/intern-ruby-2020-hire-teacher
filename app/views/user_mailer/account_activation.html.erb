@@ -4,7 +4,7 @@
 <p>
   <% if @user.activated? %>
     <%= t "user_mailer.activate" %>.
-    <%= link_to t("user_mailer.link_profile"), business_user_url(id: @user.id) %>
+    <%= link_to t("user_mailer.link_profile"), business_home_url %>
   <% else %>
     <%= t "user_mailer.inactivate" %>
   <% end %>

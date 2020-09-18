@@ -1,4 +1,5 @@
 require "resolv-replace"
+
 Sidekiq::Extensions.enable_delay!
 
 Sidekiq.configure_server do |config|
