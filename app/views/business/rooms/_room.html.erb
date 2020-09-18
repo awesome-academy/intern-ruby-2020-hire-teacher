@@ -4,6 +4,11 @@
     <%= link_to business_room_path room do %>
       <h4><%= room.name %></h4>
     <% end %>
+    <% if room.opened? %>
+      <label class="fa-status-room" data-toggle="tooltip" data-placement="top" title="<%= t ".unlock_room" %>"><i class="fa fa-lock-open fa-lg unlock-icon"></i></label>
+    <% else %>
+      <label class="fa-status-room" data-toggle="tooltip" data-placement="top" title="<%= t ".lock_room" %>"><i class="fa fa-lock fa-lg lock-icon"></i></label>
+    <% end %>
     <h4><small><i class="fa fa-briefcase"></i> <%= room.address %> <br>
         <strong><i class="fa fa-building"></i> <%= room.location_name %></strong></small></h4>
     <small>

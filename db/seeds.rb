@@ -22,8 +22,8 @@ User.create!(name: "Hoang Anh",
              password_confirmation: "@Manager123",
              activated: true,
              activated_at: Time.zone.now,
-             group_id: Group.second.id,
-             role: :employee)
+             group_id: Group.first.id,
+             role: :manager)
 
 10.times do
   name = Faker::Name.unique.name

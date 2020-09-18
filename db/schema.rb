@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2020_09_23_031359) do
     t.datetime "date_event"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.boolean "status"
+    t.boolean "status", default: true
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_events_on_deleted_at"
     t.index ["room_id"], name: "index_events_on_room_id"

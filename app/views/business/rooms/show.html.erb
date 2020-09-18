@@ -75,19 +75,19 @@
 <div class="calendar">
   <%= render "business/events/schedule" %>
 </div>
-<div class="section">
+<div class="section content-report">
   <div class="container">
     <div class="row">
       <div class="col-md-9">
         <div class="section-heading">
           <h2><%= t "report_room" %></h2>
         </div>
-        <p class="lead">
-          <i class="fa fa-map-marker"></i> <%= @room.name %>
-        </p>
         <br>
-        <%= render "business/reports/report_form", room: @room, parent_id: nil, report_new: @report %>
-        <div class="box-report">
+        <div class="form-create-report shadow rounded">
+          <%= image_tag "avatar.png", class: "avatar-box-invite", size: Settings.size_avatar_current %>
+          <%= render "business/reports/report_form", room: @room, parent_id: nil, report_new: @report %>
+        </div>
+        <div class="box-report col-md-11">
           <%= reports_tree_for @room.reports.hash_tree(limit_depth: 2),
             @room, Report.new %>
         </div>

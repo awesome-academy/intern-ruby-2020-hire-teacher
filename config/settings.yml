@@ -56,14 +56,14 @@ event:
     end: "5:00pm"
 event_params: "%i(title date_event start_time end_time description user_id room_id color)"
 array_color: [["Smalt Blue", 1], ["Martinique", 2], ["Edward", 3], ["Rajah", 4]]
-array_role: [["Manager", "manager"], ["Employee", "employee"], ["Trainer", "trainer"], ["Trainee", "trainee"]]
+array_role: [["Employee", "employee"], ["Trainer", "trainer"], ["Trainee", "trainee"]]
 color_passed: 5
 room_options:
   option.all: ""
   option.open: true
   option.lock: false
 report:
-  max_length: 255
+  max_length: 10
 event_params: "%i(title date_event start_time end_time description color user_id room_id)"
 week_day: 7
 one: 1
@@ -107,3 +107,4 @@ worker:
 omniauth:
   facebook: "facebook"
   google: "google_oauth2"
+size_avatar_current: 50

@@ -14,7 +14,7 @@
 
           <div class="field">
             <%= f.email_field :email, class: "form-feild", placeholder: t(".enter_email"), required: :required %>
-            <%= display_error f.object, :email, t(".email") %>
+            <%= display_error f.object, :email, "Email" %>
           </div>
 
           <div class="field">
@@ -25,13 +25,13 @@
           </div>
 
           <div class="field">
-            <%= f.password_field :password_confirmation, class: "form-feild", placeholder: t(".confirmation_password"), autocomplete: "new-password", required: :required %>
+            <%= f.password_field :password_confirmation, class: "form-feild", placeholder: t(".password_confirmation"), autocomplete: "new-password", required: :required %>
             <%= display_error f.object, :password_confirmation, t(".password_confirmation") %>
           </div>
 
           <div class="field">
-            <%= f.select :role, options_for_select(Settings.array_role), include_blank: t(".role"), class:"form-feild", required: :required %>
-            <%= f.select :group_id, options_for_select(@group), include_blank: t(".group"), class:"form-feild", required: :required %>
+            <%= f.select :role, options_for_select(Settings.array_role), include_blank: t(".role"), class:"form-feild select-feild", required: :required %>
+            <%= f.select :group_id, options_for_select(@group), include_blank: t(".group"), class:"form-feild select-feild", required: :required %>
           </div>
 
           <div class="field captcha-content">

@@ -3,39 +3,66 @@
     <h3 class="infomartion_event">Information Event</h3>
     <br>
     <%= form_for @event, url: business_event_path, method: :patch  do |f| %>
-      <%= render "business/shared/error_messages", resource: @event %>
-      <%= f.label t(".title"), class: "form-group" %>
-      <%= f.text_field :title, class: "form-group", value: @event.title %>
-      <%= f.label t(".date_event"), class: "form-group" %>
-      <%= f.text_field :date_event, type: "date",
-        class: "form-group", value: @event.date_event.strftime(Settings.format_year_month_date) %>
-      <%= f.label t(".start"), class: "form-group" %>
-      <%= f.time_field :start_time, class: "form-group",
-        value: @event.start_time.strftime("%H:%M") %>
-      <%= f.label t(".end"), class: "form-group label_end" %>
-      <%= f.time_field :end_time, class: "form-group time_end",
-        value: @event.end_time.strftime("%H:%M") %>
-      <%= f.label t(".description"), class: "form-group" %>
-      <%= f.text_area :description, class: "form-group",
-        value: @event.description %>
-      <%= f.label t(".color"), class: "form-group" %>
-      <%= f.select :color, options_for_select(Settings.array_color, @event.color), class: "form-feild" %>
-      <%= f.hidden_field :user_id, value: @event.user_id %>
-      <%= f.hidden_field :room_id, value: @event.room_id %>
-      <div id="list-invite">
-        <% if @event.guests.present? %>
-          <% @event.guests.each do |guest| %>
-            <p><span><strong><%= image_tag "avatar.png", class: "avatar-box-invite", size: Settings.size_avatar %> <%= guest.user.name %></strong></span></p>
-          <% end %>
-        <% else %>
-          <p><%= t ".list_guest_null" %></p>
-        <% end %>
+      <div class="form-row">
+        <div class="form-group col-md-8">
+          <%= f.label t(".title") %>
+          <%= f.text_field :title, class: "form-group input-form-edit", required: :required %>
+          <%= display_error f.object, :title, t(".title") %>
+        </div>
+        <div class="form-group col-md-4">
+          <%= f.label t(".date_event"), class: "form-group" %>
+          <%= f.text_field :date_event, type: "date", class: "form-group date-form-edit", required: :required %>
+          <%= display_error f.object, :date_event, t(".date_event") %>
+        </div>
       </div>
-      <% if @event.date_event >= Date.today %>
-        <%= f.submit t("update"), class: "btn_week update_event"%>
-      <% end %>
-      <%= link_to t("destroy"), business_event_path(@event.id), method: :delete,
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <%= f.label t(".start"), class: "form-group" %>
+          <%= f.time_field :start_time, class: "form-group date-form-edit", required: :required %>
+          <%= display_error f.object, :start_time, t(".start_time") %>
+        </div>
+        <div class="form-group col-md-4">
+          <%= f.label t(".end"), class: "form-group" %>
+          <%= f.time_field :end_time, class: "form-group date-form-edit", required: :required %>
+          <%= display_error f.object, :end_time, t(".end_time") %>
+        </div>
+        <div class="form-group col-md-4 edit-form">
+          <%= f.label t(".color"), class: "form-group" %>
+          <%= f.select :color, options_for_select(Settings.array_color), class: "form-group", required: :required %>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <%= f.label t(".description"), class: "form-group" %>
+          <%= f.text_area :description, class: "form-group text-form-edit", required: :required %>
+          <%= display_error f.object, :description, t(".description_placeholder") %>
+        </div>
+        <%= f.hidden_field :user_id, value: @event.user_id %>
+        <%= f.hidden_field :room_id, value: @event.room_id %>
+        <div class="form-group col-md-6">
+          <div class="dropdown">
+            <button class="btn btn-invite dropdown-toggle" type="button" data-toggle="dropdown"><%= t ".invite_guest" %>
+              <span class="caret"></span></button>
+            <ul class="dropdown-menu scrollBox">
+              <input class="form-control" id="myInput" type="text" placeholder="<%= t ".search" %>">
+              <p><strong><%= @users.size %></strong></p>
+              <% @users.each do |user| %>
+                <li>
+                  <%= link_to_add_association f, :guests, render_options: {locals: { user_profile: user.name, user_id: user.id }} do %>
+                    <%= image_tag "avatar.png", class: "avatar-box-invite", size: Settings.size_avatar %>
+                    <%= user.name %>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        <% if @event.date_event >= Date.today %>
+          <%= f.submit t("update"), class: "btn_week update_event"%>
+        <% end %>
+        <%= link_to t("destroy"), business_event_path(@event.id), method: :delete,
           class: "btn_week destroy_event", data: {confirm: t("you_sure")} %>
+      </div>
     <% end %>
   </div>
 </div>

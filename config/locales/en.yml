@@ -107,6 +107,7 @@ en:
         result_filter: Result Filter
       search:
         search: Search
+        search_name: Search Name
         name: Name
         location: Location
         country: Country
@@ -117,6 +118,9 @@ en:
         prev: Prev
         add_event: Add Event
         report_room: Report Room
+      room:
+        unlock_room: Unlock Room
+        lock_room: Lock Room
     events:
       form_add_event:
         title: Title
@@ -176,6 +180,7 @@ en:
       success_destroy: Destroy Event Success!
       error_load_event: Can't find event!
       error_destroy: Destroy Failed!
+      wait_trainer_accept: Wait Trainer Accept
     rooms:
       error_load_report: Error load report!
       error_load_event: Error load event!
@@ -462,6 +467,7 @@ en:
       event:
         open: "Are you sure want to open %{name} event?"
         lock: "Are you sure want to lock %{name} event?"
+        user_delete_soft: "User deleted event!"
     update_events:
       update:
         open: "Are you sure want to open %{name} event?"

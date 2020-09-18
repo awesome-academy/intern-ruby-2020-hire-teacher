@@ -107,6 +107,7 @@ vi:
         result_filter: Kết quả tìm kiếm
       search:
         search: Tìm kiếm
+        search_name: Tìm kiếm tên
         name: Tên phòng
         location: Khu vực
         country: Quốc gia
@@ -118,6 +119,9 @@ vi:
         add_event: Tạo
         add_event: Tạo sự kiện
         report_room: Báo cáo về phòng
+      room:
+        unlock_room: Phòng không bị khóa
+        lock_room: Phòng đã bị khóa
     events:
       form_add_event:
         title: Tiêu đề
@@ -197,6 +201,7 @@ vi:
       error_load_event: Không tìm thấy sự kiện!
       success_destroy: Xóa sự kiện thành công!
       error_destroy: Xóa sự kiện thất bại!
+      wait_trainer_accept: Chờ Trainer của bạn xác nhận!
     rooms:
       error_load_report: Không tìm thấy báo cáo!
       error_load_event: Không tìm thấy sự kiện!
@@ -482,6 +487,7 @@ vi:
       event:
         activate: "bạn chắc chắn muốn mở sự kiện %{name}?"
         lock: "Bạn chắc chắn muốn khóa sự kiện %{name}?"
+        user_delete_soft: "Người dùng đã xóa sự kiện!"
     update_events:
       update:
         activate: "bạn chắc chắn muốn mở sự kiện %{name}?"

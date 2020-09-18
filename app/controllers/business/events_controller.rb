@@ -5,15 +5,19 @@ class Business::EventsController < BusinessController
 
   def show; end
 
-  def edit; end
+  def edit
+    @users = User.all
+  end
 
   def create
     @event = Event.new event_params
     if @event.save
       flash[:success] = t "controller.events.success_create"
-      @event.guests.each do |guest|
-        UserMailer.invite_event(guest).deliver_now
-        flash[:success] = t "controller.events.send_mail"
+      if current_user.trainee?
+        @event.update status: :inactivate
+        flash[:warning] = t "controller.events.wait_trainer_accept"
+      else
+        flash[:waring] = t "controller.events.success_send_mail"
       end
       redirect_to business_room_path id: params[:event][:room_id],
         day: params[:event][:date_event]

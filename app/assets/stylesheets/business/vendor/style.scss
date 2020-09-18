@@ -895,15 +895,15 @@ footer .inner-content p a {
 	width: 100%;
 	display: inline-block;
 	line-height: 42px;
-	border: 1px solid #eee;
-	border-radius: 0px;
+	border: 1px solid $grayadadad;
+	border-radius: 6px;
 	margin-bottom: 30px;
 }
 
 .contact-form select:focus,
 .contact-form .form-control:focus {
 	box-shadow: none;
-	border: 1px solid #eee;
+	border: 1px solid $grayadadad;
 }
 
 .contact-form textarea {
@@ -913,19 +913,19 @@ footer .inner-content p a {
 	min-height: 120px;
 	height: 120px;
 	max-height: 180px;
-	border: 1px solid #eee;
+	border: 1px solid $grayadadad;
 	border-radius: 0px;
 	margin-bottom: 30px;
 }
 
 .contact-form textarea:focus {
 	box-shadow: none;
-	border: 1px solid #eee;
+	border: 1px solid white;
 }
 
 .contact-form button.filled-button {
 	background-color: #f33f3f;
-	color: #fff;
+	color: white;
 	font-size: 14px;
 	text-transform: capitalize;
 	font-weight: 300;
@@ -1121,8 +1121,7 @@ footer .inner-content p a {
 }
 
 input[type=search] {
-  background-color: $whitef6f6f6;
-  border: none;
+  background-color: white;
   color: $black0d0d0d;
   padding: 15px 32px;
   text-align: center;
@@ -1130,8 +1129,8 @@ input[type=search] {
   display: inline-block;
   font-size: 16px;
   margin: 5px;
-  width: 85%;
-  border: 2px solid $whitef6f6f6;
+  width: 100%;
+  border: 1px solid $gray;
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -ms-transition: all 0.5s ease-in-out;
