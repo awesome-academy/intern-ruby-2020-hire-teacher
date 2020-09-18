@@ -38,4 +38,5 @@ Rails.application.configure do
     :port => ENV["port"],
     :authentication => :cram_md5
   }
+  config.active_job.queue_adapter = :sidekiq
 end
