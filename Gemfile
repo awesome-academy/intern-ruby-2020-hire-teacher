@@ -4,6 +4,7 @@ git_source(:github){|repo| "https://github.com/#{repo}.git"}
 ruby "2.7.0"
 
 gem "active_storage_validations", "0.8.2"
+gem "awesome_print"
 gem "bcrypt", "3.1.13"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "bootstrap-kaminari-views"
@@ -35,6 +36,7 @@ gem "puma", "~> 4.1"
 gem "rails", "~> 6.0.3", ">= 6.0.3.2"
 gem "rails-controller-testing"
 gem "rails-i18n"
+gem "ransack"
 gem "recaptcha"
 gem "sass-rails", ">= 6"
 gem "sidekiq"

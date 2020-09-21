@@ -29,6 +29,14 @@ class Room < ApplicationRecord
   scope :by_active, ->(status){where(active: status) if status.present?}
   scope :sort_by_created_at, ->(type){order created_at: type}
 
+  ransack_alias :title, :name_or_address
+
+  class << self
+    def ransackable_attributes _auth_object = nil
+      %w(name address location_id title)
+    end
+  end
+
   private
 
   def update_event

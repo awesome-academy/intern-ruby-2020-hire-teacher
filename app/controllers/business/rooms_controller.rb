@@ -4,14 +4,16 @@ class Business::RoomsController < BusinessController
   before_action :load_room_pagination, only: :index
 
   def index
+    @search = Room.ransack(params[:q])
+    @rooms = @search.result
+                    .page(params[:page]).per Settings.pagination
     @countries = Country.pluck :name, :id
-    if params[:filter_country].present?
-      @country = Country.find_by id: params[:filter_country]
-      @locations = Location.pluck :name, :id unless @country
+    return unless @search.location_country_id_eq
 
-      @locations = @country.locations.pluck :name, :id
-    end
-    filter
+    @country = Country.find_by id: @search.location_country_id_eq
+    location_country = @country&.locations || Location
+
+    @locations = location_country.pluck :name, :id
   end
 
   def show
@@ -40,7 +42,7 @@ class Business::RoomsController < BusinessController
     return if @room
 
     render :index
-    flash.now[:danger] = t "business.room.error_load_room"
+    flash.now[:error] = t "business.room.error_load_room"
   end
 
   def load_event
@@ -57,12 +59,5 @@ class Business::RoomsController < BusinessController
 
     flash[:error] = t "controller.room.error_load_report"
     redirect_to store_location
-  end
-
-  def filter
-    @rooms = Room.by_name(params[:search_name])
-                 .by_country(params[:filter_country])
-                 .by_location(params[:filter_location])
-                 .page(params[:page]).per Settings.pagination
   end
 end

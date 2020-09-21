@@ -1,14 +1,5 @@
 Group.create!(name: "administration")
 
-User.create!(name: "Manager",
-             email: "manager@demo.com",
-             password: "foobar",
-             password_confirmation: "foobar",
-             activated: true,
-             group_id: Group.first.id,
-             role: :manager,
-             activated_at: Time.zone.now)
-
 5.times do
   country = Faker::Address.country
   group = Faker::Ancient.unique.hero

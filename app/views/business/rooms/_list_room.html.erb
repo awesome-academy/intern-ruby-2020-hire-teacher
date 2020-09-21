@@ -1,0 +1,12 @@
+<% if rooms.any? %>
+  <% (0..rooms.size - 1).step(3).each do |i| %>
+    <div class ="row">
+      <% (0..2).each do |j| %>
+        <div class="col-md-4">
+          <%= render rooms[i+j] if rooms[i+j] %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+<%= paginate rooms, theme: Settings.theme_pagination %>
