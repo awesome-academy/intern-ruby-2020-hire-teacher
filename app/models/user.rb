@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :lockable,
-         :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
+         :omniauthable, omniauth_providers: %i(facebook google_oauth2 github)
 
   attr_accessor :previous_activate
 
@@ -48,7 +48,7 @@ class User < ApplicationRecord
     def from_omniauth access_token
       data = access_token.info
       result = User.find_by email: data.email
-      return result if result
+      return result if result.present?
 
       password = Devise.friendly_token[0, 20]
       where(provider: access_token.provider, uid: access_token.uid).first_or_create do |user|
@@ -56,7 +56,7 @@ class User < ApplicationRecord
         user.password = password
         user.password_confirmation = password
         user.name = data.name
-        user.role = "employee"
+        user.role = :employee
         user.group_id = Group.first.id
       end
     end

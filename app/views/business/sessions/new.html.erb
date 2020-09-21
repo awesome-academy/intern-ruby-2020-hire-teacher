@@ -30,11 +30,17 @@
         <div id="formFooter">
           <p><%= t ".you_haven't_account" %> <%= link_to t("sign_up"), new_user_registration_path, class: "underlineHover link_login" %></p>
           <p><%= t ".login_with_social" %></p>
-          <%= link_to omniauth_authorize_path(resource_name, "facebook"), class: "bnt-social btn-facebook" do %>
+          <%= link_to omniauth_authorize_path(resource_name, :facebook),
+            {class: "bnt-social btn-facebook", "data-toggle": "tooltip", title: t(".tooltip", name: "Facebook")} do %>
             <i class="fab fa-facebook-square"></i>
           <% end %>
-          <%= link_to omniauth_authorize_path(resource_name, "google_oauth2"), class: "bnt-social btn-google" do %>
+          <%= link_to omniauth_authorize_path(resource_name, :google_oauth2),
+            {class: "bnt-social btn-google", "data-toggle": "tooltip", title: t(".tooltip", name: "Google")} do %>
             <i class="fab fa-google"></i>
+          <% end %>
+          <%= link_to omniauth_authorize_path(resource_name, :github),
+            {class:"bnt-social github-cls", "data-toggle": "tooltip", title: t(".tooltip", name: "Github")} do %>
+            <i class="fab fa-github"></i>
           <% end %>
         </div>
       </div>

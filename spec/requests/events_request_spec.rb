@@ -154,7 +154,8 @@ RSpec.describe Business::EventsController, type: :controller do
         end
 
         it "redirect business_room_path" do
-          expect(response).to redirect_to business_room_path(id: event.room_id, day: "2020-09-16")
+          expect(response).to redirect_to business_room_path(id: event.room_id,
+            day: Settings.rspec.update.valid_date)
         end
       end
 
