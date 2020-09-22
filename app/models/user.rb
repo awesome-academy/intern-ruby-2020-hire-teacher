@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :guests, dependent: :destroy
   has_many :rooms, dependent: :destroy
   has_many :reports, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   belongs_to :group
 
   delegate :name, to: :group, prefix: true

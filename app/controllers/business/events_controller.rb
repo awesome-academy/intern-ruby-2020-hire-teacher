@@ -1,5 +1,5 @@
 class Business::EventsController < BusinessController
-  before_action :authenticate_user!
+  before_action :load_notification
   before_action :set_event, except: :create
   before_action :load_room, only: %i(create update)
 
@@ -16,8 +16,6 @@ class Business::EventsController < BusinessController
       if current_user.trainee?
         @event.update status: :inactivate
         flash[:warning] = t "controller.events.wait_trainer_accept"
-      else
-        flash[:waring] = t "controller.events.success_send_mail"
       end
       redirect_to business_room_path id: params[:event][:room_id],
         day: params[:event][:date_event]

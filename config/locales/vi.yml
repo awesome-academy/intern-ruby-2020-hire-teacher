@@ -100,6 +100,9 @@ vi:
         new_password: Mật khẩu mới
         current_password: Mật khẩu hiện tại
         new_password_confirmation: Nhập lại mật khẩu
+    notifications:
+      notification_center:
+        notifications: Thông báo
     rooms:
       index:
         choose_coutry: Chọn Quốc Gia
@@ -122,6 +125,10 @@ vi:
       room:
         unlock_room: Phòng không bị khóa
         lock_room: Phòng đã bị khóa
+      room_lock:
+        lock_room: Phòng đã bị khóa
+      room_unlock:
+        unlock_room: Phòng không bị khóa
     events:
       form_add_event:
         title: Tiêu đề

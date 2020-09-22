@@ -87,7 +87,7 @@
           <%= image_tag "avatar.png", class: "avatar-box-invite", size: Settings.size_avatar_current %>
           <%= render "business/reports/report_form", room: @room, parent_id: nil, report_new: @report %>
         </div>
-        <div class="box-report col-md-11">
+        <div class="box-report">
           <%= reports_tree_for @room.reports.hash_tree(limit_depth: 2),
             @room, Report.new %>
         </div>

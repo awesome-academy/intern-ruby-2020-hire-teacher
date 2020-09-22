@@ -70,6 +70,16 @@ ActiveRecord::Schema.define(version: 2020_09_28_032722) do
     t.index ["country_id"], name: "index_locations_on_country_id"
   end
 
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "active"
+    t.integer "room_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "report_hierarchies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "ancestor_id", null: false
     t.integer "descendant_id", null: false
@@ -139,6 +149,7 @@ ActiveRecord::Schema.define(version: 2020_09_28_032722) do
   add_foreign_key "guests", "users"
   add_foreign_key "images", "rooms"
   add_foreign_key "locations", "countries"
+  add_foreign_key "notifications", "users"
   add_foreign_key "reports", "rooms"
   add_foreign_key "reports", "users"
   add_foreign_key "rooms", "locations"

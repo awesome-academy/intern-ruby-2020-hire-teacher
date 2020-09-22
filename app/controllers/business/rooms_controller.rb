@@ -1,5 +1,5 @@
 class Business::RoomsController < BusinessController
-  before_action :authenticate_user!
+  before_action :load_notification
   before_action :load_room, :check_week_create_event, :load_report, :load_event, only: :show
   before_action :load_room_pagination, only: :index
 

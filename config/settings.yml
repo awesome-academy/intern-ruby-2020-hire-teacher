@@ -88,6 +88,7 @@ rspec:
   start_time: "09:30"
   end_time: "11:30"
   redirect_status: 302
+  success_status: 200
   update:
     valid_date: "2021-09-16"
     invalid_date: "2020-09-06"
@@ -111,3 +112,4 @@ size_avatar_current: 50
 timezone:
   localate: "Hanoi"
   _minute: 60
+format_time_notify: "%d %b. %Y"

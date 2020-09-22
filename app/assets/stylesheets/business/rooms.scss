@@ -79,10 +79,25 @@
   cursor: pointer;
   background-color: white;
   border: none;
+  border-left: solid 1px black;
   color: black;
+  padding-left: 10px;
+  margin-left: 5px;
 }
 
 .reply-btn:focus {
+  outline: none;
+}
+
+.see-more-btn {
+  cursor: pointer;
+  background-color: white;
+  border: none;
+  border-left: solid 1px #0090aa;
+  color: #0090aa;
+}
+
+.see-more-btn:focus {
   outline: none;
 }
 
@@ -92,4 +107,16 @@
 
 .text-report:hover {
   border: 1px solid $orangeff4444e6;
+}
+
+.status-room {
+  float: right;
+}
+
+.box-report {
+  width: 982px;
+}
+
+.old-replies {
+  display: none;
 }

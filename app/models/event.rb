@@ -37,9 +37,10 @@ class Event < ApplicationRecord
 
   scope :in_day, ->(date_event, room_id){where(date_event: date_event, room_id: room_id)}
   scope :check_event_time_with_calendar, (lambda do |start_time, end_time|
-    where ":start_time BETWEEN start_time AND end_time
+    where "start_time BETWEEN start_time AND end_time
       OR end_time BETWEEN start_time AND end_time", start_time: start_time, end_time: end_time
   end)
+  scope :by_status_activate, ->{where status: true}
   scope :user_room_join, ->{includes :user, :room}
   scope :join_multi_table, ->{eager_load :user, room: [location: :country]}
   scope :sort_by_date_event, ->(type){order date_event: type}
@@ -66,7 +67,9 @@ class Event < ApplicationRecord
   end
 
   def during_day
-    events_during = Event.in_day(date_event, room_id).check_event_time_with_calendar(start_time, end_time)
+    events_during = Event.in_day(date_event, room_id)
+                         .check_event_time_with_calendar(start_time, end_time)
+                         .by_status_activate
     errors.add(:system, I18n.t("business.model.event.room_ready")) if events_during.present?
   end
 

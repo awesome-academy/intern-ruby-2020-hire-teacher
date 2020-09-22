@@ -4,6 +4,8 @@ class Room < ApplicationRecord
 
   enum active: {locked: false, opened: true}
 
+  attr_accessor :previous_active
+
   has_many :events, dependent: :destroy
   has_many :reports, dependent: :destroy
   has_many :images, dependent: :destroy
@@ -19,7 +21,8 @@ class Room < ApplicationRecord
   validates :address, presence: true, length: {maximum: Settings.room.address.maximum}
   validates :location_id, presence: true
 
-  after_update :update_event
+  before_update :update_previous_status
+  after_update :notify_room_status, :change_status_room_realtime, unless: :check_status_change?
 
   scope :join_location_country, ->{includes location: :country}
   scope :sort_by_created_at, ->(type){order created_at: type}
@@ -41,5 +44,34 @@ class Room < ApplicationRecord
     return if opened?
 
     Event.where(room_id: id).update status: :inactivate
+  end
+
+  def notify_room_status
+    events = Event.by_room_id id
+    events.each do |event|
+      Notification.create content: "manager #{active} room #{name}", user_id: event.user_id
+    end
+  end
+
+  def update_previous_status
+    self.previous_active = active_was
+  end
+
+  def check_status_change?
+    active.eql? previous_active
+  end
+
+  def change_status_room_realtime
+    ActionCable.server.broadcast "status_room_channel", active: render_active_lock if locked?
+
+    ActionCable.server.broadcast "status_room_channel", active: render_active_unlock
+  end
+
+  def render_active_lock
+    BusinessController.renderer.render(partial: "business/rooms/room_lock")
+  end
+
+  def render_active_unlock
+    BusinessController.renderer.render(partial: "business/rooms/room_unlock")
   end
 end

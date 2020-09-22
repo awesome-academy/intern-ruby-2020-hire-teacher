@@ -100,6 +100,9 @@ en:
         new_password: New Password
         current_password: Current Password
         new_password_confirmation: New Password Confirmation
+    notifications:
+      notification_center:
+        notifications: Notifications
     rooms:
       index:
         choose_coutry: Choose Country
@@ -121,6 +124,10 @@ en:
       room:
         unlock_room: Unlock Room
         lock_room: Lock Room
+      room_lock:
+        lock_room: Lock Room
+      room_unlock:
+        unlock_room: Unlock Room
     events:
       form_add_event:
         title: Title

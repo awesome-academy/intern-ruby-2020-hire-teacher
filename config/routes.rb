@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   require "sidekiq/web"
 
   mount Sidekiq::Web, at: "/sidekiq"
+  mount ActionCable.server => "/cable"
 
   devise_for :users, only: :omniauth_callbacks,
     controllers: {omniauth_callbacks: "business/omniauth_callbacks"}

@@ -29,6 +29,7 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import './calendar/style_calendar';
 @import './vendor/style';
 @import './rooms';
+@import './notifications/notification';
 
 a.github-cls {
   color: $gray424242;

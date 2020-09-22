@@ -33,6 +33,9 @@
                 <%= link_to t("header.logout"), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               </div>
             </li>
+            <div class="notification-partial">
+              <%= render "business/notifications/notification_center", notifications: @notifications %>
+            </div>
           <% else %>
             <li class="nav-item active">
               <%= link_to t(".login"), new_user_session_path, class: "nav-link" %>
