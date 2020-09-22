@@ -41,7 +41,7 @@ class Business::ReportsController < BusinessController
   end
 
   def report_params
-    params.require(:report).permit :room_id, :user_id, :comment
+    params.require(:report).permit Report::REPORT_PARAMS
   end
 
   def set_report

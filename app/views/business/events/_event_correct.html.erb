@@ -1,5 +1,8 @@
 <li class="cd-schedule__event">
-  <a data-start="<%= event_load.start_time.to_s(:time) %>" data-end="<%= event_load.end_time.to_s(:time) %>" data-content="<%= event_load.id %>" data-event="event-<%= check_date event_load %>" href="#0">
+  <a data-start="<%= event_load.start_time.to_s(:time) %>"
+    data-end="<%= event_load.end_time.to_s(:time) %>"
+    data-content=<%= event_load.id %>
+    data-event="event-<%= check_date event_load %>" href="#0">
     <em class="cd-schedule__name"><%= event_load.title %></em>
   </a>
 </li>

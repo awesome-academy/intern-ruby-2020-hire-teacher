@@ -1,4 +1,6 @@
 class Report < ApplicationRecord
+  REPORT_PARAMS = %i(room_id user_id comment).freeze
+
   belongs_to :user
   belongs_to :room
 

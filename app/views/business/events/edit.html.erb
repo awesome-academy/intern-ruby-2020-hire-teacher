@@ -2,8 +2,8 @@
   <div>
     <h3 class="infomartion_event">Information Event</h3>
     <br>
-    <%= form_for :event, url: business_event_path, method: :patch  do |f| %>
-      <%= render "business/shared/error_messages", resource: event %>
+    <%= form_for @event, url: business_event_path, method: :patch  do |f| %>
+      <%= render "business/shared/error_messages", resource: @event %>
       <%= f.label t(".title"), class: "form-group" %>
       <%= f.text_field :title, class: "form-group", value: @event.title %>
       <%= f.label t(".date_event"), class: "form-group" %>
