@@ -6,6 +6,7 @@ FactoryBot.define do
     start_time {Settings.rspec.start_time}
     end_time {Settings.rspec.end_time}
     color {Faker::Number.between(Settings.one,Settings.color_final)}
+    deleted_at {nil}
     room {FactoryBot.create :room}
     user {FactoryBot.create :user}
   end
