@@ -5,12 +5,11 @@ class Managers::RoomsController < ManagersController
   before_action :room_option, only: :index
 
   def index
-    @rooms = Room.join_location_country
-                 .by_name(params[:room_name])
-                 .by_created_at(params[:search_day])
-                 .by_active(params[:option])
-                 .sort_by_created_at(:desc)
-                 .page(params[:page]).per Settings.page.size
+    @q = Room.ransack params[:q]
+    @q.sorts = "created_at desc" if @q.sorts.blank?
+    @rooms = @q.result
+               .join_location_country
+               .page(params[:page]).per Settings.page.size
   end
 
   def new

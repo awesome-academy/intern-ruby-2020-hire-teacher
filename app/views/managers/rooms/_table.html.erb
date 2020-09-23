@@ -20,12 +20,12 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th><%= t ".name" %></th>
+                  <th><%= sort_link @q, :name, t(".name") %></th>
                   <th><%= t ".address" %></th>
                   <th><%= t ".location" %></th>
                   <th><%= t ".country" %></th>
-                  <th><%= t ".created_at" %></th>
-                  <th><%= t ".updated_at" %></th>
+                  <th><%= sort_link @q, :created_at, t(".created_at") %></th>
+                  <th><%= sort_link @q, :updated_at, t(".updated_at") %></th>
                   <th><%= t ".edit" %></th>
                   <th><%= t ".delete" %></th>
                 </tr>

@@ -1,27 +1,29 @@
-<%= form_tag managers_rooms_path, method: :get do %>
+<%= search_form_for @q, url: managers_rooms_path do |f| %>
   <div class="row mb-8">
     <div class="form-group col-md-3">
-      <%= label_tag :room_name do %>
+      <%= f.label :name_cont do %>
         <%= t ".room_name" %>
       <% end %>
-      <%= text_field_tag :room_name, "", class: "form-control",
-        placeholder: t(".search"), value: params[:room_name] %>
+      <%= f.text_field :name_cont, class: "form-control",
+        placeholder: t(".search"), value: handle_key_search(:name_cont) %>
     </div>
     <div class="form-group col-md-3">
-      <%= label_tag :option do %>
+      <%= f.label :active_eq do %>
         <%= t ".status" %>
       <% end %>
-      <%= select_tag :option, options_for_select(room_option, params[:option]),
-        class: "form-control" %>
+      <%= f.select :active_eq,
+        options_for_select(room_option, handle_key_search(:active_eq)),{},
+        {class: "form-control"} %>
     </div>
     <div class="form-group col-md-3">
-      <%= label_tag :search_day do %>
+      <%= f.label :created_on_eq do %>
         <%= t ".label_date" %>
       <% end %>
-      <%= date_field_tag :search_day, params[:search_day], class: "form-control" %>
+      <%= f.date_field :created_on_eq, value: handle_key_search(:created_on_eq),
+        class: "form-control" %>
     </div>
-    <div class="form-group col-md-3">
-      <%= button_tag type: "submit", class: "btn btn-primary btn-search" do %>
+    <div class="form-group col-md-3 mt-rem">
+      <%= f.submit class: "btn btn-primary btn-search" do %>
         <i class="fa fa-search"></i>
         <%= t ".search_btn" %>
       <% end %>

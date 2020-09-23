@@ -20,4 +20,8 @@ module ManagersHelper
     @roles = {"#{t "option.all"}": ""}
     @roles.merge! Settings.model.user.roles.to_h
   end
+
+  def handle_key_search key
+    params[:q].try(:[], key) || ""
+  end
 end

@@ -251,8 +251,14 @@ RSpec.describe Managers::RoomsController, type: :controller do
       end
 
       context "when have some params" do
-        before {get :index, params: {search_day: Time.zone.today,
-        room_name: Settings.rspec.room_controller.params_name}}
+        before do
+          get :index, params: {
+            q: {
+              created_on_eq: Time.zone.today,
+              name_cont: Settings.rspec.room_controller.params_name
+            }
+          }
+        end
 
         it "list filter rooms" do
           expect(assigns(:rooms)).to eq([moscow])

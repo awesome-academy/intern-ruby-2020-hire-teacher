@@ -3,13 +3,10 @@ class Managers::UsersController < ManagersController
   before_action :employee, only: :update
 
   def index
-    @users = User.by_name(params[:name])
-                 .by_email(params[:email])
-                 .by_group(params[:group])
-                 .by_role(params[:role])
-                 .by_status(params[:status])
-                 .sort_by_created_at(:desc)
-                 .page(params[:page]).per Settings.page.size
+    @q = User.ransack(params[:q])
+    @q.sorts = "created_at desc" if @q.sorts.empty?
+    @users = @q.result
+               .page(params[:page]).per Settings.page.size
   end
 
   def update
