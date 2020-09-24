@@ -5,7 +5,26 @@ $(document).ready(function(){
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
   });
-    $('.scrollBox a.add_fields').
-      data('association-insertion-method', 'append').
-      data('association-insertion-node', '#list-invite');
+  $('.scrollBox a.add_fields').
+    data('association-insertion-method', 'append').
+    data('association-insertion-node', '#list-invite');
+
+  $('input[placeholder]').placeholderLabel({
+    placeholderColor: "#898989",
+    labelColor: "black",
+    labelSize: "14px",
+    fontStyle: "normal",
+    useBorderColor: true,
+    inInput: true,
+    timeMove: 200
+  });
+  $('textarea[placeholder]').placeholderLabel({
+    placeholderColor: "#898989",
+    labelColor: "black",
+    labelSize: "14px",
+    fontStyle: "normal",
+    useBorderColor: true,
+    inInput: true,
+    timeMove: 200
+  });
 });

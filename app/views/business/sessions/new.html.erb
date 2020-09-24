@@ -8,11 +8,11 @@
         </div>
         <%= form_for resource, as: resource_name, url: session_path(resource_name) do |f| %>
           <div class="field">
-            <%= f.email_field :email, class: "form-feild", placeholder: t(".email"), required: :required, autofocus: true, autocomplete: "email" %>
+            <%= f.email_field :email, class: "form-feild", placeholder: t(".enter_email"), required: :required, autocomplete: "email" %>
           </div>
 
           <div class="field">
-            <%= f.password_field :password, class: "form-feild", placeholder: t(".password"), required: :required, autocomplete: "current-password" %>
+            <%= f.password_field :password, class: "form-feild", placeholder: t(".enter_password"), required: :required, autocomplete: "current-password" %>
           </div>
 
           <% if devise_mapping.rememberable? %>

@@ -7,6 +7,7 @@ require('./custom')
 require('./calendar/filter_select')
 require('cocoon')
 require('./password/password')
+require('./vendor/jquery.placeholder.label')
 import "@fortawesome/fontawesome-free/js/all";
 
 window.jQuery = $;

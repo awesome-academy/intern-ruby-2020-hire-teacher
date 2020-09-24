@@ -92,17 +92,16 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
 }
 
 .form-feild {
-  background-color: $whitef6f6f6;
-  border: none;
+  background-color: white;
+  border: 1px solid $purplecccccc;
   color: $black0d0d0d;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 5px;
+  margin: 20px;
   width: 85%;
-  border: 2px solid $whitef6f6f6;
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -ms-transition: all 0.5s ease-in-out;
@@ -129,18 +128,17 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   width:60%;
 }
 
-select {
-  background-color: $whitef6f6f6;
-  border: none;
+select{
+  background-color: white;
   color: $black0d0d0d;
   padding: 15px 30px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 5px;
+  margin: 31px 5px 5px 5px !important;
   width: 40%;
-  border: 2px solid $whitef6f6f6;
+  border: 1px solid $purplecccccc;
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -ms-transition: all 0.5s ease-in-out;
@@ -156,11 +154,8 @@ select:focus {
 }
 
 #result {
-  text-shadow: $gray;
-}
-
-a {
-  color: $black000;
+  text-shadow:#666;
+  display: block;
 }
 
 .result {
@@ -192,4 +187,19 @@ a {
 .captcha-content {
   margin-left: 85px;
   margin-top: 20px;
+}
+
+.field_with_errors .form-feild {
+  border-color: #dc3545;
+  padding-right: calc(1.5em + 0.75rem);
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.error-feedback {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #dc3545;
 }

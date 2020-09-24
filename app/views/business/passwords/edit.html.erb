@@ -8,10 +8,10 @@
         </div>
         <h2><%= t "change_your_password" %></h2>
         <%= form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :put } do |f| %>
-          <%= render "business/shared/error_messages", resource: resource %>
           <%= f.hidden_field :reset_password_token %>
           <div class="field">
             <%= f.password_field :password, class: "form-feild", placeholder: t(".new_password"), autocomplete: "new-password", required: :required %>
+            <%= display_error f.object, :password, t(".new_password") %>
             <br>
             <span id="result" class="result"></span>
             <div id="bar-strong-password" class="bar-strong-password"></div>
@@ -19,6 +19,7 @@
 
           <div class="field">
             <%= f.password_field :password_confirmation, class: "form-feild", placeholder: t(".new_password_confirmation"), autocomplete: "new-password", required: :required %>
+            <%= display_error f.object, :password, t(".new_password_confirmation") %>
           </div>
 
           <div class="actions">
