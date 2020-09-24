@@ -1,4 +1,5 @@
 require 'rails_helper'
+require "cancan/matchers"
 
 RSpec.describe Managers::RoomsController, type: :controller do
   include_examples "create example rooms"
@@ -139,7 +140,7 @@ RSpec.describe Managers::RoomsController, type: :controller do
       before {get :index}
 
       it "should render warning flash" do
-        expect(flash[:warning]).to eq I18n.t("managers.warning.not_correct")
+        expect(flash[:warning]).to eq I18n.t("cancancan.warning.access_denied")
       end
 
       it "redirect to business_home_path" do
@@ -151,7 +152,7 @@ RSpec.describe Managers::RoomsController, type: :controller do
       before {get :new}
 
       it "should render warning flash" do
-        expect(flash[:warning]).to eq I18n.t("managers.warning.not_correct")
+        expect(flash[:warning]).to eq I18n.t("cancancan.warning.access_denied")
       end
 
       it "redirect to business_home_path" do
@@ -172,7 +173,7 @@ RSpec.describe Managers::RoomsController, type: :controller do
       end
 
       it "should render warning flash" do
-        expect(flash[:warning]).to eq I18n.t("managers.warning.not_correct")
+        expect(flash[:warning]).to eq I18n.t("cancancan.warning.access_denied")
       end
 
       it "redirect to business_home_path" do
@@ -184,7 +185,7 @@ RSpec.describe Managers::RoomsController, type: :controller do
       before {get :show, params: {id: room2.id}}
 
       it "should render warning flash" do
-        expect(flash[:warning]).to eq I18n.t("managers.warning.not_correct")
+        expect(flash[:warning]).to eq I18n.t("cancancan.warning.access_denied")
       end
 
       it "redirect to business_home_path" do
@@ -196,7 +197,7 @@ RSpec.describe Managers::RoomsController, type: :controller do
       before {get :edit, params: {id: room2.id}}
 
       it "should render warning flash" do
-        expect(flash[:warning]).to eq I18n.t("managers.warning.not_correct")
+        expect(flash[:warning]).to eq I18n.t("cancancan.warning.access_denied")
       end
 
       it "redirect to business_home_path" do
@@ -213,7 +214,7 @@ RSpec.describe Managers::RoomsController, type: :controller do
       end
 
       it "should render warning flash" do
-        expect(flash[:warning]).to eq I18n.t("managers.warning.not_correct")
+        expect(flash[:warning]).to eq I18n.t("cancancan.warning.access_denied")
       end
 
       it "redirect to business_home_path" do
@@ -225,7 +226,7 @@ RSpec.describe Managers::RoomsController, type: :controller do
       before{delete :destroy, params: {id: room3.id}}
 
       it "should render warning flash" do
-        expect(flash[:warning]).to eq I18n.t("managers.warning.not_correct")
+        expect(flash[:warning]).to eq I18n.t("cancancan.warning.access_denied")
       end
 
       it "redirect to business_home_path" do
@@ -305,9 +306,7 @@ RSpec.describe Managers::RoomsController, type: :controller do
         before {post :create, params: {room: manager_params}}
 
         it "create a new room success" do
-          expect{
-            post :create, params: {room: manager_params}
-          }.to change(Room, :count).by(1)
+          should be_able_to(:create, params: {room: manager_params})
         end
 
         it "should render success flash" do

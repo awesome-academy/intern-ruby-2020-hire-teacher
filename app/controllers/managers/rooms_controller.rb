@@ -1,8 +1,8 @@
 class Managers::RoomsController < ManagersController
-  before_action :correct_manager
   before_action :load_room, except: %i(index create new)
   before_action :get_location, except: %i(index destroy)
-  before_action :room_option, only: :index
+
+  load_and_authorize_resource
 
   def index
     @q = Room.ransack params[:q]
@@ -18,7 +18,6 @@ class Managers::RoomsController < ManagersController
   end
 
   def create
-    @room = Room.new room_params
     if @room.save
       flash[:success] = t "managers.success.create_room", name: @room.name
       redirect_to managers_room_path @room

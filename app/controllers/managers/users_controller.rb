@@ -1,6 +1,7 @@
 class Managers::UsersController < ManagersController
-  before_action :correct_manager
   before_action :employee, only: :update
+
+  authorize_resource
 
   def index
     @q = User.ransack(params[:q])

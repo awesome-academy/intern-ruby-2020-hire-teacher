@@ -466,3 +466,6 @@ en:
       update:
         open: "Are you sure want to open %{name} event?"
         lock: "Are you sure want to lock %{name} event?"
+  cancancan:
+    warning:
+      access_denied: "You are not allowed to perform that action!"
