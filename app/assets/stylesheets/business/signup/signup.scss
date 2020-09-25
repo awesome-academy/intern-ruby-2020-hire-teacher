@@ -56,7 +56,7 @@ h2.active {
   border-bottom: 2px solid $blue5fbae9;
 }
 
-input[type=reset], input[type=select]{
+input[type=reset] {
   background-color: $orangeff4444e6;
   border: none;
   color: $whitefff;
@@ -83,7 +83,7 @@ input[type=button]:hover, input[type=reset]:hover{
   cursor: pointer;
 }
 
-input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+input[type=button]:active, input[type=submit]:active, input[type=reset]:active {
   -moz-transform: scale(0.95);
   -webkit-transform: scale(0.95);
   -o-transform: scale(0.95);
@@ -148,7 +148,7 @@ select{
   border-radius: 5px 5px 5px 5px;
 }
 
-select:focus {
+.select-feild:focus {
   background-color: $whitefff;
   border-bottom: 2px solid $orangeff4444e6;
 }
@@ -202,4 +202,24 @@ select:focus {
   margin-top: 0.25rem;
   font-size: 80%;
   color: #dc3545;
+}
+
+.fa-status-room {
+  float: right;
+  .unlock-icon {
+    font-size: 25px;
+    padding: 5px;
+    color: chartreuse;
+    border: 2px solid chartreuse;
+    border-radius: 50%;
+  }
+
+  .lock-icon {
+    height: 25px;
+    width: 27px;
+    padding: 5px;
+    color: red;
+    border: 2px solid red;
+    border-radius: 50%;
+  }
 }

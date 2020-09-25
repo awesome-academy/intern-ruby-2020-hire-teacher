@@ -23,7 +23,8 @@ class Event < ApplicationRecord
   validates :date_event, :start_time, :end_time, presence: true
   validates :description, presence: true, allow_nil: true,
     length: {maximum: Settings.event.desc.max_length}
-  validate :end_time_after_start_time, :day_off, :during_day
+  validate :end_time_after_start_time, :day_off
+  validate :during_day, on: :create
   validates_time :start_time, between: Settings.event.time.start...Settings.event.time.end,
     message: I18n.t("business.model.event.between_after")
   validates_time :end_time, between: Settings.event.time.start...Settings.event.time.end,
@@ -32,7 +33,7 @@ class Event < ApplicationRecord
     message: I18n.t("business.model.event.on_or_after")
 
   before_update :update_previous_status
-  after_update :send_email, unless: :check_send_mail?
+  # after_update :send_email, unless: :check_send_mail?
 
   scope :in_day, ->(date_event, room_id){where(date_event: date_event, room_id: room_id)}
   scope :check_event_time_with_calendar, (lambda do |start_time, end_time|
@@ -42,7 +43,7 @@ class Event < ApplicationRecord
   scope :user_room_join, ->{includes :user, :room}
   scope :join_multi_table, ->{eager_load :user, room: [location: :country]}
   scope :sort_by_date_event, ->(type){order date_event: type}
-  scope :by_room_id, ->(room_id){where room_id: room_id if room_id.present?}
+  scope :by_room_id, ->(room_id){where(room_id: room_id, status: true) if room_id.present?}
   scope :by_trainee, (lambda do |group_id|
     joins(:user).where(users: {group_id: group_id, role: :trainee})
   end)

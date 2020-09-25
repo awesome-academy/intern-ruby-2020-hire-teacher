@@ -23,4 +23,9 @@
       <% end %>
     <% end %>
   </td>
+  <td align="center">
+    <% if event.deleted_at.present? %>
+      <%= t(".user_delete_soft") %>
+    <% end %>
+    </td>
 </tr>

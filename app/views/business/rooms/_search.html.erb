@@ -1,17 +1,14 @@
 <%= search_form_for @search, url: business_rooms_path do |f| %>
   <div class="form-group">
-    <%= f.label :name %>
-    <%= f.search_field :title_cont, value: @search.name_or_address_cont %>
+    <%= f.search_field :title_cont, placeholder: t(".search_name"), value: @search.name_or_address_cont %>
   </div>
   <div class="form-group">
-    <%= f.label :country %>
     <%= f.select :location_country_id_eq,
       options_for_select(countries, @search.location_country_id_eq),
       {include_blank: t(".choose_country")}, { onchange: "this.form.submit();" } %>
   </div>
   <% if @search.location_country_id_eq.present? %>
     <div class="form-group">
-      <%= f.label :location %>
       <%= f.select :location_id_eq,
         options_for_select(locations, @search.location_id_eq),
         {include_blank: t(".choose_location")}, { onchange: "this.form.submit();" } %>

@@ -1,27 +1,32 @@
-<div id="form-report<%= report.id %>">
+<div id="form-report<%= report.id %>" class="example col-md-11 form-reply-report shadow rounded form-report<%= report.id %>">
   <div class="row">
-    <div class="col-md-1">
-      <%= image_tag "avatar.png", class: "image-user" %>
-    </div>
-    <div class="col-md-11 report-content">
+    <div class="col-md-11 pl-0">
+      <%= image_tag "avatar.png", class: "image-user", size: Settings.size_avatar %>
       <%= report.user.name %> -
       <span class="timestamp">
         <%= time_ago_in_words report.created_at %>
       </span><br/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="report-content col-md-11">
       <p class="comment-content"><%= report.comment %></p>
       <% if report.user_id.eql? current_user.id %>
-        <%= link_to "delete", business_room_report_path(room, report),
-        id: :delete, method: :delete,
-        data: {confirm: t("sure")}, remote: true %>
+        <%= link_to t(".delete"), business_room_report_path(room, report),
+          id: :delete, method: :delete,
+          data: {confirm: t("sure")}, remote: true %>
+      <% end %>
+      <% unless report.parent_id %>
+        <button class="reply-btn"><%= t ".reply" %></button>
       <% end %>
     </div>
   </div>
   <% unless report.parent_id %>
-    <div class="row">
+    <div class="row reply-form">
       <div class="col-md-1"></div>
-      <div class="col-md-11">
+      <div class="col-md-11 form-reply">
         <%= render "business/reports/report_form", room: room, parent_id: report.id,
-        report_new: report_new %>
+          report_new: report_new %>
       </div>
     </div>
   <% end %>

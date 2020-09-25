@@ -43,6 +43,7 @@ class User < ApplicationRecord
   scope :by_role, ->(role){where(role: role) if role.present?}
   scope :by_status, ->(status){where(activated: status) if status.present?}
   scope :includes_group, ->{includes(:group).references :group}
+  scope :get_trainer, ->(group_id){where(group_id: group_id, role: :trainer) if group_id.present?}
 
   class << self
     def from_omniauth access_token

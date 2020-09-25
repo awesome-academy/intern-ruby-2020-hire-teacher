@@ -18,13 +18,8 @@ $(document).ready(function(){
     inInput: true,
     timeMove: 200
   });
-  $('textarea[placeholder]').placeholderLabel({
-    placeholderColor: "#898989",
-    labelColor: "black",
-    labelSize: "14px",
-    fontStyle: "normal",
-    useBorderColor: true,
-    inInput: true,
-    timeMove: 200
+
+  $('.box-report').on('click', '.reply-btn',function(){
+    $(this).closest('div.example').children('.reply-form').toggle();
   });
 });

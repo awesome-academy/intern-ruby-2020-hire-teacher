@@ -11,7 +11,7 @@ module ReportsHelper
 
     content_tag :div,
                 reports_tree_for(nested_reports, room, Report.new),
-                class: "replies"
+                class: ["replies form-report", nested_reports.first[0].parent_id].join("")
   end
 
   def place_report parent

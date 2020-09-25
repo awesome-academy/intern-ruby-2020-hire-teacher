@@ -12,4 +12,9 @@ class UserMailer < ApplicationMailer
     @guest = guest
     mail to: guest.user.email, subject: ["Invite Event", guest.event.title].join(" ")
   end
+
+  def active_event trainer
+    @trainer = trainer
+    mail to: trainer.email, subject: t(".active_event")
+  end
 end

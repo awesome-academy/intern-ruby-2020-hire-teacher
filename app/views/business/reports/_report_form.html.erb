@@ -1,10 +1,13 @@
-<span id="form-report">
+<span id="form-report" class="col-md-11">
   <%= form_for :report, url: business_room_reports_path(room.id), remote: true do |f| %>
     <%= f.hidden_field :parent_id, value: parent_id %>
     <%= f.hidden_field :room_id, value: room.id %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.text_area :comment, placeholder: place_report(parent_id),
       required: true, class: "form-control text-report" %>
-    <%= f.submit t("send"), class: "btn-send-report" %>
+    <div>
+    <%= display_error f.object, :comment, t(".commnet") %>
+      <button type="submit" class="btn-send-report"><i class="fas fa-paper-plane"></i></button>
+    </div>
   <% end %>
 </span>

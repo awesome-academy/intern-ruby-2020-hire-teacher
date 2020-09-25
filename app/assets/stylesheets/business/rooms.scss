@@ -50,3 +50,46 @@
     color: $redbf360c;
   }
 }
+
+.form-create-report {
+  padding: 24px;
+  width: 900px;
+  display: flex;
+  background-color: white;
+  margin-bottom: 18px;
+}
+
+.avatar-box-invite {
+  margin-right: 10px;
+}
+
+.content-report, footer {
+  background-color: $whitef2f2f2;
+}
+
+.form-reply-report {
+  padding: 24px;
+  width: 900px;
+  border: 1px solid $purplecccccc;
+  background-color: white;
+  margin-bottom: 18px;
+}
+
+.reply-btn {
+  cursor: pointer;
+  background-color: white;
+  border: none;
+  color: black;
+}
+
+.reply-btn:focus {
+  outline: none;
+}
+
+.text-report {
+  border: 1px solid $purplecccccc;
+}
+
+.text-report:hover {
+  border: 1px solid $orangeff4444e6;
+}
