@@ -15,6 +15,7 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
   config.active_storage.service = :local
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
 
   host = ENV["host"]

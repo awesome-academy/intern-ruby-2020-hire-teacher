@@ -33,7 +33,7 @@ class Event < ApplicationRecord
     message: I18n.t("business.model.event.on_or_after")
 
   before_update :update_previous_status
-  # after_update :send_email, unless: :check_send_mail?
+  after_update :send_email, unless: :check_send_mail?
 
   scope :in_day, ->(date_event, room_id){where(date_event: date_event, room_id: room_id)}
   scope :check_event_time_with_calendar, (lambda do |start_time, end_time|
@@ -47,6 +47,7 @@ class Event < ApplicationRecord
   scope :by_trainee, (lambda do |group_id|
     joins(:user).where(users: {group_id: group_id, role: :trainee})
   end)
+  scope :in_room_active, ->{where("rooms.active = TRUE").references(:room)}
 
   private
 
@@ -62,16 +63,6 @@ class Event < ApplicationRecord
     return if date_event.blank?
 
     errors[:date_event] << I18n.t("business.model.event.day_off") if date_event.sunday? || date_event.saturday?
-  end
-
-  class << self
-    def search_events search, option
-      if option.present?
-        Event.join_multi_table.send "by_#{option}", search
-      else
-        Event.user_room_join
-      end
-    end
   end
 
   def during_day

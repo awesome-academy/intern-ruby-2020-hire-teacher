@@ -17,5 +17,8 @@ module ProjectSun
     config.i18n.default_locale = :vi
 
     config.active_job.queue_adapter = :sidekiq
+
+    config.time_zone = "Hanoi"
+    config.active_record.default_timezone = :local
   end
 end
