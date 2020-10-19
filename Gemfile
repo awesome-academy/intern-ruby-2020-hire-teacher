@@ -49,6 +49,7 @@ gem "webpacker", "~> 4.0"
 gem "whenever", require: false
 
 group :development, :test do
+  gem "bullet"
   gem "factory_bot_rails"
   gem "pry-rails"
   gem "rails_best_practices"
@@ -56,6 +57,7 @@ group :development, :test do
   gem "rubocop", "~> 0.74.0", require: false
   gem "rubocop-checkstyle_formatter", require: false
   gem "rubocop-rails", "~> 2.3.2", require: false
+  gem "ruby_gntp"
 end
 
 group :development do
@@ -71,6 +73,7 @@ group :test do
   gem "selenium-webdriver"
   gem "shoulda-matchers"
   gem "simplecov", require: false
+  gem "simplecov-rcov"
   gem "webdrivers"
 end
 

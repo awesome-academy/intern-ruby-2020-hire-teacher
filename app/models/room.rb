@@ -45,6 +45,6 @@ class Room < ApplicationRecord
   def update_event
     return if opened?
 
-    Event.where(room_id: id).update status: :inactivate
+    Event.where(room_id: id).update! status: :inactivate
   end
 end
