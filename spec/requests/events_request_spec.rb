@@ -76,7 +76,6 @@ RSpec.describe Business::EventsController, type: :controller do
 
     describe "POST #create" do
       context "with valid attributes" do
-        before {post :create, params: {event: valid_params}}
         let(:event_success) do
           FactoryBot.attributes_for :event, user_id: user.id,
             room_id: room.id, date_event: Settings.rspec.create.valid_date
@@ -89,11 +88,13 @@ RSpec.describe Business::EventsController, type: :controller do
         end
 
         it "redirect to business_room_path" do
+          post :create, params: {event: event_success}
           expect(response).to redirect_to business_room_path(id: valid_params[:room_id],
-            day: valid_params[:date_event])
+            day: event_success[:date_event])
         end
 
         it "flash success" do
+          post :create, params: {event: event_success}
           expect(flash[:success]).to match I18n.t("controller.events.success_create")
         end
       end

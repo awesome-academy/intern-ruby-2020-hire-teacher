@@ -1,7 +1,13 @@
 require "rails_helper"
 RSpec.describe Room, type: :model do
-  let!(:room) {FactoryBot.build :room}
-  let!(:room_fail) {FactoryBot.build :room, name: nil}
+  let(:room) {FactoryBot.create :room}
+  let!(:room_fail) do
+    FactoryBot.build :room,
+                     name: nil,
+                     user_id: nil,
+                     location_id: nil,
+                     address: Faker::String.random(length: 101)
+  end
 
   describe "Enums" do
     it "active room" do
@@ -40,7 +46,7 @@ RSpec.describe Room, type: :model do
 
   describe "Delegates" do
     it "delegate name to location" do
-      is_expected.to delegate_method(:name).to(:location).with_prefix(true)
+      is_expected.to delegate_method(:name).to(:location).with_prefix(true).allow_nil
     end
   end
 
@@ -54,6 +60,24 @@ RSpec.describe Room, type: :model do
     end
   end
 
+  describe "Callbacks" do
+    let!(:event) do
+      FactoryBot.create :event,
+                       room_id: room.id,
+                       status: :activate
+    end
+
+    context "when updated" do
+      it "after_update" do
+        obj = double
+        allow(obj).to receive(:send_email).and_return "pass"
+        room.update active: :locked
+        expect(room.events.first.status).to eq "inactivate"
+      end
+    end
+
+  end
+
   describe "Scopes" do
     include_examples "create example rooms"
 
@@ -61,76 +85,6 @@ RSpec.describe Room, type: :model do
       context "includes three tables" do
         it "return record of three tables" do
           expect(Room.join_location_country.size).to eq(Room.count)
-        end
-      end
-    end
-
-    describe ".by_name" do
-      context "when nil params" do
-        it "return all room" do
-          expect(Room.by_name(nil).size).to eq(Room.count)
-        end
-      end
-
-      context "when valid params" do
-        it "return room" do
-          expect(Room.by_name("mos")).to eq([moscow])
-        end
-      end
-    end
-
-    describe ".by_location" do
-      context "when nil params" do
-        it "return all room" do
-          expect(Room.by_location(nil).size).to eq(Room.count)
-        end
-      end
-
-      context "when valid params" do
-        it "return room" do
-          expect(Room.by_location(tokyo.id)).to eq([room3])
-        end
-      end
-    end
-
-    describe ".by_country" do
-      context "when nil params" do
-        it "return all room" do
-          expect(Room.by_country(nil).size).to eq(Room.count)
-        end
-      end
-
-      context "when valid params" do
-        it "return room" do
-          expect(Room.by_country(vietnam.id)).to eq([moscow, room2])
-        end
-      end
-    end
-
-    describe ".by_created_at" do
-      context "when nil params" do
-        it "return all room" do
-          expect(Room.by_created_at(nil).size).to eq(Room.count)
-        end
-      end
-
-      context "when valid params" do
-        it "return room" do
-          expect(Room.by_created_at room2.created_at.to_date).to eq([moscow, room2, room3])
-        end
-      end
-    end
-
-    describe ".by_active" do
-      context "when nil params" do
-        it "return all room" do
-          expect(Room.by_active(nil).size).to eq(Room.count)
-        end
-      end
-
-      context "when valid params" do
-        it "return room" do
-          expect(Room.by_active(:opened)).to eq([moscow, room3])
         end
       end
     end
@@ -147,6 +101,12 @@ RSpec.describe Room, type: :model do
           expect(Room.sort_by_created_at(:desc)).to eq([room3, room2, moscow])
         end
       end
+    end
+  end
+
+  describe "Class method" do
+    it ".ransackable_attributes" do
+      expect(Room.ransackable_attributes).to eq(["name", "address", "location_id", "title", "active", "created_at", "updated_at"])
     end
   end
 end

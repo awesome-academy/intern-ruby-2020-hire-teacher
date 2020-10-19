@@ -413,5 +413,19 @@ RSpec.describe Managers::RoomsController, type: :controller do
         end
       end
     end
+
+    describe "DELETE #destroy" do
+      context "when destroy success" do
+        before{delete :destroy, params: {id: room3.id, format: :js}}
+
+        it "should render @status = 1" do
+          expect(assigns(:status)).to eq 1
+        end
+
+        it "response to success status 200" do
+          expect(response.status).to eq 200
+        end
+      end
+    end
   end
 end

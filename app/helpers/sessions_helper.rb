@@ -4,6 +4,6 @@ module SessionsHelper
   end
 
   def none_manager? user
-    !user.manager?
+    user && !user.manager?
   end
 end
