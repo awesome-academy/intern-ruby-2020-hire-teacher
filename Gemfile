@@ -15,7 +15,7 @@ gem "closure_tree"
 gem "cocoon"
 gem "config"
 gem "devise"
-gem "faker", "1.7.3"
+gem "faker", git: "https://github.com/stympy/faker"
 gem "figaro"
 gem "file_validators"
 gem "fullcalendar-rails"
@@ -49,6 +49,7 @@ gem "webpacker", "~> 4.0"
 gem "whenever", require: false
 
 group :development, :test do
+  gem "bullet"
   gem "factory_bot_rails"
   gem "pry-rails"
   gem "rails_best_practices"
@@ -56,6 +57,7 @@ group :development, :test do
   gem "rubocop", "~> 0.74.0", require: false
   gem "rubocop-checkstyle_formatter", require: false
   gem "rubocop-rails", "~> 2.3.2", require: false
+  gem "ruby_gntp"
 end
 
 group :development do
@@ -68,9 +70,11 @@ end
 group :test do
   gem "capybara", ">= 2.15"
   gem "database_cleaner-active_record"
+  gem "rubocop-faker"
   gem "selenium-webdriver"
   gem "shoulda-matchers"
   gem "simplecov", require: false
+  gem "simplecov-rcov"
   gem "webdrivers"
 end
 

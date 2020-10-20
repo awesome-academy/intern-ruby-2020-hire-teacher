@@ -4,7 +4,7 @@ FactoryBot.define do
     email {Faker::Internet.unique.email}
     password {Settings.password_default}
     password_confirmation {Settings.password_default}
-    role {Faker::Number.between(Settings.one,Settings.role_final)}
+    role {Faker::Number.between(from: Settings.one,to: Settings.role_final)}
     group {FactoryBot.create :group}
   end
 end

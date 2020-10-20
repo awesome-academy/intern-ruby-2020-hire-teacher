@@ -22,11 +22,6 @@ class Room < ApplicationRecord
   after_update :update_event
 
   scope :join_location_country, ->{includes location: :country}
-  scope :by_name, ->(name){where "rooms.name like ?", "%#{name}%"}
-  scope :by_location, ->(id_location){includes(:location).where(locations: {id: id_location}) if id_location.present?}
-  scope :by_country, ->(id_country){join_location_country.where(countries: {id: id_country}) if id_country.present?}
-  scope :by_created_at, ->(date){where("date(created_at) = ? ", date) if date.present?}
-  scope :by_active, ->(status){where(active: status) if status.present?}
   scope :sort_by_created_at, ->(type){order created_at: type}
 
   ransack_alias :title, :name_or_address
