@@ -40,4 +40,8 @@ class BusinessController < ActionController::Base
   def current_ability
     @current_ability ||= UserAbility.new(current_user)
   end
+
+  def load_notification
+    @notifications = Notification.by_user(current_user.id).reverse
+  end
 end

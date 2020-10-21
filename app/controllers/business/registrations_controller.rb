@@ -1,6 +1,6 @@
 class Business::RegistrationsController < Devise::RegistrationsController
   before_action :get_group, only: %i(new create)
-  before_action :configure_sign_up_params, :check_captcha, only: :create
+  before_action :configure_sign_up_params, only: :create
   layout "business"
 
   def new

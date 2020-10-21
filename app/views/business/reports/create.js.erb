@@ -3,7 +3,7 @@
   $('#report_comment').addClass('your-class');
 <% else %>
   <% if @report.parent_id.present? %>
-    $('.box-report .replies-<%= @report.parent_id %>').prepend("<%= j render @report, room: @room %>");
+    $('.content-report<%= @report.parent_id %> .replies-<%= @report.parent_id %>').prepend("<%= j render @report, room: @room %>");
   <% else %>
     $('.box-report').prepend("<%= j render @report, room: @room, report_new: Report.new %>");
   <% end %>

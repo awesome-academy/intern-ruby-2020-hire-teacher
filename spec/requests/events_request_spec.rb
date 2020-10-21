@@ -1,15 +1,16 @@
 require "rails_helper"
 
 RSpec.describe Business::EventsController, type: :controller do
-  let!(:user) {FactoryBot.create :user}
+  let!(:employee) {FactoryBot.create :user, role: 2}
+  let!(:trainee) {FactoryBot.create :user, role: 4}
   let!(:room) {FactoryBot.create :room}
-  let!(:event) {FactoryBot.create :event, user_id: user.id, room_id: room.id}
+  let!(:event) {FactoryBot.create :event, user_id: employee.id, room_id: room.id}
   let!(:valid_params) do
     FactoryBot.attributes_for :event,
-      user_id: user.id, room_id: room.id,
+      user_id: employee.id, room_id: room.id,
       date_event: Settings.rspec.create.valid_date_params
   end
-  let!(:invalid_params) {FactoryBot.attributes_for :event, user_id: user.id, room_id: room.id, title: nil}
+  let!(:invalid_params) {FactoryBot.attributes_for :event, user_id: employee.id, room_id: room.id, title: nil}
 
   context "when user not login" do
     describe "POST #create" do
@@ -72,12 +73,12 @@ RSpec.describe Business::EventsController, type: :controller do
   end
 
   context "when user login" do
-    before {login user}
+    before {login employee}
 
     describe "POST #create" do
       context "with valid attributes" do
         let(:event_success) do
-          FactoryBot.attributes_for :event, user_id: user.id,
+          FactoryBot.attributes_for :event, user_id: employee.id,
             room_id: room.id, date_event: Settings.rspec.create.valid_date
         end
 
@@ -183,15 +184,15 @@ RSpec.describe Business::EventsController, type: :controller do
     describe "DELETE #destroy" do
       context "with valid product" do
         let!(:event_destroy) do
-          FactoryBot.create :event, user_id: user.id,
+          FactoryBot.create :event, user_id: employee.id,
             room_id: room.id, date_event: Settings.rspec.create.valid_date
         end
         before{delete :destroy, params: {id: event.id}}
 
         it "delete success" do
           expect{
-          delete :destroy, params: {id: event_destroy.id}
-            }.to change(Event, :count).by(-1)
+            delete :destroy, params: {id: event_destroy.id}
+          }.to change(Event, :count).by(-1)
         end
 
         it "show flash message" do
@@ -208,6 +209,52 @@ RSpec.describe Business::EventsController, type: :controller do
 
         it "show flash message" do
           expect(flash[:error]).to match I18n.t("controller.events.error_load_event")
+        end
+      end
+    end
+  end
+
+  context "when trainee login" do
+    before {login trainee}
+
+    describe "POST #create" do
+      context "with valid attributes" do
+        let(:event_success) do
+          FactoryBot.attributes_for :event, user_id: trainee.id,
+            room_id: room.id, date_event: Settings.rspec.create.valid_date
+        end
+
+        it "create a new event success" do
+          expect{
+            post :create, params: {event: event_success}
+          }.to change(Event, :count).by(1)
+        end
+
+        it "redirect to business_room_path" do
+          post :create, params: {event: event_success}
+          expect(response).to redirect_to business_room_path(id: valid_params[:room_id],
+            day: event_success[:date_event])
+        end
+
+        it "flash success" do
+          post :create, params: {event: event_success}
+          expect(flash[:warning]).to match I18n.t("controller.events.wait_trainer_accept")
+        end
+      end
+
+      context "with invalid attributes" do
+        before {post :create, params: {event: invalid_params}}
+
+        it "create a new event fail" do
+          expect{subject}.to change(Event, :count).by(0)
+        end
+
+        it "render template room" do
+          expect(response).to render_template "business/rooms/show"
+        end
+
+        it "create a new event fail" do
+          expect(flash[:error]).to match I18n.t("controller.events.error_create")
         end
       end
     end

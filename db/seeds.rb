@@ -1,4 +1,4 @@
-Group.create!(name: "administration")
+# Group.create!(name: "administration")
 
 5.times do
   country = Faker::Address.country
@@ -52,39 +52,39 @@ end
                user_id: User.ids.sample)
 end
 
-5.times do |n|
-  Report.create!(comment: Faker::Lorem.sentence(38),
-                 user_id: User.ids.sample,
-                 room_id: Room.ids.sample)
-end
+# 5.times do |n|
+#   Report.create!(comment: Faker::Lorem.sentence(38),
+#                  user_id: User.ids.sample,
+#                  room_id: Room.ids.sample)
+# end
 
-Room.all.each do |room|
-  title = Faker::Company.industry
-  description = Faker::Company.catch_phrase
-  message = Faker::Company.catch_phrase
-  user_id = User.ids.sample
-  start_time = Faker::Time.between(DateTime.now, DateTime.now + 1, :morning)
-  end_time = Faker::Time.between(DateTime.now, DateTime.now + 1, :morning)
-  status = :activate
-  if (User.find_by(id: user_id).trainee?)
-    status = :inactivate
-  end
-  date_event = Faker::Date.forward(23)
-  color = Faker::Number.between(1, 5)
-  if start_time < end_time
-    room.events.create!(
-      title: title,
-      description: description,
-      message: message,
-      user_id: user_id,
-      start_time: start_time,
-      end_time: end_time,
-      status: status,
-      date_event: date_event,
-      color: color
-    )
-  end
-end
+# Room.all.each do |room|
+#   title = Faker::Company.industry
+#   description = Faker::Company.catch_phrase
+#   message = Faker::Company.catch_phrase
+#   user_id = User.ids.sample
+#   start_time = Faker::Time.between(DateTime.now, DateTime.now + 1, :morning)
+#   end_time = Faker::Time.between(DateTime.now, DateTime.now + 1, :morning)
+#   status = :activate
+#   if (User.find_by(id: user_id).trainee?)
+#     status = :inactivate
+#   end
+#   date_event = Faker::Date.forward(23)
+#   color = Faker::Number.between(1, 5)
+#   if start_time < end_time
+#     room.events.create!(
+#       title: title,
+#       description: description,
+#       message: message,
+#       user_id: user_id,
+#       start_time: start_time,
+#       end_time: end_time,
+#       status: status,
+#       date_event: date_event,
+#       color: color
+#     )
+#   end
+# end
 
 Event.all.each do |event|
   5.times do |n|

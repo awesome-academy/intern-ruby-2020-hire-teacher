@@ -9,9 +9,10 @@ module ReportsHelper
   def tree_nested nested_reports, room
     return if nested_reports.empty?
 
+    report_id = nested_reports.first[0].parent_id
     content_tag :div,
                 reports_tree_for(nested_reports, room, Report.new),
-                class: ["replies form-report", nested_reports.first[0].parent_id].join("")
+                class: "replies form-report-" + report_id.to_s + " replies-" + report_id.to_s + " old-replies"
   end
 
   def place_report parent
@@ -20,5 +21,9 @@ module ReportsHelper
     else
       "report ..."
     end
+  end
+
+  def total_report_children report
+    report.self_and_descendants.size - 1
   end
 end
